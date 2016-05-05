@@ -1,0 +1,17 @@
+<?php
+/**
+ * Shoping cart sidebar
+ *
+ * @see Mage_Checkout_Block_Cart_Sidebar
+ */
+?>
+<?php if ($this->getIsNeedToDisplaySideBar()):?>
+<div class="header__cart">
+    <a href="<?php echo $this->getUrl('checkout/cart'); ?>" class="btn btn--cart-summary cart-summary">
+        <i class="icon-basket"></i>
+        <span class="cart-summary__label"><?php echo $this->__('My Cart'); ?></span>
+        <span class="cart-summary__quantity"><?php echo (int)$this->getSummaryCount(); ?></span>
+        <?php echo Mage::helper('checkout')->formatPrice($this->getSubtotal()) ?>
+    </a>
+</div>
+<?php endif;?>

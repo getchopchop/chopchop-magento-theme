@@ -1,0 +1,25 @@
+<div class="box card--customer-dashboard">
+    <div class="box-title card__header">
+        <h3 class="card__title"><?php echo $this->__('Address Book') ?></h3>
+        <a href="<?php echo $this->getAddressBookUrl() ?>" class="btn--customer-dashboard-edit"><?php echo $this->__('Manage Addresses') ?></a>
+    </div>
+    <div class="box-content card__body">
+        <div class="col2-set">
+            <div class="col-1">
+                <h4><?php echo $this->__('Default Billing Address') ?></h4>
+                <address>
+                    <?php echo $this->getPrimaryBillingAddressHtml() ?>
+                </address>
+            
+                <a href="<?php echo $this->getPrimaryBillingAddressEditUrl() ?>" class="text-link"><?php echo $this->__('Edit Address') ?></a>
+            </div>
+            <div class="col-2">
+                <h4><?php echo $this->__('Default Shipping Address') ?></h4>
+                <address>
+                    <?php echo $this->getPrimaryShippingAddressHtml() ?>
+                </address>
+                <a href="<?php echo $this->getPrimaryShippingAddressEditUrl() ?>" class="text-link"><?php echo $this->__('Edit Address') ?></a>
+            </div>
+        </div>
+    </div>
+</div>

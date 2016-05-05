@@ -1,0 +1,25 @@
+<?php
+/* @var $this Mage_Core_Block_Template */
+/* @var $catalogSearchHelper Mage_Catalogsearch_Helper_Data */
+$catalogSearchHelper =  $this->helper('catalogsearch');
+?>
+
+<form id="search_mini_form" action="<?php echo $catalogSearchHelper->getResultUrl() ?>" method="get">
+    <label for="search" class="u-visually-hidden"><?php echo $this->__('Search:') ?></label>
+    <div class="search-form">
+        <input id="search" type="text" name="<?php echo $catalogSearchHelper->getQueryParamName() ?>" value="<?php echo $catalogSearchHelper->getEscapedQueryText() ?>" class="input-text input-search js-suggest-search-input" maxlength="<?php echo $catalogSearchHelper->getMaxQueryLength();?>" placeholder="<?php echo $this->__('Search'); ?>" />
+        <button type="submit" title="Search" class="btn btn--info btn--search">
+            <i class="icon-search"></i>
+            <span class="u-visually-hidden">Search</span>
+        </button>
+        <?php /* ?>
+        <div id="search_autocomplete" class="search-autocomplete"></div>
+        <?php */ ?>
+        <script type="text/javascript">
+        //<![CDATA[
+            var searchForm = new Varien.searchForm('search_mini_form', 'search', '<?php echo Mage::helper('core')->jsQuoteEscape($this->__('Search')) ?>');
+            //searchForm.initAutocomplete('<?php echo $catalogSearchHelper->getSuggestUrl() ?>', 'search_autocomplete');
+        //]]>
+        </script>
+    </div>
+</form>

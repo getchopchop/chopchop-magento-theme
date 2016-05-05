@@ -1,0 +1,53 @@
+<?php
+/**
+ * @var Mage_Page_Block_Html_Header $this
+ */
+
+// Unused header blocks
+
+/*
+<?php echo $this->getChildHtml('welcome') ?>
+<?php echo $this->getAdditionalHtml() ?>
+<?php echo $this->getChildHtml('store_language') ?>
+*/
+?>
+<header role="banner" class="header <?php echo $this->getHeaderAdditionalClass(); ?>">
+    
+    <div class="header__header">
+        <div class="u-container">
+            <div class="header__customer">
+                <?php echo $this->getChildHtml('topLinks') ?>
+            </div>
+        </div>
+    </div>
+    
+    <div class="header__body">
+        <div class="u-container">
+            
+            <div class="header__main">
+                
+                <div class="header__logo">
+                    <?php if ($this->getIsHomePage()):?>
+                    <h1 class="logo"><strong><?php echo $this->getLogoAlt() ?></strong><a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" class="logo"><img src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>" /></a></h1>
+                    <?php else:?>
+                    <a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" class="logo"><strong><?php echo $this->getLogoAlt() ?></strong><img src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>" /></a>
+                    <?php endif?>
+                </div>
+                
+                <?php echo $this->getChildHtml('topContainer'); ?>
+                
+                <div class="header__search" id="search-form">
+                    <?php echo $this->getChildHtml('topSearch') ?>
+                </div>
+                
+                <?php echo $this->getChildHtml('cartSummary') ?>
+                
+            </div>
+            
+        </div>
+    </div>
+    
+    <div class="header__footer">
+        <?php echo $this->getChildHtml('topMenu') ?>
+    </div>
+</header>

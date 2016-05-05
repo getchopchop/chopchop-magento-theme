@@ -1,0 +1,234 @@
+<?xml version="1.0"?>
+<layout>
+    
+    <default>
+        
+        <!-- iweb updates -->
+        <update handle="iweb_root_text_lists" />
+        <update handle="iweb_jquery_head" />
+        <update handle="iweb_bxslider_head" />
+
+        <!-- chop chop -->
+        <update handle="cc_drawer" />
+        <update handle="cc_head" />
+
+        <reference name="head">
+            <action method="addItem"><type>skin_js</type><name>build/vendor/element-queries/ResizeSensor.js</name></action>
+            <action method="addItem"><type>skin_js</type><name>build/vendor/element-queries/ElementQueries.js</name></action>
+            <action method="addItem"><type>skin_js</type><name>js/Iweb_QtyWidget.js</name></action>
+        </reference>
+
+        <reference name="header">
+            <block type="checkout/cart_sidebar" name="cart.summary" as="cartSummary" template="checkout/cart/summary.phtml">
+                <action method="addItemRender">
+                    <type>simple</type>
+                    <block>checkout/cart_item_renderer</block>
+                    <template>checkout/cart/sidebar/default.phtml</template>
+                </action>
+                <action method="addItemRender">
+                    <type>grouped</type>
+                    <block>checkout/cart_item_renderer_grouped</block>
+                    <template>checkout/cart/sidebar/default.phtml</template>
+                </action>
+                <action method="addItemRender">
+                    <type>configurable</type>
+                    <block>checkout/cart_item_renderer_configurable</block>
+                    <template>checkout/cart/sidebar/default.phtml</template>
+                </action>
+            </block>
+        </reference>
+
+        <reference name="footer">
+            <block type="cms/block" name="footer.links.privacy" as="footer_links_privacy">
+                <action method="setBlockId"><block_id>footer_links_privacy</block_id></action>
+            </block>
+            <block type="cms/block" name="footer.links.support" as="footer_links_support">
+                <action method="setBlockId"><block_id>footer_links_support</block_id></action>
+            </block>
+            <block type="cms/block" name="footer.links.company" as="footer_links_company">
+                <action method="setBlockId"><block_id>footer_links_company</block_id></action>
+            </block>
+            <block type="cms/block" name="footer.payment.icons" as="payment_icons">
+                <action method="setBlockId"><block_id>payment_icons</block_id></action>
+            </block>
+        </reference>
+
+    </default>
+
+    <cms_index_index>
+        <action block="root" method="setContainerClass"><classname>u-container</classname></action>
+        <reference name="content">
+            <action method="unsetChild"><name>cms_content_wrapper</name></action>
+            <block type="banners/group" name="banner.hero" template="iweb/banners/home.phtml">
+                <action method="setGroupId"><groupId>banner_hero</groupId></action>
+            </block>
+        </reference>
+    </cms_index_index>
+    
+    <all_product_listing>
+        <reference name="root">
+            <action method="setTemplate"><tpl>page/2columns-left.phtml</tpl></action>
+        </reference>
+    </all_product_listing>
+    
+    <catalog_category_view>
+        <update handle="all_product_listing" />
+    </catalog_category_view>
+    
+    <catalogsearch_result_index>
+        <update handle="all_product_listing" />
+    </catalogsearch_result_index>
+    
+    <catalog_collection_index>
+        <update handle="all_product_listing" />
+    </catalog_collection_index>
+    
+    <catalog_product_view>
+        <reference name="root">
+            <action method="setTemplate"><tpl>page/1column.phtml</tpl></action>
+            <action method="setContainerClass"><classname>u-container u-container--md</classname></action>
+        </reference>
+        <reference name="product.info">
+            <block type="catalog/product_list_related" name="catalog.product.related" as="related" template="catalog/product/list/related.phtml"/>
+            
+            <!--
+            <block type="catalog/product_view_description" name="product.description" as="description" template="catalog/product/view/description.phtml">
+                <action method="addToParentGroup"><group>detailed_info</group></action>
+                <action method="setTitle" translate="value"><value>Description</value></action>
+            </block>
+            -->
+            
+        </reference>
+    </catalog_product_view>
+
+    <checkout_cart_index>
+        <action block="root" method="setTemplate"><tpl>page/1column.phtml</tpl></action>
+        <!-- unset shipping -->
+        <action block="checkout.cart" method="unsetChild"><name>shipping</name></action>
+    </checkout_cart_index>
+    
+    <stripped_header>
+        <remove name="top.menu" />
+        <remove name="top.container" />
+        <remove name="welcome" />
+        <remove name="header.promo.cms" />
+        <remove name="top.links.wrapper" />
+        <remove name="top.search.wrapper" />
+        <remove name="wishlist.link" />
+        <remove name="cart.summary" />
+        <action block="header" method="setHeaderAdditionalClass"><classname>header--stripped</classname></action>
+    </stripped_header>
+
+    <all_checkout>
+        <reference name="right">
+            <block type="core/template" name="checkout.confidence" template="checkout/onepage/confidence.phtml">
+                <action method="insert"><name>footer.payment.icons</name></action>
+            </block>
+        </reference>
+        <action block="header" method="setHeaderAdditionalClass"><classname>header--stripped</classname></action>
+    </all_checkout>
+
+    <checkout_onepage_index>
+        <update handle="stripped_header" />
+        <update handle="all_checkout" />
+        <action block="root" method="setTemplate"><tpl>page/3columns.phtml</tpl></action>
+        <reference name="before.content">
+            <block type="core/template" name="checkout.onepage.title" template="checkout/onepage/title.phtml" />
+        </reference>
+        <!-- move basket summary into left for alternate 3 col -->
+        <action block="right" method="unsetChild"><name>checkout.cart.sidebar</name></action>
+        <reference name="root">
+            <block type="core/text_list" name="left.checkout" as="left" translate="label">
+                <label>Left Column</label>
+                <action method="insert"><name>checkout.cart.sidebar</name></action>
+            </block>
+        </reference>
+    </checkout_onepage_index>
+
+    <checkout_onepage_success>
+        <update handle="all_checkout" />
+        <action block="root" method="setTemplate"><tpl>page/2columns-right.phtml</tpl></action>
+    </checkout_onepage_success>
+
+    <paypal_express_review>
+        <action block="root" method="setContainerClass"><classname>u-container u-container--sm</classname></action>
+    </paypal_express_review>
+
+    <wishlist_index_index>
+        <reference name="customer.wishlist.items">
+            <action method="unsetChild"><name>customer.wishlist.item.remove</name></action>
+        </reference>
+    </wishlist_index_index>
+
+    <cms_layout>
+        <action block="root" method="setTemplate"><tpl>page/2columns-left.phtml</tpl></action>
+        <reference name="left">
+            <block type="core/template" name="cms.links.wrapper" template="cms/links.phtml">
+                <block type="cms/block" name="cms_links">
+                    <action method="setBlockId"><block_id>cms_links</block_id></action>
+                </block>
+            </block>
+        </reference>
+    </cms_layout>
+
+    <cms_page>
+        <update handle="cms_layout" />
+        <action block="content" method="unsetChild"><name>page_content_heading</name></action>
+        <action block="content" method="unsetChild"><name>cms.wrapper</name></action>
+        
+        <reference name="content">
+            <block type="page/html_wrapper" name="cms_content_wrapper">
+                <action method="setElementClass"><class>card card--bordered</class></action>
+                <block type="page/html_wrapper" name="cms_content_heading">
+                    <action method="setElementClass"><class>card__header</class></action>
+                    <action method="insert"><name>page_content_heading</name></action>
+                </block>
+                <block type="page/html_wrapper" name="cms_content">
+                    <action method="setElementClass"><class>card__body</class></action>
+                    <action method="insert"><name>cms.wrapper</name></action>
+                </block>
+            </block>
+        </reference>
+    </cms_page>
+
+    <contacts_index_index>
+        <update handle="cms_layout" />
+        
+        <reference name="breadcrumbs">
+            <action method="addCrumb" translate="crumbInfo.label crumbInfo.title crumbName" module="cms">
+                <crumbName>Home</crumbName>
+                <crumbInfo>
+                    <label>Home</label>
+                    <title>Home</title>
+                    <link>/</link>
+                </crumbInfo>
+            </action>
+            <action method="addCrumb" translate="crumbInfo.label crumbInfo.title crumbName" module="contacts">
+                <crumbName>Contact</crumbName>
+                <crumbInfo>
+                    <label>Contact</label>
+                    <title>Contact</title>
+                    <link>/contacts/</link>
+                </crumbInfo>
+            </action>
+        </reference>
+        
+        <reference name="content">
+            <action method="unsetChild"><name>contactForm</name></action>
+            <block type="core/template" name="contact.wrapper" template="contacts/wrapper.phtml">
+                <block type="cms/block" name="contact_page_top">
+                    <action method="setBlockId"><block_id>contact_page_top</block_id></action>
+                </block>
+                <action method="insert"><name>contactForm</name></action>
+                <block type="cms/block" name="contact_page_mid">
+                    <action method="setBlockId"><block_id>contact_page_mid</block_id></action>
+                </block>
+                <block type="cms/block" name="contact_page_bottom">
+                    <action method="setBlockId"><block_id>contact_page_bottom</block_id></action>
+                </block>
+            </block>
+        </reference>
+        
+    </contacts_index_index>
+
+</layout>

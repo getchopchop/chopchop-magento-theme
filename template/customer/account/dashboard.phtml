@@ -1,0 +1,50 @@
+<div class="dashboard">
+    
+    <?php echo $this->getMessagesBlock()->toHtml() ?>
+    
+    <div class="o-customer-welcome">
+        <div>
+            <hgroup class="title">
+                <div class="title__headings">
+                    <h1 class="title__main"><?php echo $this->__('My Dashboard') ?></h1>
+                    <h3 class="title__sub">Welcome</h3>
+                </div>
+            </hgroup>
+            <div class="welcome-msg">
+                <?php echo $this->getChildHtml('hello') ?>
+            </div>
+            <?php echo $this->getChildHtml('top') ?>
+        </div>
+        <div>
+            <?php /* Extensions placeholder */ ?>
+            <?php echo $this->getChildHtml('customer.account.dashboard.extra') ?>
+            <!-- <div class="card card--blocky">
+                <div class="card__header">
+                    <h3>Your Account Status</h3>
+                </div>
+                <div class="card__body">
+                    <div class="credit-limit">
+                        <span class="title">Credit Limit</span>
+                        <span><span class="price">£0.00</span></span>
+                    </div>
+
+                    <div class="credit-balance">
+                        <span class="title">Balance</span>
+                        <span><span class="price">£0.00</span></span>
+                    </div>
+                </div>
+            </div> -->
+        </div>
+    </div>
+    
+
+    <div class="box-account box-info">
+        <div class="box-head u-hidden">
+            <h2><?php echo $this->__('Account Information') ?></h2>
+        </div>
+        <?php echo $this->getChildHtml('info') ?>
+        <?php echo $this->getChildHtml('address') ?>
+    </div>
+    <?php echo $this->getChildHtml('info1') ?>
+    <?php echo $this->getChildHtml('info2') ?>
+</div>

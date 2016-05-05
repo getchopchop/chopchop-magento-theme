@@ -1,0 +1,21 @@
+<?php
+$_modalSize = '';
+$_fromXml = $this->getModalSize();
+$_fromReg = Mage::registry('modalSize');
+
+if(!empty($_fromReg)) {
+    $_modalSize = $_fromReg;
+} else if(!empty($_fromXml)) {
+    $_modelSize = $_fromXml;
+}
+
+?>
+<div class="modal <?php echo $_modalSize; ?>" id="modal" data-cc-cascade="overlay" data-cc-action="deactivate" data-cc-target="modal" data-cc-trigger-on="direct-only">
+    <a href="#" data-cc-action="deactivate" data-cc-target="modal" class="modal__close">
+        <span class="shape shape--red-cross"></span>
+        <span class="btn__text"><?php echo $this->__('Close'); ?></span>
+    </a>
+    <div class="modal__dialog">
+        <?php echo $this->getChildHtml('modal'); ?>
+    </div>
+</div>

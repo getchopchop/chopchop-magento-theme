@@ -1,0 +1,23 @@
+<?php if($crumbs && is_array($crumbs)): ?>
+<nav class="breadcrumb">
+    <ul class="nav nav--inline nav--space">
+        <?php foreach($crumbs as $_crumbName=>$_crumbInfo): ?>
+            <?php
+            $_activeClass = "";
+            if($_crumbInfo['last']):
+                $_activeClass = " is-active ";
+            endif;
+            ?>
+            <li class="nav__item<?php echo $_activeClass; ?><?php echo $_crumbName ?>">
+            <?php if($_crumbInfo['link']): ?>
+                <a href="<?php echo $_crumbInfo['link'] ?>" title="<?php echo $this->escapeHtml($_crumbInfo['title']) ?>"><?php echo $this->escapeHtml($_crumbInfo['label']) ?></a>
+            <?php elseif($_crumbInfo['last']): ?>
+                <span><?php echo $this->escapeHtml($_crumbInfo['label']) ?></span>
+            <?php else: ?>
+                <span><?php echo $this->escapeHtml($_crumbInfo['label']) ?></span>
+            <?php endif; ?>
+            </li>
+        <?php endforeach; ?>
+    </ul>
+</nav>
+<?php endif; ?>

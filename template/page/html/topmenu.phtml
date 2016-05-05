@@ -1,0 +1,15 @@
+<?php
+/**
+ * Top menu for store
+ *
+ * @see Mage_Page_Block_Html_Topmenu
+ */
+?>
+<?php $_menu = $this->getHtml('level-top') ?>
+<?php if($_menu): ?>
+<div class="o-navbar">
+    <ul id="nav" class="nav nav--primary nav--multi-level">
+        <?php echo $_menu ?>
+    </ul>
+</div>
+<?php endif ?>

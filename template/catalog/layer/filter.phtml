@@ -1,0 +1,28 @@
+<?php
+/**
+ * Template for filter items block
+ *
+ * @see Mage_Catalog_Block_Layer_Filter
+ */
+// Force sorts the items alphabetically
+$items = $this->getItems();
+usort($items, (function($a, $b) {
+    return strcmp($a->getLabel(), $b->getLabel());
+}));
+?>
+
+<ol class="nav nav--pills nav--stacked">
+<?php foreach ($items as $_item): ?>
+    <li>
+        <?php if ($_item->getCount() > 0): ?>
+        <a href="<?php echo $this->urlEscape($_item->getUrl()) ?>">
+            <?php echo $_item->getLabel() ?>
+            <?php if ($this->shouldDisplayProductCount()): ?>
+            (<?php echo $_item->getCount() ?>)
+            <?php endif; ?>
+        </a>
+        <?php else: echo $_item->getLabel() ?>
+        <?php endif; ?>
+    </li>
+<?php endforeach ?>
+</ol>

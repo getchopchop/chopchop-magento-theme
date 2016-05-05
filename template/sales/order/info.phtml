@@ -1,0 +1,89 @@
+<?php /** @var $this Mage_Sales_Block_Order_Info */ ?>
+<?php $_order = $this->getOrder() ?>
+<?php echo $this->getMessagesBlock()->toHtml() ?>
+<hgroup class="title title--actions">
+    <div class="title__titles">
+        <h1 class="title__main"><?php echo $this->__('Order #%s', $_order->getRealOrderId()) ?></h1>
+        <h5 class="title__sub"><?php echo $this->__('Order Status: %s', $_order->getStatusLabel()); ?></h5>
+    </div>
+    <div class="title__actions">
+        
+    </div>
+</hgroup>
+
+<?php echo $this->getStatusHistoryRssUrl($_order) ?>
+<div class="order-info card--sales-order-info">
+    <div class="card__header u-offset-last">
+        <h5 class="card__title"><?php echo $this->__('Order Information') ?></h5>
+        <?php echo $this->getChildHtml('buttons') ?>
+    </div>
+    <div class="card__body">
+        <p><?php echo $this->__('Order Number: %s', $_order->getRealOrderId()); ?></p>
+        <p><?php echo $this->__('Order Status: %s', $_order->getStatusLabel()); ?></p>
+        <p class="order-date"><?php echo $this->__('Order Date: %s', $this->formatDate($_order->getCreatedAtStoreDate(), 'long')) ?></p>    
+        
+        <?php $_links = $this->getLinks(); ?>
+        <ul id="order-info-tabs" class="u-hidden">
+        <?php foreach ($_links as $_link): ?>
+            <?php if($_link->getUrl()): ?>
+                <li><a href="<?php echo $_link->getUrl() ?>"><?php echo $_link->getLabel() ?></a></li>
+            <?php else: ?>
+                <li class="current"><?php echo $_link->getLabel() ?></li>
+            <?php endif; ?>
+        <?php endforeach; ?>
+        </ul>
+        
+        <script type="text/javascript">decorateGeneric($('order-info-tabs').select('LI'),['first','last']);</script>
+    </div>
+</div>
+
+<?php if (!$_order->getIsVirtual()): ?>
+<div class="col2-set order-info-box g-two-up g-gutter">
+    <div class="col-1">
+        <div class="box card--sales-order-info">
+            <div class="box-title card__header">
+                <h2 class="card__title"><?php echo $this->__('Shipping Address') ?></h2>
+            </div>
+            <div class="box-content card__body">
+                <address><?php echo $_order->getShippingAddress()->format('html') ?></address>
+            </div>
+        </div>
+    </div>
+    <div class="col-2">
+       <div class="box card--sales-order-info">
+           <div class="box-title card__header">
+               <h2 class="card__title"><?php echo $this->__('Billing Address') ?></h2>
+           </div>
+           <div class="box-content card__body">
+               <address><?php echo $_order->getBillingAddress()->format('html') ?></address>
+           </div>
+       </div>
+    </div>
+</div>
+<?php endif; ?>
+<div class="col2-set order-info-box g-two-up g-gutter">
+    <div class="col-1">
+        <div class="box card--sales-order-info">
+            <div class="box-title card__header">
+                <h2 class="card__title"><?php echo $this->__('Shipping Method') ?></h2>
+            </div>
+            <div class="box-content card__body">
+                <?php if ($_order->getShippingDescription()): ?>
+                    <?php echo $this->escapeHtml($_order->getShippingDescription()) ?>
+                <?php else: ?>
+                    <p><?php echo $this->helper('sales')->__('No shipping information available'); ?></p>
+                <?php endif; ?>
+            </div>
+        </div>
+    </div>
+    <div class="col-2">
+        <div class="box box-payment card--sales-order-info">
+            <div class="box-title card__header">
+                <h2 class="card__title"><?php echo $this->__('Payment Method') ?></h2>
+            </div>
+            <div class="box-content card__body">
+                <?php echo $this->getPaymentInfoHtml() ?>
+            </div>
+        </div>
+    </div>
+</div>

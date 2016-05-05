@@ -1,0 +1,38 @@
+<div class="col2-set">
+    <div class="col-1">
+        <div class="box card--customer-dashboard">
+            <div class="box-title card__header">
+                <h3 class="card__title"><?php echo $this->__('Contact Information') ?></h3>
+                <a href="<?php echo $this->getUrl('customer/account/edit') ?>" class="btn--customer-dashboard-edit"><?php echo $this->__('Edit') ?></a>
+            </div>
+            <div class="box-content card__body">
+                <p>
+                    <?php echo $this->escapeHtml($this->getCustomer()->getName()) ?><br />
+                    <?php echo $this->escapeHtml($this->getCustomer()->getEmail()) ?><br />
+                    <a href="<?php echo $this->getChangePasswordUrl() ?>" class="text-link"><?php echo $this->__('Change Password') ?></a>
+                </p>
+            </div>
+        </div>
+    </div>
+    <?php if( $this->isNewsletterEnabled() ): ?>
+    <div class="col-2">
+        <div class="box card--customer-dashboard">
+            <div class="box-title card__header u-offset-last">
+                <h3 class="card__title"><?php echo $this->__('Newsletters') ?></h3>
+                <a href="<?php echo $this->getUrl('newsletter/manage') ?>" class="btn--customer-dashboard-edit"><?php echo $this->__('Edit') ?></a>
+            </div>
+            <div class="box-content card__body">
+                <p>
+                    <?php if( $this->getIsSubscribed() ): ?>
+                        <?php echo $this->__("You are currently subscribed to 'General Subscription'.") ?>
+                    <?php else: ?>
+                        <?php echo $this->__('You are currently not subscribed to any newsletter.') ?>
+                    <?php endif; ?>
+                </p>
+            </div>
+        </div>
+        <?php /* Extensions placeholder */ ?>
+        <?php echo $this->getChildHtml('customer.account.dashboard.info.extra')?>
+    </div>
+    <?php endif; ?>
+</div>

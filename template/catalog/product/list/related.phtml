@@ -1,0 +1,45 @@
+<?php $_product = $this->getProduct(); ?>
+<?php $buttonTitle = Mage::helper('core')->quoteEscape($this->__('Add to Cart')); ?>
+
+<?php if($this->getItems()->getSize()): ?>
+<div class="block block-related card--product-related">
+
+    <div class="block-title card__header">
+        <h3><?php echo $this->__('Related Products') ?></h3>
+    </div>
+
+    <div class="block-content card__body">
+        
+        <div class="mini-products-list o-product-list" id="block-related">
+            <?php foreach($this->getItems() as $_item): ?>
+            <div>
+                
+                <div class="item o-product-vertical">
+                    <div class="card__img">
+                        <a href="<?php echo $_item->getProductUrl() ?>" title="<?php echo $this->escapeHtml($_item->getName()) ?>" class="product-image">
+                            <img src="<?php echo $this->helper('catalog/image')->init($_item, 'thumbnail')->resize(300) ?>" width="300" height="300" alt="<?php echo $this->escapeHtml($_item->getName()) ?>" />
+                        </a>
+                    </div>
+                    
+                    <div class="card__body">
+                        <h3 class="card__title">
+                            <a href="<?php echo $_item->getProductUrl() ?>"><?php echo $this->escapeHtml($_item->getName()) ?></a>
+                        </h3>
+                    </div>
+                    
+                    <div class="card__footer">
+                        <?php echo $this->getPriceHtml($_item, true, '-related') ?>
+                        <div>
+                            <a href="<?php echo $_item->getProductUrl() ?>" class="btn"><?php echo $this->__('More info'); ?></a>
+                        </div>
+                    </div>
+                    
+                </div>
+                
+            </div>
+            <?php endforeach ?>
+        </div>
+    </div>
+
+</div>
+<?php endif ?>

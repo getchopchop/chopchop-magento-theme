@@ -1,0 +1,49 @@
+<script type="text/javascript">
+//<![CDATA[
+    var quoteBaseGrandTotal = <?php echo (float)$this->getQuoteBaseGrandTotal(); ?>;
+    var checkQuoteBaseGrandTotal = quoteBaseGrandTotal;
+    var payment = new Payment('co-payment-form', '<?php echo $this->getUrl('checkout/onepage/savePayment') ?>');
+    var lastPrice;
+//]]>
+</script>
+<form action="" id="co-payment-form">
+    <div class="card__body">
+        <?php echo $this->getChildHtml('methods') ?>
+    </div>
+</form>
+<div class="tool-tip" id="payment-tool-tip" style="display:none;">
+    <div class="btn-close"><a href="#" id="payment-tool-tip-close" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Close')) ?>"><?php echo $this->__('Close') ?></a></div>
+    <div class="tool-tip-content"><img src="<?php echo $this->getSkinUrl('images/cvv.gif') ?>" alt="<?php echo Mage::helper('core')->quoteEscape($this->__('Card Verification Number Visual Reference')) ?>" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Card Verification Number Visual Reference')) ?>" /></div>
+</div>
+<div class="buttons-set card__footer" id="payment-buttons-container">
+    <button type="button" class="button btn--checkout-continue" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Continue')) ?>" onclick="payment.save()">
+        <span><span><?php echo $this->__('Continue') ?></span></span>
+    </button>
+    <span class="please-wait loading" id="payment-please-wait" style="display:none;">
+        <span class="loading__spinner"></span>
+        <span class="loading__text"><?php echo $this->__('Loading next step...') ?></span>
+    </span>
+    <span class="help-text required"><?php echo $this->__('* Required Fields') ?></span>
+</div>
+<script type="text/javascript">
+//<![CDATA[
+    function toggleToolTip(event){
+        if($('payment-tool-tip')){
+            $('payment-tool-tip').setStyle({
+                top: (Event.pointerY(event)-560)+'px'//,
+                //left: (Event.pointerX(event)+100)+'px'
+            })
+            $('payment-tool-tip').toggle();
+        }
+        Event.stop(event);
+    }
+    if($('payment-tool-tip-close')){
+        Event.observe($('payment-tool-tip-close'), 'click', toggleToolTip);
+    }
+//]]>
+</script>
+<script type="text/javascript">
+//<![CDATA[
+    payment.currentMethod = "<?php echo $this->getChild('methods')->getSelectedMethodCode() ?>";
+//]]>
+</script>

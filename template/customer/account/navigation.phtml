@@ -1,0 +1,20 @@
+<div class="block block-account card--customer-nav">
+    <div class="block-title card__header">
+        <h5 class="card__title"><?php echo $this->__('My Account'); ?></h5>
+    </div>
+    <div class="block-content card__body">
+        <ul class="nav nav--pills">
+            <?php $_links = $this->getLinks(); ?>
+            <?php $_index = 1; ?>
+            <?php $_count = count($_links); ?>
+            <?php foreach ($_links as $_link): ?>
+                <?php $_last = ($_index++ >= $_count); ?>
+                <?php if ($this->isActive($_link)): ?>
+                    <li class="current<?php echo ($_last ? ' last' : '') ?>"><a href="<?php echo $_link->getUrl() ?>"><?php echo $_link->getLabel() ?></a></li>
+                <?php else: ?>
+                    <li<?php echo ($_last ? ' class="last"' : '') ?>><a href="<?php echo $_link->getUrl() ?>"><?php echo $_link->getLabel() ?></a></li>
+                <?php endif; ?>
+            <?php endforeach; ?>
+        </ul>
+    </div>
+</div>
