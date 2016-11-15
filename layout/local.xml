@@ -2,112 +2,40 @@
 <layout>
 
     <default>
-        <!-- iweb updates -->
-        <update handle="iweb_root_text_lists" />
-        <update handle="iweb_jquery_head" />
-        <update handle="iweb_bxslider_head" />
-
-        <!-- chop chop -->
+        <!-- add iweb updates -->
+        
+        <!-- add chop chop updates pulled in from cc.xml -->
         <update handle="cc_drawer" />
         <update handle="cc_head" />
 
-        <reference name="head">
-            <block type="core/text" name="typekit.load">
-                  <action method="setText">
-                    <text>
-<![CDATA[
-<script src="https://use.typekit.net/hnu1fiv.js"></script>
-<script>try{Typekit.load({ async: true });}catch(e){}</script>
-]]>
-                    </text>
-                  </action>
-               </block>
-        </reference>
-
         <reference name="header">
-            <action method="unsetChild"><name>topLinks</name></action>
-            <action method="unsetChild"><name>store_language</name></action>
-            <action method="unsetChild"><name>welcome</name></action>
-            <block type="cms/block" name="header.tel" as="header_tel">
-                <action method="setBlockId"><block_id>header_tel</block_id></action>
-            </block>
-            <block type="checkout/cart_minicart" name="cart.link" as="cart_link" template="checkout/cart/link.phtml" />
-            <block type="banners/group" name="banner.header.promo" as="banner_confidence" template="page/html/header/carousel.phtml">
-                <action method="setGroupId"><groupId>header_promo</groupId></action>
-            </block>
+
         </reference>
 
         <reference name="footer">
-            <action method="unsetChild"><name>footer_links</name></action>
-            <action method="unsetChild"><name>cms_footer_links</name></action>
-            <action method="unsetChild"><name>store_switcher</name></action>
-            
-            <block type="cms/block" name="footer.links" as="footer_links">
-                <action method="setBlockId"><block_id>footer_links</block_id></action>
-            </block>
-            <block type="newsletter/subscribe" name="footer.newsletter" as="footer_newsletter" template="newsletter/subscribe.phtml"/>
-            <block type="core/template" name="footer.social.links" as="social_links" template="page/html/social-links.phtml" />
-            <block type="cms/block" name="footer.links.company" as="footer_links_company">
-                <action method="setBlockId"><block_id>footer_links_company</block_id></action>
-            </block>
-            <block type="cms/block" name="footer.links.info" as="footer_links_info">
-                <action method="setBlockId"><block_id>footer_links_info</block_id></action>
-            </block>
-            <block type="core/template" name="footer.payment.icons" as="payment_icons" template="page/html/payment-icons.phtml" />
-        </reference>
-        
-        <reference name="drawers">
-            <block type="page/html_wrapper" name="menu.overlay">
-                <action method="dependsOnChildren"><val>0</val></action>
-                <action method="setElementClass"><class>overlay overlay--menu js-menu-overlay u-toggle</class></action>
-            </block>
-        </reference>
-        
-        <reference name="drawer.left">
-            <block type="core/template" name="drawer.left.header" template="cc/drawer/header.phtml">
-                <action method="setTitle" translate="value"><value>Menu</value></action>
-                <action method="setDeactivateTarget"><value>drawer-left</value></action>
-            </block>
-            <block type="page/html_wrapper" name="drawer.left.menu.placeholder">
-                <action method="dependsOnChildren"><val>0</val></action>
-                <action method="setElementClass"><class>js-menu-drawer</class></action>
-            </block>
+
         </reference>
         
     </default>
 
 
     <customer_logged_out>
-        <reference name="drawer.left.customer">
-            <action method="addLink" translate="label" module="customer"><name>account</name><path>customer/account/create</path><label>Create an Account</label></action>
-            <action method="addLink" translate="label" module="customer"><name>login</name><path>customer/account/login/</path><label>Login</label></action>
-        </reference>
+
     </customer_logged_out>
 
 
     <customer_logged_in>
-        <reference name="drawer.left.customer">
-            <action method="addLink" translate="label" module="customer"><name>account</name><path>customer/account/</path><label>Account Dashboard</label></action>
-            <action method="addLink" translate="label" module="customer"><name>account_edit</name><path>customer/account/edit/</path><label>Account Information</label></action>
-            <action method="addLink" translate="label" module="customer"><name>address_book</name><path>customer/address/</path><label>Address Book</label></action>
-            <action method="addLink" translate="label" module="sales"><name>orders</name><path>sales/order/history/</path><label>My Orders</label></action>
-            <action method="addLink" translate="label" module="wishlist" ifconfig="wishlist/general/active"><name>wishlist</name><path>wishlist/</path><label>My Wishlist</label></action>
-            <action method="addLink" translate="label" module="customer"><name>saved_cards</name><path>customer/savedcards</path><label>Saved Cards</label></action>
-            <action method="addLink" translate="label" module="newsletter"><name>newsletter</name><path>newsletter/manage/</path><label>Newsletter Subscriptions</label></action>
-            <action method="addLink" translate="label" module="customer"><name>logout</name><path>customer/account/logout/</path><label>Logout</label></action>
-        </reference>
+
     </customer_logged_in>
 
-
+    <!-- Product List, search result, advanced search result -->
     <all_product_listing>
-        <action block="root" method="setTemplate"><tpl>page/1column.phtml</tpl></action>
+        
     </all_product_listing>
 
 
     <catalog_category_default>
-        <reference name="product_list">
-            <block type="suitability/view" name="product_list.suitability.icons" as="suitability" template="tonu/suitability-icons.phtml" />
-        </reference>
+
     </catalog_category_default>
 
 
@@ -118,10 +46,6 @@
 
     <catalog_category_layered>
         <update handle="all_product_listing" />
-        <reference name="product_list">
-            <block type="core/text_list" name="product_list.name.after" as="name.after" />
-            <block type="core/text_list" name="product_list.after" as="after" />
-        </reference>
     </catalog_category_layered>
 
 
@@ -129,91 +53,29 @@
         <update handle="all_product_listing" />
     </catalogsearch_result_index>
 
+
     <catalog_product_view>
         <update handle="iweb_media" />
         
-        <remove name="product.suitability" />
-
         <action block="root" method="setTemplate"><value>page/1column.phtml</value></action>
         
-        <reference name="product.info.options.wrapper.bottom">
-            <action method="unsetChild"><name>prices</name></action>
-            <action method="unsetChild"><name>product.info.addto</name></action>
-        </reference>
-        
         <reference name="product.info">
-            <action method="unsetChild"><name>description</name></action>
-            <action method="unsetChild"><name>certificates</name></action>
             
-            <block type="suitability/view" name="product.suitability.custom" as="suitability" template="tonu/suitability-icons.phtml" />
-
+            <!-- Tabs Block Demo -->
             <block type="catalog/product_view" name="product.tabs" as="tabs" template="catalog/product/view/tabs.phtml">
-                
                 <block type="core/text_list" name="product.tab.1">
                     <action method="addToParentGroup"><group>detailed_info</group></action>
                     <action method="setTitle" translate="value"><value>Description</value></action>
                     <action method="insert"><name>product.description</name></action>
                 </block>
-                
-                <block type="core/template" name="product.tab.2" template="catalog/product/view/tabs/nutrition.phtml">
-                    <action method="addToParentGroup"><group>detailed_info</group></action>
-                    <action method="setTitle" translate="value"><value>Nutrition</value></action>
-                </block>
-                
-                <block type="catalog/product_view_description" name="product.tab.3" template="catalog/product/view/tabs/directions.phtml">
-                    <action method="addToParentGroup"><group>detailed_info</group></action>
-                    <action method="setTitle" translate="value"><value>Directions</value></action>
-                </block>
-                
-                <block type="cms/block" name="product.tab.4">
-                    <action method="addToParentGroup"><group>detailed_info</group></action>
-                    <action method="setTitle" translate="value"><value>FAQ</value></action>
-                    <action method="setBlockId"><id>product_faq</id></action>
-                </block>
-                
-                <block type="core/text_list" name="product.tab.5">
-                    <action method="addToParentGroup"><group>detailed_info</group></action>
-                    <action method="setTitle" translate="value"><value>Testing Certificates</value></action>
-                    <action method="insert"><name>product.certificates</name></action>
-                </block>
-                
-                <block type="core/template" name="product.tab.6" template="catalog/product/view/tabs/reviews.phtml">
-                    <action method="addToParentGroup"><group>detailed_info</group></action>
-                    <action method="setTitle" translate="value"><value>Reviews</value></action>
-                    <block type="review/product_view_list" name="product.tab.reviews" as="reviews" template="review/product/view/list.phtml" />
-                    <block type="review/form" name="product.tab.reviews.form" as="form" template="review/product/form.phtml" />
-                </block>
-                
             </block>
+            
         </reference>
 
-        <reference name="product.info.media">
-			<!-- This is the template as a basis to use the main image as a slider -->
-			<action method="setTemplate">
-				<template>iweb/media/gallery-slider.phtml</template>
-			</action>
-            
-            <action method="setAllowZoom">
-                <zoom>0</zoom>
-            </action>
-            
-			<action method="setMainImageWidth">
-                <width>600</width>
-            </action>
-			
-            <action method="setMainImageHeight">
-                <height>600</height>
-            </action>
-		</reference>
     </catalog_product_view>
 
 
     <checkout_cart_index>
-
-        <reference name="head">
-            <action method="addItem"><type>skin_js</type><name>build/js/views/cart.js</name></action>
-        </reference>
-        
         <reference name="breadcrumbs">
             <action method="addCrumb" translate="crumbInfo.label crumbInfo.title crumbName" module="cms">
                 <crumbName>Home</crumbName>
@@ -232,8 +94,8 @@
             </action>
         </reference>
         
-        <action block="checkout.cart" method="unsetChild"><name>shipping</name></action>
-        <action block="checkout.cart" method="unsetChild"><name>crosssell</name></action>
+        <!-- action block="checkout.cart" method="unsetChild"><name>shipping</name></action>
+        <action block="checkout.cart" method="unsetChild"><name>crosssell</name></action> -->
 
     </checkout_cart_index>
 
@@ -244,7 +106,6 @@
         <remove name="welcome" />
         <remove name="top.links" />
         <remove name="top.search" />
-        <remove name="banner.header.promo" />
         <remove name="cart.summary" />
         <!-- <remove name="drawer.left.html" /> -->
         <remove name="drawer.right.html" />
@@ -256,53 +117,37 @@
         <remove name="es_js_templates.category" />
         <remove name="es_js_templates.suggest" />
         <remove name="es_js_init" />
-        <action block="header" method="setHeaderAdditionalClass"><classname>header--stripped</classname></action>
+        <action block="header" method="setHeaderAdditionalClass"><classname>header-stripped</classname></action>
     </stripped_header>
 
 
     <all_checkout>
-        
-        <reference name="root">
-            <action method="setTemplate"><value>page/2columns-right.phtml</value></action>
-            <action method="setRightSidebarClasses"><value>g-col-lg-3 u-fill-grey</value></action>
-            <action method="setMainColClasses"><value>g-col-lg-9</value></action>
-        </reference>
+        <action block="root" method="setTemplate"><value>page/2columns-right.phtml</value></action>
     </all_checkout>
 
 
     <checkout_onepage_index>
         <update handle="stripped_header" />
         <update handle="all_checkout" />
-        <update handle="basket_summary" />
-
-        <reference name="head">
-            <action method="addItem"><type>skin_js</type><name>build/js/views/checkout.js</name></action>
-        </reference>
-
     </checkout_onepage_index>
 
 
     <checkout_onepage_success>
         <update handle="all_checkout" />
-        <reference name="right">
-            <block type="checkout/onepage_success" name="success.summary" template="checkout/success/summary.phtml" />
-        </reference>
     </checkout_onepage_success>
 
 
     <paypal_express_review>
-        <action block="root" method="setContainerClass"><classname>u-container-sm</classname></action>
+
     </paypal_express_review>
 
 
     <!-- CMS Internal Layout Common -->
     <cms_layout>
         <action block="root" method="setTemplate"><tpl>page/2columns-left.phtml</tpl></action>
-        <action block="content" method="unsetChild"><class>cms.wrapper</class></action>
-
         <reference name="left">
             <block type="core/template" name="cms.links.wrapper" template="cms/links.phtml">
-                <action method="setTitle" translate="title"><title>Tonu</title></action>
+                <action method="setTitle" translate="title"><title>Help</title></action>
                 <block type="cms/block" name="cms_links">
                     <action method="setBlockId"><block_id>cms_links</block_id></action>
                 </block>
@@ -321,14 +166,6 @@
             <action method="setTag"><value>h1</value></action>
             <action method="setClasses"><value>u-text-center</value></action>
         </reference>
-        
-        <reference name="content">
-            <block type="core/template" name="cms.wrapper.section" template="cms/wrapper.phtml">
-                <action method="setSectionClass"><value>u-section-bottom</value></action>
-                <action method="insert"><class>cms.wrapper</class></action>
-            </block>
-        </reference>
-        
     </cms_page_view>
 
 
@@ -396,6 +233,9 @@
     <!-- Sitemap -->
     <catalog_seo_sitemap>
         <update handle="cms_layout" />
+        
+        <action block="root" method="setContainerClass"><class>u-container</class></action>
+        
         <reference name="root">
             <block type="core/text_list" name="left.new" as="left">
                 <block type="core/template" name="cms.links.wrapper" template="cms/links.phtml">
@@ -431,99 +271,54 @@
         <reference name="content">
             <action method="unsetChild"><name>cms.wrapper</name></action>
             <action method="unsetChild"><name>page_content_heading</name></action>
-
-            <block type="core/template" name="home.hero.banner" template="home/hero.phtml" />
-
-            <block type="iweb_core/catalog_product_list_byurl" name="home.featured.products" template="home/featured-products.phtml">
-                <action method="setUrlKey"><key>our-products</key></action>
-                <action method="setImageWidth"><value>300</value></action>
-                <action method="setImageHeight"><value>300</value></action>
-                <action method="setLimit"><limit>4</limit></action>
-            </block>
-
-            <block type="page/html_wrapper" name="home.bundle.wrapper">
-                <action method="setElementClass"><val>grid g-stretch</val></action>
-
-                <block type="page/html_wrapper" name="home.bundle.wrapper.bundle1">
-                    <action method="setElementClass"><class>g-col-sm-6</class></action>
-                    <block type="catalog/product" name="home.bundle1" template="home/bundle.phtml">
-                        <action method="setProductSku"><sku>tsb</sku></action>
-                        <action method="setInvert"><val>1</val></action>
-                    </block>
-                </block>
-
-                <block type="page/html_wrapper" name="home.bundle.wrapper.bundle2">
-                    <action method="setElementClass"><class>g-col-sm-6</class></action>
-                    <block type="catalog/product" name="home.bundle2" template="home/bundle.phtml">
-                        <action method="setProductSku"><sku>tsb</sku></action>
-                    </block>
-                </block>  
-            </block>
-
-            <block type="page/html_wrapper" name="home.welcome.wrapper">
-                <action method="setElementClass"><val>u-fill-grey-light u-text-center u-clearfix</val></action>
-
-                <block type="page/html_wrapper" name="home.welcome.wrapper.welcome">
-                    <action method="setElementClass"><class>u-container u-container--sm u-section-lg</class></action>
-                    <action method="insert"><name>cms.wrapper</name></action>
-                </block>
-            </block>
-
-            <block type="wordpress/block" name="wordpress.latest.posts">
-                <action method="setBlock"><block>wp_latest_posts</block></action>
-            </block>
-            
         </reference>
     </cms_index_index>
-
-    <!-- this is cc related -->
-    <remember_me_modal>
-        <reference name="modal.html">
-            <action method="setModalSize"><size>modal--sm</size></action>
-        </reference>
-        <reference name="modal">
-            <action method="insert"><name>persistent.remember.me.tooltip</name></action>
-        </reference>
-    </remember_me_modal>
 
 
     <customer_account>
         <action block="root" method="setContainerClass"><class>u-container</class></action>
     </customer_account>
 
+
     <customer_address_index>
+
     </customer_address_index>
 
 
     <customer_account_index>
+
     </customer_account_index>
 
 
     <customer_account_login>
-        <action block="customer_form_login" method="unsetChild"><name>persistent.remember.me.tooltip</name></action>
-        <update handle="remember_me_modal" />
+
     </customer_account_login>
 
 
     <customer_account_create>
-        <action block="customer_form_register" method="unsetChild"><name>persistent.remember.me.tooltip</name></action>
-        <update handle="remember_me_modal" />
+
     </customer_account_create>
 
 
     <checkout_onepage_index>
-        <action block="checkout.onepage.billing" method="unsetChild"><name>persistent.remember.me.tooltip</name></action>
-        <update handle="remember_me_modal" />
+
     </checkout_onepage_index>
 
 
     <wishlist_index_index>
+        
     </wishlist_index_index>
+
+
+    <!-- Demo of using wordpress blog,
+    you will probably need to move 
+    the breadcrumb position
+    -->
     
-    <wordpress_proxy_proxy>
+    <!-- <wordpress_proxy_proxy>
         <action block="root" method="setContainerClass"><class>u-container</class></action>
         <action block="content" method="unsetChild"><block>wordpress.breadcrumb</block></action>
         <action block="before.content" method="insert"><block>wordpress.breadcrumb</block></action>
-    </wordpress_proxy_proxy>
+    </wordpress_proxy_proxy> -->
 
 </layout>

@@ -1,0 +1,7 @@
+<!--
+we never use this module,
+but we might need it one day!
+If that day is today, delete
+this file, Magento will fallback
+to the base tag.xml
+-->
