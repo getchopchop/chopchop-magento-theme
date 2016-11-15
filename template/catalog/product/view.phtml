@@ -11,142 +11,167 @@
 <script type="text/javascript">
     var optionsPrice = new Product.OptionsPrice(<?php echo $this->getJsonConfig() ?>);
 </script>
-<div id="messages_product_view"><?php echo $this->getMessagesBlock()->toHtml() ?></div>
-<div class="product-view o-product">
-    
-    <div class="o-product__aside">
-        <div class="js-ph-img-big">
-            <?php echo $this->getChildHtml('media') ?>
+
+<span class="u-hidden js-review-count">
+    (<?php echo Mage::getModel('review/review')->getTotalReviews($_product->getId(), true); ?>)
+</span>
+
+<div class="u-section-sm u-text-center">
+    <div class="u-container">
+        <div id="messages_product_view"><?php echo $this->getMessagesBlock()->toHtml() ?></div>
+
+        <div class="u-visible-xs u-visible-sm u-visible-md">
+            <?php if($_product->getBestseller()) : ?>
+            <span class="tag u-hidden-xs"><?php echo $this->__('Best Seller'); ?></span>
+            <?php endif; ?>
+            <div class="product-title">
+                <p class="h1 product-title__main"><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></p>
+                <?php if ($_product->getShortDescription()):?>
+                    <p class="product-title__sub"><?php echo $_helper->productAttribute($_product, nl2br($_product->getShortDescription()), 'short_description') ?></p>
+                <?php endif;?>
+            </div>
         </div>
-        <?php echo $this->getChildHtml('related') ?>
-    </div>
-    
-    <div class="o-product__content">
-        
-        <div class="o-product-essential">
-            
-            <form action="<?php echo $this->getSubmitUrl($_product, array('_secure' => $this->_isSecure())) ?>" method="post" id="product_addtocart_form"<?php if($_product->getOptions()): ?> enctype="multipart/form-data"<?php endif; ?>>
-                <?php echo $this->getBlockHtml('formkey') ?>
-                <div class="no-display u-hidden">
-                    <input type="hidden" name="product" value="<?php echo $_product->getId() ?>" />
-                    <input type="hidden" name="related_product" id="related-products-field" value="" />
-                </div>
-                <hgroup class="title title--link">
-                    <div class="title__titles">
-                        <h1 class="product-name"><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></h1>
-                    </div>
-                </hgroup>
+
+        <div class="grid g-gutter">
+            <div class="u-hidden-xs u-hidden-sm u-hidden-md g-col-lg-1">
+                <?php echo $this->getChildHtml('suitability') ?>
+            </div>
+            <div class="g-col-xs-12 g-col-sm-6 g-col-lg-6 g-col-xl-5">
+                <?php echo $this->getChildHtml('media') ?>
+            </div>
+            <div class="g-col-xs-12 g-col-sm-6 g-col-lg-5 g-col-xl-6">
                 
-                <?php echo $this->getReviewsSummaryHtml($_product, false, true)?>
-                <?php echo $this->getChildHtml('alert_urls') ?>
+                <div class="u-hidden-xs u-hidden-sm u-hidden-md">
+                    <?php if($_product->getBestseller()) : ?>
+                    <span class="tag u-hidden-xs"><?php echo $this->__('Best Seller'); ?></span>
+                    <?php endif;?>
+                    <div class="product-title">
+                        <h1 class="product-title__main"><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></h1>
+                        <?php if ($_product->getShortDescription()):?>
+                            <p class="product-title__sub"><?php echo $_helper->productAttribute($_product, nl2br($_product->getShortDescription()), 'short_description') ?></p>
+                        <?php endif;?>
+                        <div class="reviews">
+                            <?php echo $this->getChildHtml('extrahint') ?>
+                            <?php echo $this->getReviewsSummaryHtml($_product, false, true)?>
+                            <?php echo $this->getChildHtml('other');?>
+                        </div>
+                    </div>
+                </div>
+                
+                <p><span class="tag tag--lg u-fill-brand-lighter-blue" todo>Buy one get one free</span></p>
                 <?php echo $this->getChildHtml('product_type_data') ?>
                 <?php echo $this->getTierPriceHtml() ?>
-                <?php echo $this->getChildHtml('extrahint') ?>
-                
-                <?php if (!$this->hasOptions()):?>
-                    <?php if($_product->isSaleable()): ?>
-                        <?php echo $this->getChildHtml('addtocart') ?>
+                <form action="<?php echo $this->getSubmitUrl($_product, array('_secure' => $this->_isSecure())) ?>" method="post" id="product_addtocart_form"<?php if($_product->getOptions()): ?> enctype="multipart/form-data"<?php endif; ?>>
+                    <?php echo $this->getBlockHtml('formkey') ?>
+                    <div class="no-display">
+                        <input type="hidden" name="product" value="<?php echo $_product->getId() ?>" />
+                        <input type="hidden" name="related_product" id="related-products-field" value="" />
+                    </div>
+                    <?php if (!$this->hasOptions()):?>
+                        <div class="add-to-box">
+                            <?php if($_product->isSaleable()): ?>
+                                <?php echo $this->getChildHtml('addtocart') ?>
+                            <?php endif; ?>
+                        </div>
+                        <?php echo $this->getChildHtml('extra_buttons') ?>
                     <?php endif; ?>
-                    <?php echo $this->getChildHtml('addto') ?>
-                    <?php echo $this->getChildHtml('extra_buttons') ?>
-                <?php elseif (!$_product->isSaleable()): ?>
-                    <?php echo $this->getChildHtml('addto') ?>
-                <?php endif; ?>
-                
-                <?php if ($this->canEmailToFriend()): ?>
-                <a href="<?php echo $this->helper('catalog/product')->getEmailToFriendUrl($_product) ?>" class="btn btn--text">
-                    <?php echo $this->__('Email to a Friend') ?>
-                </a>
-                <?php endif; ?>
-                
-                <?php echo $this->getChildHtml('other');?>
-                <?php if ($_product->isSaleable() && $this->hasOptions()):?>
-                    <?php echo $this->getChildChildHtml('container1', '', true, true) ?>
-                <?php endif;?>
-                
-                <?php if ($_product->isSaleable() && $this->hasOptions()):?>
-                    <?php echo $this->getChildChildHtml('container2', '', true, true) ?>
-                <?php endif;?>
-            </form>
-            
-        </div><!--/o-product-essential-->
+                    <?php if ($_product->isSaleable() && $this->hasOptions()):?>
+                        <?php echo $this->getChildChildHtml('container1', '', true, true) ?>
+                    <?php endif;?>
+                    <?php if ($_product->isSaleable() && $this->hasOptions()):?>
+                        <?php echo $this->getChildChildHtml('container2', '', true, true) ?>
+                    <?php endif;?>
+                </form>
+                <script type="text/javascript">
+                    //<![CDATA[
+                        var productAddToCartForm = new VarienForm('product_addtocart_form');
+                        productAddToCartForm.submit = function(button, url) {
+                            if (this.validator.validate()) {
+                                var form = this.form;
+                                var oldUrl = form.action;
 
-        <div class="product-collateral">
+                                if (url) {
+                                form.action = url;
+                                }
+                                var e = null;
+                                try {
+                                    this.form.submit();
+                                } catch (e) {
+                                }
+                                this.form.action = oldUrl;
+                                if (e) {
+                                    throw e;
+                                }
 
-            <div class="accordion-to-tabs o-product-tabs" data-cc-collapse="one-open">
-                <?php foreach ($this->getChildGroup('detailed_info', 'getChildHtml') as $alias => $html):?>
-                <?php if ($title = $this->getChildData($alias, 'title')):?>
-                <div class="tabs__header" id="tabs-header-<?php echo "box-{$alias}"?>" data-cc-group="tabs1-header" data-cc-action="activate" data-cc-target="tabs-<?php echo "box-{$alias}"?>">
-                    <h4><?php echo $this->escapeHtml($title); ?></h4>
-                    <span class="shape"></span>
-                </div>
-                <?php endif;?>
-                <div class="tabs__body" id="tabs-<?php echo "box-{$alias}"?>" data-cc-group="tabs1-content" data-cc-cascade-activate="tabs-header-<?php echo "box-{$alias}"?>">
-                    <?php echo $html; ?>
-                </div>
-                <?php endforeach;?>
+                                if (button && button != 'undefined') {
+                                    button.disabled = true;
+                                }
+                            }
+                        }.bind(productAddToCartForm);
+
+                        productAddToCartForm.submitLight = function(button, url){
+                            if(this.validator) {
+                                var nv = Validation.methods;
+                                delete Validation.methods['required-entry'];
+                                delete Validation.methods['validate-one-required'];
+                                delete Validation.methods['validate-one-required-by-name'];
+                                // Remove custom datetime validators
+                                for (var methodName in Validation.methods) {
+                                    if (methodName.match(/^validate-datetime-.*/i)) {
+                                        delete Validation.methods[methodName];
+                                    }
+                                }
+
+                                if (this.validator.validate()) {
+                                    if (url) {
+                                        this.form.action = url;
+                                    }
+                                    this.form.submit();
+                                }
+                                Object.extend(Validation.methods, nv);
+                            }
+                        }.bind(productAddToCartForm);
+                    //]]>
+                </script>
             </div>
-
         </div>
-
-    </div><!--o-product--content -->
-    
-    
+    </div>
 </div>
 
+<div class="u-hidden-xs u-hidden-sm u-section-sm-top u-section-bottom">
+    <div class="u-container u-container--md">
+        <?php if ($_overviewHeading = $_product->getOverviewHeading()) :?>
+        <hgroup class="title title--strikethrough title--center">
+            <h5 class="title__sub"><?php echo $this->__('Overview'); ?></h5>
+            <h2 class="title__main"><?php echo $_overviewHeading; ?></h2>
+        </hgroup>
+        <?php endif; ?>
+        <div class="grid g-gutter">
+            <div class="g-col-md-6">
+                <?php if ($_overviewText = $_product->getOverviewText()) :?>
+                <?php echo $_overviewText; ?>
+                <?php endif; ?>
+            </div>
+            <div class="g-col-md-6">
+                <?php if ($_overviewList = $_product->getOverviewList()) :?>
+                <?php echo $_overviewList; ?>
+                <?php endif; ?>
+                <p todo><img src="<?php echo $this->getSkinUrl('build/img/quality.png'); ?>" alt="Informed Choice"></p>
 
+                <ul class="trust-logos" todo>
+                    <li><a href="#"><img src="<?php echo $this->getSkinUrl('build/img/informed-choice.png'); ?>" alt="Informed Choice"></a></li>
+                    <li><a href="#"><img src="<?php echo $this->getSkinUrl('build/img/informed-sport.png'); ?>" alt="Informed Sport"></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
 
-<?php echo $this->getChildHtml('upsell_products') ?>
-<?php echo $this->getChildHtml('product_additional_data') ?>
+<div class="image-divider">
+    <img src="<?php echo $this->getSkinUrl('build/img/fork-2.svg'); ?>" alt="Presentational Fork" />
+</div>
 
-<script type="text/javascript">
-//<![CDATA[
-    var productAddToCartForm = new VarienForm('product_addtocart_form');
-    productAddToCartForm.submit = function(button, url) {
-        if (this.validator.validate()) {
-            var form = this.form;
-            var oldUrl = form.action;
-
-            if (url) {
-               form.action = url;
-            }
-            var e = null;
-            try {
-                this.form.submit();
-            } catch (e) {
-            }
-            this.form.action = oldUrl;
-            if (e) {
-                throw e;
-            }
-
-            if (button && button != 'undefined') {
-                button.disabled = true;
-            }
-        }
-    }.bind(productAddToCartForm);
-
-    productAddToCartForm.submitLight = function(button, url){
-        if(this.validator) {
-            var nv = Validation.methods;
-            delete Validation.methods['required-entry'];
-            delete Validation.methods['validate-one-required'];
-            delete Validation.methods['validate-one-required-by-name'];
-            // Remove custom datetime validators
-            for (var methodName in Validation.methods) {
-                if (methodName.match(/^validate-datetime-.*/i)) {
-                    delete Validation.methods[methodName];
-                }
-            }
-
-            if (this.validator.validate()) {
-                if (url) {
-                    this.form.action = url;
-                }
-                this.form.submit();
-            }
-            Object.extend(Validation.methods, nv);
-        }
-    }.bind(productAddToCartForm);
-//]]>
-</script>
+<div class="product-info">
+    <?php echo $this->getChildHtml('tabs') ?>
+    <?php echo $this->getChildHtml('product_additional_data') ?>
+</div>

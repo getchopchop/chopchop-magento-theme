@@ -35,7 +35,7 @@
             <block type="core/text" name="viewport.meta">
                 <action method="setText">
                     <text><![CDATA[
-<meta name="viewport" content="minimal-ui, width=device-width, initial-scale=1">
+<meta name="viewport" content="minimal-ui, width=device-width, initial-scale=1, user-scalable=no">
                     ]]></text>
                 </action>
             </block>
@@ -49,18 +49,32 @@
             <action method="removeItem"><type>skin_css</type><name>css/print.css</name></action>
 
             <!-- Remove Module Assets -->
-            <action method="removeItem"><type>skin_css</type><name>aw_blog/css/style.css</name></action>
             <action method="removeItem"><type>skin_css</type><name>css/iwebelasticsearch/autocomplete.css</name></action>
 
             <!-- ADD Build CSS -->
             <action method="addItem"><type>skin_css</type><name>build/vendor/normalize.css/normalize.css</name></action>
             <action method="addItem"><type>skin_css</type><name>build/css/styles.css</name></action>
-            <action method="addItem"><type>skin_css</type><name>build/vendor/fontello/css/fontello.css</name></action>
+            <action method="addItem"><type>skin_js</type><name>build/vendor/picturefill/picturefill.js</name></action>
+            <!-- <action method="addItem"><type>skin_js</type><name>build/vendor/lazysizes/lazysizes.js</name></action> -->
 
             <!-- ADD Build JS -->
             <action method="addItem"><type>skin_js</type><name>build/vendor/enquire/enquire.js</name></action>
+            <action method="addItem"><type>skin_js</type><name>build/vendor/svgxuse/svgxuse.js</name></action>
+            <action method="addItem"><type>skin_js</type><name>build/vendor/svg4everybody/svg4everybody.js</name><params/><if>lt IE 9</if></action>
+            <block type="core/text" name="run.svg4everybody">
+                <action method="setText">
+                    <text><![CDATA[
+<!--[if IE 9]>
+<script>svg4everybody(); // run it now or whenever you are ready</script>
+<![endif]-->
+                        ]]></text>
+                </action>
+            </block>
             <action method="addItem"><type>skin_js</type><name>build/js/chopchop.lib.js</name></action>
+            <action method="addItem"><type>skin_js</type><name>build/js/breakpoints.js</name></action>
             <action method="addItem"><type>skin_js</type><name>build/js/script.js</name></action>
+            
+            <action method="addItem"><type>skin_js</type><name>build/vendor/iweb/Iweb_QtyWidget.js</name></action>
 
         </reference>
     </cc_head>

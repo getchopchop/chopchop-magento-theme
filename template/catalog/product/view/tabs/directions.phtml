@@ -1,0 +1,6 @@
+<?php $_directions = $this->getProduct()->getDirections(); ?>
+<?php if ($_directions): ?>
+    <div class="std">
+        <?php echo $this->helper('catalog/output')->productAttribute($this->getProduct(), $_directions, 'description') ?>
+    </div>
+<?php endif; ?>

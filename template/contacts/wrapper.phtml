@@ -1,18 +1,18 @@
 <div class="contacts">
-    <hgroup class="title">
-        <h1 class="title__main"><?php echo $this->__('Contact Us'); ?></h1>
-        <h3 class="title__sub"><?php echo $this->__('Need help, support or advice?'); ?></h3>
-    </hgroup>
-    <?php echo $this->getChildHtml('contact_page_top'); ?>
-    <hr>
-    <div class="o-contacts">
-        <div>
+    
+    <h1 class="title__main"><?php echo $this->__('Contact Us'); ?></h1>
+    
+    <div class="grid g-gutter u-section-bottom u-section-xs-top">
+        <div class="g-col-lg-6">
+            <div class="bordered-box">
+                <div class="u-section-xs u-container">
+                    <?php echo $this->getChildHtml('contact_page_info'); ?>
+                </div>
+            </div>
+        </div>
+        <div class="g-col-lg-6">
             <?php echo $this->getChildHtml('contactForm'); ?>
         </div>
-        <div>
-            <?php echo $this->getChildHtml('contact_page_mid'); ?>
-        </div>
     </div>
-    <hr>
-    <?php echo $this->getChildHtml('contact_page_bottom'); ?>
+    
 </div>

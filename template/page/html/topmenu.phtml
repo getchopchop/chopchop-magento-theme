@@ -6,10 +6,11 @@
  */
 ?>
 <?php $_menu = $this->getHtml('level-top') ?>
+
 <?php if($_menu): ?>
-<div class="o-navbar">
-    <ul id="nav" class="nav nav--primary nav--multi-level">
-        <?php echo $_menu ?>
-    </ul>
-</div>
+    <nav id="nav" class="header__nav u-hidden-xs u-hidden-sm">
+        <ol class="nav nav--primary">
+            <?php echo $_menu ?>
+        </ol>
+    </nav>
 <?php endif ?>

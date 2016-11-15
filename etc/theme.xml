@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<theme>
+    <!-- <parent>rwd/prototype</parent> -->
+    <layout>
+        
+        <updates>
+            <chopchop>
+                <file>cc.xml</file>
+            </chopchop>
+        </updates>
+        
+    </layout>
+    
+</theme>

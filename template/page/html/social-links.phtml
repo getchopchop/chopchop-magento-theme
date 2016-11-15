@@ -1,0 +1,22 @@
+<?php
+    $_facebookUrl = Mage::getModel('core/variable')->loadByCode('facebook_url')->getValue('plain');
+    $_twitterUrl = Mage::getModel('core/variable')->loadByCode('twitter_url')->getValue('plain');
+    $_instagramUrl = Mage::getModel('core/variable')->loadByCode('instagram_url')->getValue('plain');
+?>
+<ul class="social-icons">
+    <li>
+        <a href="<?php echo $_instagramUrl; ?>" class="btn btn--icon btn--lg btn--invert">
+            <?php echo Mage::helper('iweb_core/icons')->getSvg('social--instagram'); ?>
+        </a>
+    </li>
+    <li>
+        <a href="<?php echo $_twitterUrl; ?>" class="btn btn--icon btn--lg btn--invert">
+            <?php echo Mage::helper('iweb_core/icons')->getSvg('social--twitter'); ?>
+        </a>
+    </li>
+    <li>
+        <a href="<?php echo $_facebookUrl; ?>" class="btn btn--icon btn--lg btn--invert">
+            <?php echo Mage::helper('iweb_core/icons')->getSvg('social--facebook'); ?>
+        </a>
+    </li>
+</ul>

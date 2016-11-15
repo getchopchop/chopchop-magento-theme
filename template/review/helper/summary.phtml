@@ -1,0 +1,23 @@
+<?php if ($this->getReviewsCount()): ?>
+    <div class="ratings reviews">
+        <?php if ($this->getRatingSummary()):?>
+            <div class="reviews__stars rating-box">
+                <div class="reviews__negative">
+                    <?php for($i=0;$i<5;$i++) : ?>
+                    <?php echo Mage::helper('iweb_core/icons')->getSvg('custom--star'); ?>
+                    <?php endfor; ?>
+                </div>
+                <div class="reviews__positive rating" style="width:<?php echo $this->getRatingSummary() ?>%">
+                    <?php for($i=0;$i<5;$i++) : ?>
+                    <?php echo Mage::helper('iweb_core/icons')->getSvg('custom--star'); ?>
+                    <?php endfor; ?>
+                </div>
+            </div>
+        <?php endif;?>
+        <p class="rating-links reviews__num">
+            <a href="<?php echo $this->getReviewsUrl() ?>#review-form" class="js-activate-tab-reviews"><?php echo $this->__('%d Review(s)', $this->getReviewsCount()) ?></a>
+        </p>
+    </div>
+<?php elseif ($this->getDisplayIfEmpty()): ?>
+    <p class="no-rating"><a href="<?php echo $this->getReviewsUrl() ?>#review-form"><?php echo $this->__('Be the first to review this product') ?></a></p>
+<?php endif; ?>

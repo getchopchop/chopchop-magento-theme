@@ -1,0 +1,15 @@
+<div class="flag flag--padded flag--center flag--shrink u-fill-white u-separator-bottom">
+    <div>
+        <p class="h4 u-no-margin"><?php echo $this->getTitle(); ?></p>
+    </div>
+    <div>
+        <a href="#" class="btn btn--sm" data-cc-action="deactivate" data-cc-target="modal"><?php echo $this->__('Close'); ?></a>
+    </div>
+</div>
+
+<div class="card card--padded u-no-margin">
+    <div class="card__body">
+        <div class="<?php echo $this->getJsPlaceHolderClass(); ?>"></div>
+        <?php echo $this->getChildHtml(); ?>
+    </div>
+</div>

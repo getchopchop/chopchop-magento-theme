@@ -1,51 +1,47 @@
 <div id="messages_product_view"><?php echo $this->getMessagesBlock()->toHtml() ?></div>
-<div class="card--contacts">
-    <form action="<?php echo $this->getFormAction(); ?>" id="contactForm" method="post">
-        <div class="fieldset">
-            <div class="card__header">
-                <h2 class="legend card__title"><?php echo Mage::helper('contacts')->__('Contact Information') ?></h2>
-            </div>
-            <div class="card__body">
-                <ul class="form-list">
-                    <li class="fields">
-                        <div class="field">
-                            <label for="name" class="required"><?php echo Mage::helper('contacts')->__('Name') ?></label>
-                            <div class="input-box">
-                                <input name="name" id="name" title="<?php echo Mage::helper('core')->quoteEscape(Mage::helper('contacts')->__('Name')) ?>" value="<?php echo $this->escapeHtml($this->helper('contacts')->getUserName()) ?>" class="input-text required-entry" type="text" />
-                            </div>
-                        </div>
-                        <div class="field">
-                            <label for="email" class="required"><?php echo Mage::helper('contacts')->__('Email') ?></label>
-                            <div class="input-box">
-                                <input name="email" id="email" title="<?php echo Mage::helper('core')->quoteEscape(Mage::helper('contacts')->__('Email')) ?>" value="<?php echo $this->escapeHtml($this->helper('contacts')->getUserEmail()) ?>" class="input-text required-entry validate-email" type="text" />
-                            </div>
-                        </div>
-                    </li>
-                    <li class="field">
-                        <label for="telephone"><?php echo Mage::helper('contacts')->__('Telephone') ?></label>
-                        <div class="input-box">
-                            <input name="telephone" id="telephone" title="<?php echo Mage::helper('core')->quoteEscape(Mage::helper('contacts')->__('Telephone')) ?>" value="" class="input-text" type="text" />
-                        </div>
-                    </li>
-                    <li class="wide">
-                        <label for="comment" class="required"><?php echo Mage::helper('contacts')->__('Comment') ?></label>
-                        <div class="input-box">
-                            <textarea name="comment" id="comment" title="<?php echo Mage::helper('core')->quoteEscape(Mage::helper('contacts')->__('Comment')) ?>" class="required-entry input-text" cols="5" rows="3"></textarea>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <div class="buttons-set card__footer">
-            <input type="text" name="hideit" id="hideit" value="" style="display:none !important;" />
-            <button type="submit" title="<?php echo Mage::helper('core')->quoteEscape(Mage::helper('contacts')->__('Submit')) ?>" class="button btn--contacts"><span><span><?php echo Mage::helper('contacts')->__('Submit') ?></span></span></button>
-            <span class="help-text required"><?php echo $this->__('* Required Fields') ?></span>
-        
-        </div>
-    </form>
-</div>
+<form action="<?php echo $this->getFormAction(); ?>" id="contactForm" method="post">
+    <div class="fieldset">
+        <h2 class="h4"><?php echo Mage::helper('contacts')->__('Contact Form Title') ?></h2>
+        <ul class="form-list u-list-unstyled">
+            <li class="fields">
+                <div class="field field-group">
+                    <label for="name" class="field-group__label required"><?php echo Mage::helper('contacts')->__('Name') ?></label>
+                    <div class="input-box field-group__field">
+                        <input name="name" id="name" title="<?php echo Mage::helper('core')->quoteEscape(Mage::helper('contacts')->__('Name')) ?>" value="<?php echo $this->escapeHtml($this->helper('contacts')->getUserName()) ?>" class="input-text required-entry" type="text" />
+                    </div>
+                </div>
+                <div class="field field-group">
+                    <label for="email" class="field-group__label required"><?php echo Mage::helper('contacts')->__('Email') ?></label>
+                    <div class="input-box field-group__field">
+                        <input name="email" id="email" title="<?php echo Mage::helper('core')->quoteEscape(Mage::helper('contacts')->__('Email')) ?>" value="<?php echo $this->escapeHtml($this->helper('contacts')->getUserEmail()) ?>" class="input-text required-entry validate-email" type="text" />
+                    </div>
+                </div>
+            </li>
+            <li class="field field-group">
+                <label for="telephone" class="field-group__label"><?php echo Mage::helper('contacts')->__('Telephone') ?></label>
+                <div class="input-box field-group__field">
+                    <input name="telephone" id="telephone" title="<?php echo Mage::helper('core')->quoteEscape(Mage::helper('contacts')->__('Telephone')) ?>" value="" class="input-text" type="text" />
+                </div>
+            </li>
+            <li class="wide field-group">
+                <label for="comment" class="field-group__label required"><?php echo Mage::helper('contacts')->__('Comment') ?></label>
+                <div class="input-box field-group__field">
+                    <textarea name="comment" id="comment" title="<?php echo Mage::helper('core')->quoteEscape(Mage::helper('contacts')->__('Comment')) ?>" class="required-entry input-text" cols="5" rows="3"></textarea>
+                </div>
+            </li>
+        </ul>
+    <div class="buttons-set">
+        <input type="text" name="hideit" id="hideit" value="" style="display:none !important;" />
+        <button type="submit" title="<?php echo Mage::helper('core')->quoteEscape(Mage::helper('contacts')->__('Submit')) ?>" class="button btn btn--primary">
+            <span><span><?php echo Mage::helper('contacts')->__('Submit') ?></span></span>
+        </button>
+        <span class="help-text required u-visually-hidden"><?php echo $this->__('* Required Fields') ?></span>
+    
+    </div>
+    </div>
+</form>
 <script type="text/javascript">
 //<![CDATA[
-    var contactForm = new VarienForm('contactForm', true);
+var contactForm = new VarienForm('contactForm', true);
 //]]>
 </script>

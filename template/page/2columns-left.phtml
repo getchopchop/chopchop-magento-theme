@@ -9,19 +9,21 @@
 <?php echo $this->getChildHtml('header') ?>
 <?php echo $this->getChildHtml('before_main') ?>
 <div class="main-container col2-left-layout">
-    <div class="main <?php echo $this->getContainerClass(); ?>">
-        <?php echo $this->getChildHtml('breadcrumbs') ?>
-        <?php echo $this->getChildHtml('before_content') ?>
-        <div class="l-two-col l-gutter col-wrapper">
-            <div class="l-body col-main">
-                <?php echo $this->getChildHtml('global_messages') ?>
-                <?php echo $this->getChildHtml('content') ?>
-            </div>
-            <div class="l-side col-left sidebar">
-                <?php echo $this->getChildHtml('left') ?>
+    <?php echo $this->getChildHtml('breadcrumbs') ?>
+    <div class="main u-section-sm-top u-section-lg-bottom <?php echo $this->getContainerClass(); ?>">
+        <div class="col-wrapper <?php echo $this->getContainerClasses(); ?>">
+            <div class="grid g-gutter">
+                <div class="col-left sidebar g-col-md-4 g-col-xl-3 u-fill-white">
+                    <?php echo $this->getChildHtml('left') ?>
+                </div>
+                <div class="col-main g-col-md-8 g-col-xl-9">
+                    <?php echo $this->getChildHtml('global_messages') ?>
+                    <?php echo $this->getChildHtml('before_content') ?>
+                    <?php echo $this->getChildHtml('content') ?>
+                    <?php echo $this->getChildHtml('after_content') ?>
+                </div>
             </div>
         </div>
-        <?php echo $this->getChildHtml('after_content') ?>
     </div>
 </div>
 <?php echo $this->getChildHtml('after_main') ?>

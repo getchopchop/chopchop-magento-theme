@@ -1,0 +1,62 @@
+<?php
+if ($this->isVisible()):
+    $items = $this->getItems();
+    $extraClasses = $this->getExtraClasses();
+    $initSlider = "";
+
+    if($this->getBannerType() == 'static') :
+      $initSlider .= "";
+    elseif (count($items) > 1):
+        $initSlider .= " bxslider";
+    endif;
+    
+    if (count($items) > 0):
+?>
+<div class="confidence">
+    <div class="confidence__btn confidence__btn--prev js-confidence__prev">
+        <a href="#">
+            <?php echo Mage::helper('iweb_core/icons')->getSvg('custom--arrow-left'); ?>
+            <span class="u-visually-hidden"><?php echo $this->__('Previous'); ?></span>
+        </a>
+    </div>
+    <div class="confidence__body <?php echo $this->getGroupId(); ?>">
+        <div class="js-confidence">
+            <?php foreach ($items as $item): ?>
+                <div class="confidence__item <?php echo $item->getExtraClasses(); ?>">
+                
+                    <?php if ($item->getLinkUrl()) : ?>
+                    <a href="<?php echo $item->getLinkUrl(); ?>" class="item-link" target="<?php echo $item->getTarget(); ?>">
+                    <?php endif; ?>
+
+                        <?php if($item->getContent()) : ?>
+
+                            <?php if ($item->getContent()): ?>
+                            <div class="promotion">
+                                <div class="promotion__body">
+                                    <?php echo Mage::helper('iweb_core/icons')->getSvg('custom--tick', 'icon--sm'); ?>
+                                    <?php echo $item->getContent(); ?>
+                                </div>
+                            </div>
+                            <?php endif; ?>
+                      
+                        <?php endif; ?>
+                    
+                    <?php if ($item->getLinkUrl()) : ?>
+                    </a>
+                    <?php endif; ?>
+                </div>
+            <?php endforeach; ?>
+        </div>
+    </div>
+    <div class="confidence__btn confidence__btn--next js-confidence__next">
+        <a href="#">
+            <?php echo Mage::helper('iweb_core/icons')->getSvg('custom--arrow-right'); ?>
+            <span class="u-visually-hidden"><?php echo $this->__('Next'); ?></span>
+        </a>
+    </div>
+</div>
+
+<?php
+  endif;
+endif;
+?>

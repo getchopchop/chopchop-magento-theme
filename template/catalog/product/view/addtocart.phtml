@@ -1,38 +1,37 @@
 <?php $_product = $this->getProduct(); ?>
-
-<?php $buttonTitle = Mage::helper('core')->quoteEscape($this->__('Add to Cart')); ?>
+<?php $buttonTitle = $this->__('Add to Cart'); ?>
 <?php if($_product->isSaleable()): ?>
     <div class="add-to-cart">
         <?php if(!$_product->isGrouped()): ?>
-        <div class="quantity js-qty">
-            <label class="quantity__label"><?php echo $this->__('Qty:'); ?></label>
+        <div class="quantity quantity--center js-qty">
+            <label for="qty"><?php echo $this->__('Qty:') ?></label>
             <div class="quantity__amount">
-                <a href="#" class="btn btn--xs quantity__desc js-qty-down">
-                    <span class="shape"></span>
+                <a href="#" class="btn btn--icon btn--square">
+                    <?php echo Mage::helper('iweb_core/icons')->getSvg('custom--minus'); ?>
                     <span class="u-visually-hidden"><?php echo $this->__('Decrease quantity'); ?></span>
                 </a>
-                <input type="number" name="qty" id="qty" min="1" maxlength="12" value="<?php echo $this->getQty() ?>" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Qty')) ?>" class="input-text qty u-text-center js-qty-input" placeholder="<?php echo $this->__('Qty') ?>" />
-                <a href="#" class="btn btn--xs quantity__inc js-qty-up">
-                    <span class="shape"></span>
+                <input type="text" name="qty" id="qty" maxlength="12" value="<?php echo $this->getProductDefaultQty() * 1 ?>" min="1" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Qty')) ?>" class="input-text qty u-text-center" placeholder="<?php echo Mage::helper('core')->quoteEscape($this->__('Qty')) ?>" />
+                <a href="#" class="btn btn--icon btn--square">
+                    <?php echo Mage::helper('iweb_core/icons')->getSvg('custom--plus'); ?>
                     <span class="u-visually-hidden"><?php echo $this->__('Increase quantity'); ?></span>
                 </a>
             </div>
         </div>
+        
         <script type="text/javascript">
         (function($){
             var qtyWidget = new Iweb.QtyWidget({
-                'delegateContainerSelector':'.js-qty'
+                'delegateContainerSelector':'.js-qty',
+                'minQty': 1
             });
         }(jQuery));
         </script>
-        <br /><br />
+
         <?php endif; ?>
         
-        <div class="add-to-cart-buttons">
-            <button type="button" title="<?php echo $buttonTitle ?>" class="button btn btn--lg btn-cart" onclick="productAddToCartForm.submit(this)">
-                <span><span><?php echo $buttonTitle ?></span></span>
-            </button>
-            <?php echo $this->getChildHtml('', true, true) ?>
-        </div>
+        <p class="micro" todo><strong>Earn 10 TONU™ Reward Points</strong></p>
+        
+        <p><button type="button" title="<?php echo $buttonTitle ?>" id="product-addtocart-button" class="button btn-cart btn btn--primary btn--arrow btn--xl" onclick="productAddToCartForm.submit(this)"><span><span><?php echo $buttonTitle ?></span></span></button></p>
+        <?php echo $this->getChildHtml('', true, true) ?>
     </div>
 <?php endif; ?>

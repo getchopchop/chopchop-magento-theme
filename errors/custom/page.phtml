@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title><?php echo $this->pageTitle?></title>
+<base href="<?php echo $this->getSkinUrl()?>" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="description" content="" />
+<meta name="keywords" content="" />
+<meta name="robots" content="*" />
+<link rel="stylesheet" href="css/normalize.css" type="text/css" />
+<link rel="stylesheet" href="css/styles.css" type="text/css" />
+<link rel="icon" href="images/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
+<script src="https://use.typekit.net/hnu1fiv.js"></script>
+<script>try{Typekit.load({ async: true });}catch(e){}</script>
+<script src="vendor/picturefill/picturefill.js"></script>
+</head>
+<body>
+
+    <header class="header">
+        <div class="u-container u-container--full">
+            <div class="header__body">
+
+                <div class="header__logo">
+                    <a href="<?php echo $this->getBaseUrl()?>" class="logo">
+                        <picture>
+                            <source media="(max-width: 25.99em)" srcset="images/logo-sm.svg">
+                            <img src="images/logo.svg" class="logo__img" width="305" height="50" />
+                        </picture>
+                        <span class="logo__text">Site Name</span>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </header>
+
+    <div class="main-container col1-layout template template--errors u-clearfix">
+        <div class="main u-section-top u-section-lg-bottom u-container-sm u-text-center">
+            <?php require_once $contentTemplate; ?>
+        </div>
+    </div>
+
+    <div class="main-container col1-layout template template--errors u-clearfix">
+        <div class="main u-section-top u-section-lg-bottom u-container-sm u-text-center">
+            <p class="footer__copyright micro">Copyright &copy; 2016 Tonu. All Rights Reserved.</p>
+        </div>
+    </div>
+
+</body>
+</html>

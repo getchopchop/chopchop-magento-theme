@@ -1,0 +1,29 @@
+<?php if($_faqs = $this->getFaqs()): ?>
+<?php $_i = 1;?>
+<div class="widget-faq">
+	<ul>
+        <?php foreach($_faqs as $_faq) : ?>
+			<li>
+				<a href="#tab-<?php echo $_i;?>"><?php echo $_faq->getTitle(); ?></a>
+			</li>
+			<?php $_i++; ?>
+        <?php endforeach; ?>
+	</ul>
+    
+    <?php $_i = 1; ?>
+    
+	<dl>
+        
+	<?php foreach($_faqs as $_faq) : ?>
+		<dt>
+			<a href="#tab-<?php echo $_i;?>"><?php echo $_faq->getTitle(); ?></a>
+		</dt>
+		<dd id="tab-<?php echo $_i;?>">
+			<?php echo $this->getHtml($_faq); ?>
+		</dd>
+        <?php $_i++; ?>
+        <?php endforeach; ?>
+        
+	</dl>
+</div>
+<?php endif; ?>

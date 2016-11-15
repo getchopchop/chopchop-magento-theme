@@ -1,12 +1,72 @@
-<footer role="contentinfo" class="footer">
-    <div class="u-container">
+<div class="footer-blocks">
+	<div class="footer-blocks__body">
+		<div class="grid">
+			<div class="footer-blocks__col g-col-md-4 u-fill-white">
+				<div class="card u-section-xs">
+					<div class="card__header">
+						<h4>We are Trusted</h4>
+					</div>
+					<div class="card__body">
+						<ul class="trust-logos trust-logos--center">
+							<li>
+								<a href="#"><img src="<?php echo $this->getSkinUrl('/build/img/informed-choice.png'); ?>" alt="Informed Choice"></a>
+							</li>
+							<li>
+								<a href="#"><img src="<?php echo $this->getSkinUrl('/build/img/informed-sport.png'); ?>" alt="Informed Sport"></a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="footer-blocks__col g-col-md-4">
+				<div class="card u-section-xs">
+					<div class="card__header">
+						<h4>Follow Us</h4>
+					</div>
+					<div class="card__body">
+                        <?php echo $this->getChildHtml('social_links'); ?>
+					</div>
+				</div>
+			</div>
+			<div class="footer-blocks__col g-col-md-4 u-fill-brand-light-blue">
+				<div class="card u-section-xs">
+					<div class="card__header">
+						<h4 class="u-text-white"><span class="u-hidden-md u-hidden-lg">Sign up for </span>News &amp; offers</h4>
+					</div>
+					<div class="card__body">
+                        <?php echo $this->getChildHtml('footer_newsletter'); ?>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<footer class="footer u-clearfix">
+    <div class="u-container u-section-sm">
         <div class="footer__body">
-            <?php echo $this->getChildHtml(); ?>
+            <div class="footer__col">
+                <div class="card card--accordion">
+                    <?php echo $this->getChildHtml('footer_links'); ?>
+                    
+                </div>
+            </div>
+            <div class="footer__col">
+                <div class="card card--accordion">
+                    <?php echo $this->getChildHtml('footer_links_company'); ?>
+                </div>
+            </div>
+            <div class="footer__col">
+                <div class="card card--accordion">
+                    <?php echo $this->getChildHtml('footer_links_info'); ?>
+                </div>
+            </div>
         </div>
         <div class="footer__footer">
-            <p class="footer__copyright micro">
-                <?php echo $this->getCopyright() ?>
-            </p>
+            <?php echo $this->getChildHtml('payment_icons'); ?>
+            <p class="micro u-text-grey"><address><?php echo $this->getCopyright(); ?></address></p>
+            <p class="micro-sm u-text-grey"><?php echo Mage::getModel('core/variable')->loadByCode('company_number')->getValue('plain'); ?> VAT No. <?php echo Mage::getStoreConfig('general/store_information/merchant_vat_number'); ?>.<br>
+                <?php echo Mage::getStoreConfig('general/store_information/address'); ?></p>
         </div>
     </div>
 </footer>

@@ -9,20 +9,20 @@
 <?php echo $this->getChildHtml('header') ?>
 <?php echo $this->getChildHtml('before_main') ?>
 <div class="main-container col3-layout">
-    <div class="main <?php echo $this->getContainerClass(); ?>">
         <?php echo $this->getChildHtml('breadcrumbs') ?>
+    <div class="main u-section-sm-top u-section-lg-bottom <?php echo $this->getContainerClass(); ?>">
         <?php echo $this->getChildHtml('before_content') ?>
-        <div class="l-three-col-alternate l-gutter col-wrapper">
-            <div class="l-body col-main">
+        <div class="col-wrapper">
+            <div class="col-main">
                 <?php echo $this->getChildHtml('global_messages') ?>
                 <?php echo $this->getChildHtml('content') ?>
             </div>
-            <div class="l-side col-left sidebar">
+            <div class="col-left sidebar">
                 <?php echo $this->getChildHtml('left') ?>
             </div>
-            <div class="l-side l-side--right col-right sidebar">
-                <?php echo $this->getChildHtml('right') ?>
-            </div>
+        </div>
+        <div class="col-right sidebar">
+            <?php echo $this->getChildHtml('right') ?>
         </div>
         <?php echo $this->getChildHtml('after_content') ?>
     </div>

@@ -9,16 +9,18 @@
 <?php echo $this->getChildHtml('header') ?>
 <?php echo $this->getChildHtml('before_main') ?>
 <div class="main-container col2-right-layout">
-    <div class="main <?php echo $this->getContainerClass(); ?>">
         <?php echo $this->getChildHtml('breadcrumbs') ?>
+    <div class="main u-section-sm-top u-section-lg-bottom <?php echo $this->getContainerClass(); ?>">
         <?php echo $this->getChildHtml('before_content') ?>
-        <div class="l-two-col l-gutter l-reverse col-wrapper">
-            <div class="l-body col-main">
-                <?php echo $this->getChildHtml('global_messages') ?>
-                <?php echo $this->getChildHtml('content') ?>
-            </div>
-            <div class="l-side col-right sidebar">
-                <?php echo $this->getChildHtml('right') ?>
+        <div class="col-wrapper <?php echo $this->getContainerClasses(); ?>">
+            <div class="grid g-gutter">
+                <div class="col-main g-col-md-8 g-col-xl-9">
+                    <?php echo $this->getChildHtml('global_messages') ?>
+                    <?php echo $this->getChildHtml('content') ?>
+                </div>
+                <div class="col-right sidebar g-col-md-4 g-col-xl-3 u-fill-white">
+                    <?php echo $this->getChildHtml('right') ?>
+                </div>
             </div>
         </div>
         <?php echo $this->getChildHtml('after_content') ?>

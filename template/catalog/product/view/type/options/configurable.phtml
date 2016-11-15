@@ -1,0 +1,25 @@
+<?php
+$_product    = $this->getProduct();
+$_attributes = Mage::helper('core')->decorateArray($this->getAllowAttributes());
+?>
+<?php if ($_product->isSaleable() && count($_attributes)):?>
+<div class="grid g-gutter g-center">
+    <div class="g-col-xs-8 g-col-sm-7 g-col-lg-6 g-col-xl-4">
+    <?php foreach($_attributes as $_attribute): ?>
+        <div class="field-group">
+            <label class="field-group__label u-visually-hidden required"><em>*</em><?php echo $_attribute->getLabel() ?></label>
+            <div class="field-group__field input-box">
+                <div class="select">
+                    <select name="super_attribute[<?php echo $_attribute->getAttributeId() ?>]" id="attribute<?php echo $_attribute->getAttributeId() ?>" class="required-entry super-attribute-select">
+                        <option><?php echo $this->__('Choose an Option...') ?></option>
+                      </select>
+                  </div>
+              </div>
+        </div>
+    <?php endforeach; ?>
+    </div>
+</div>
+<script type="text/javascript">
+    var spConfig = new Product.Config(<?php echo $this->getJsonConfig() ?>);
+</script>
+<?php endif;?>

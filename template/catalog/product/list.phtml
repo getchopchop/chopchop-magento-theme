@@ -12,113 +12,138 @@
 <?php if(!$_productCollection->count()): ?>
 <p class="note-msg"><?php echo $this->__('There are no products matching the selection.') ?></p>
 <?php else: ?>
+<div class="category-products">
 
-<div class="o-toolbar o-toolbar--top">
-    <?php echo $this->getToolbarHtml() ?>
-</div>
-<?php // List mode ?>
-<?php if($this->getMode()!='grid'): ?>
-<?php $_iterator = 0; ?>
-<div class="o-product-list" id="products-list">
-    <?php foreach ($_productCollection as $_product): ?>
-    <div>
-        <div class="o-product-horizontal o-product-horizontal--info item<?php if( ++$_iterator == sizeof($_productCollection) ): ?> last<?php endif; ?>">
-            
-            <div class="o-product-horizontal__image">
-                <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image"><img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(300); ?>" width="300" height="300" alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" /></a>
-            </div>
-            
-            <div class="o-product-horizontal__body">
-                <div class="o-product-horizontal__info">
-                    <div>
-                        <?php $_productNameStripped = $this->stripTags($_product->getName(), null, true); ?>
-                        <h3 class="product-name"><a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $_productNameStripped; ?>"><?php echo $_helper->productAttribute($_product, $_product->getName() , 'name'); ?></a></h3>
-                        <div class="o-product-horizontal__text">
+    <?php // List mode ?>
+    <?php $_iterator = 0; ?>
+        <?php foreach ($_productCollection as $_product): ?>
+            <?php
+                $_productNameStripped = $this->stripTags($_product->getName(), null, true);    
+            ?>
+            <div class="u-clearfix product-item">
+                <div class="u-container u-section-lg">
+                    <div class="u-visible-xs">
+                        <?php if($_product->getBestseller()) : ?>
+                            <span class="tag u-hidden-xs"><?php echo $this->__('Best Seller'); ?></span>
+                        <?php endif; ?>
+                        <div class="product-title">
+                            <h2 class="product-title__main"><a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $_productNameStripped; ?>"><?php echo $_helper->productAttribute($_product, $_product->getName() , 'name'); ?></a></h2>
+                            <p class="product-title__sub"><?php echo $_helper->productAttribute($_product, $_product->getShortDescription(), 'short_description') ?></p>
                             <?php if($_product->getRatingSummary()): ?>
-                            <?php echo $this->getReviewsSummaryHtml($_product) ?>
+                                <?php echo $this->getReviewsSummaryHtml($_product) ?>
                             <?php endif; ?>
-                                
-                            <?php echo $_helper->productAttribute($_product, $_product->getShortDescription(), 'short_description') ?>
                         </div>
                     </div>
-                    <div>
-                        <?php echo $this->getPriceHtml($_product, true) ?>
-                        
-                        <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $_productNameStripped ?>" class="link-learn"><?php echo $this->__('Learn More') ?></a>
-                        
-                        <?php if($_product->isSaleable()): ?>
-                            <p><button type="button" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Add to Cart')) ?>" class="button btn-cart" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button></p>
-                        <?php else: ?>
-                            <p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
-                        <?php endif; ?>
-                        
-                        <ul class="add-to-links u-list-unstyled">
-                            <?php if ($this->helper('wishlist')->isAllow()) : ?>
-                                <li><a href="<?php echo $this->helper('wishlist')->getAddUrl($_product) ?>" class="link-wishlist"><?php echo $this->__('Add to Wishlist') ?></a></li>
-                            <?php endif; ?>
-                            <?php if($_compareUrl=$this->getAddToCompareUrl($_product)): ?>
-                                <li><span class="separator">|</span> <a href="<?php echo $_compareUrl ?>" class="link-compare"><?php echo $this->__('Add to Compare') ?></a></li>
-                            <?php endif; ?>
-                        </ul>
-                        
+                    <div class="grid g-gutter">
+                        <div class="u-hidden-xs u-hidden-sm u-hidden-md g-col-lg-1">
+                            <?php //echo $this->getChildHtml('suitability'); ?>
+                        </div>
+                        <div class="g-col-xs-12 g-col-sm-6 g-col-lg-4">
+                            <ul class="u-list-unstyled js-slider">
+                                <li>
+                                    <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image"><img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(135); ?>" width="135" height="135" alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" /></a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="g-col-xs-12 g-col-sm-6 g-col-lg-7">
+                            <div class="grid g-gutter">
+                                <div class="g-col-xs-12 g-col-lg-8">
+                                    <div class="u-hidden-xs">
+                                        <?php if($_product->getBestseller()) : ?>
+                                            <span class="tag u-hidden-xs"><?php echo $this->__('Best Seller'); ?></span>
+                                        <?php endif; ?>
+                                        <div class="product-title">
+                                            <h2 class="product-title__main"><a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $_productNameStripped; ?>"><?php echo $_helper->productAttribute($_product, $_product->getName() , 'name'); ?></a></h2>
+                                            <p class="product-title__sub"><?php echo $_helper->productAttribute($_product, $_product->getShortDescription(), 'short_description') ?></p>
+                                            <?php if($_product->getRatingSummary()): ?>
+                                                <?php echo $this->getReviewsSummaryHtml($_product) ?>
+                                            <?php endif; ?>
+                                        </div>
+                                    </div>
+                                    <div class="u-hidden-xs u-hidden-sm u-hidden-md">
+                                        <?php echo $_product->getTickList(); ?>
+                                        <a href="<?php echo $_product->getProductUrl() ?>" class="btn btn--text btn--arrow"><?php echo $this->__('More information'); ?></a></p>
+                                    </div>
+                                    <p todo><span class="tag tag--lg u-fill-brand-lighter-blue u-hidden-xs u-hidden-sm">Buy one get one free</span></p>
+                                </div>
+                                <div class="g-col-xs-12 g-col-lg-4 u-text-center">
+                                    <p><span class="tag tag--lg u-fill-brand-lighter-blue u-visible-xs-inline-block u-visible-sm-inline-block" todo>Buy one get one free</span></p>
+                                    <?php echo $this->getPriceHtml($_product, true) ?>
+                                    <?php if($_product->isSaleable()): // something for sale ?>
+                                        <div class="u-hidden-xs u-hidden-sm">
+                                            <div class="grid g-gutter" todo>
+                                                <div class="g-col-md-6 g-col-lg-12">
+                                                    <div class="field-group">
+                                                        <label class="field-group__label u-visually-hidden" for="select">Choose an option...</label>
+                                                        <div class="field-group__field">
+                                                            <div class="select">
+                                                                <select id="select">
+                                                                    <optgroup label="Option Group">
+                                                                        <option>Flavour</option>
+                                                                        <option>Option Two</option>
+                                                                        <option>Option Three</option>
+                                                                    </optgroup>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="g-col-md-6 g-col-lg-12">
+                                                    <div class="field-group">
+                                                        <label class="field-group__label u-visually-hidden" for="select">Choose an option...</label>
+                                                        <div class="field-group__field">
+                                                            <div class="select">
+                                                                <select id="select">
+                                                                    <optgroup label="Option Group">
+                                                                        <option>Servings</option>
+                                                                        <option>Option Two</option>
+                                                                        <option>Option Three</option>
+                                                                    </optgroup>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="quantity quantity--center" todo>
+                                                <label>Quantity</label>
+                                                <div class="quantity__amount">
+                                                    <a href="#" class="btn btn--icon btn--square">
+                                                        <svg class="icon">
+                                                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/build/img/icons/symbol/svg/sprite.symbol.svg#custom--minus"></use>
+                                                        </svg>
+                                                        <span class="u-visually-hidden">Decrease quantity</span>
+                                                    </a>
+                                                    <input type="number" min="0" class="u-text-center" placeholder="Qty">
+                                                    <a href="#" class="btn btn--icon btn--square">
+                                                        <svg class="icon">
+                                                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/build/img/icons/symbol/svg/sprite.symbol.svg#custom--plus"></use>
+                                                        </svg>
+                                                        <span class="u-visually-hidden">Increase quantity</span>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <p class="u-text-center micro" todo><strong>Earn 50 TONU® Rewards Points</strong></p>
+                                            <button type="submit" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Add to Cart')) ?>" class="btn btn--primary btn--arrow btn--lg btn--block" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')"><?php echo $this->__('Add to Cart') ?></button>
+                                            <hr class="blank">
+                                            <a href="<?php echo $_product->getProductUrl() ?>" class="btn btn--secondary btn--arrow btn--block"><?php echo $this->__('More information'); ?></a>
+                                        </div>
+                                    <?php else : // nothing for sale ?>
+                                        <div class="u-hidden-xs u-hidden-sm">
+                                            <a href="<?php echo $_product->getProductUrl() ?>" class="btn btn--disabled btn--lg btn--block"><?php echo $this->__('Out of stock') ?></a>
+                                            <hr class="blank">
+                                            <a href="<?php echo $_product->getProductUrl() ?>" class="btn btn--secondary btn--arrow btn--block"><?php echo $this->__('More information'); ?></a>
+                                            <br>
+                                            <a href="#" class="btn btn--text btn--block btn--xs">Subscribe to back in-stock notification</a>
+                                        </div>
+                                    <?php endif; // end of sale check ?>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-    <?php endforeach; ?>
+        <?php endforeach; ?>
+
 </div>
-
-<?php else: ?>
-
-<?php // Grid Mode ?>
-
-<?php $_collectionSize = $_productCollection->count() ?>
-<?php $_columnCount = $this->getColumnCount(); ?>
-<?php $i=0; ?>
-
-<div class="o-product-grid">
-    <?php $i=0; foreach ($_productCollection as $_product): ?>
-    <div>
-        <div class="o-product-vertical item<?php if(($i-1)%$_columnCount==0): ?> first<?php elseif($i%$_columnCount==0): ?> last<?php endif; ?>">
-            
-            <div class="card__img">
-                <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image"><img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(300); ?>" width="300" height="300" alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" /></a>
-            </div>
-            <div class="card__body">
-                <h3 class="product-name card__title"><a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($_product->getName(), null, true) ?>"><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></a></h3>
-                <?php if($_product->getRatingSummary()): ?>
-                <?php echo $this->getReviewsSummaryHtml($_product, 'short') ?>
-                <?php endif; ?>
-            </div>
-            <div class="card__footer">
-                <?php echo $this->getPriceHtml($_product, true) ?>
-                <div>
-                    <?php if($_product->isSaleable()): ?>
-                        <button type="button" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Add to Cart')) ?>" class="button btn-cart" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button>
-                    <?php else: ?>
-                        <p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
-                    <?php endif; ?>
-                    <ul class="add-to-links u-list-unstyled">
-                        <?php if ($this->helper('wishlist')->isAllow()) : ?>
-                            <li><a href="<?php echo $this->helper('wishlist')->getAddUrl($_product) ?>" class="link-wishlist"><?php echo $this->__('Add to Wishlist') ?></a></li>
-                        <?php endif; ?>
-                        <?php if($_compareUrl=$this->getAddToCompareUrl($_product)): ?>
-                            <li><span class="separator">|</span> <a href="<?php echo $_compareUrl ?>" class="link-compare"><?php echo $this->__('Add to Compare') ?></a></li>
-                        <?php endif; ?>
-                    </ul>
-                </div>
-            </div>
-            
-        </div>
-    </div>
-    <?php endforeach ?>
-</div>
-
-<?php endif; ?>
-
-<div class="o-toolbar o-toolbar--bottom">
-    <?php echo $this->getToolbarHtml() ?>
-</div>
-
 <?php endif; ?>

@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<config>
+    <skin>custom</skin>
+    <report>
+        <action>print</action>
+    </report>
+</config>

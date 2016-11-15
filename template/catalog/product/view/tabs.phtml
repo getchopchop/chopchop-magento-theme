@@ -1,0 +1,33 @@
+<div class="product-info__tabs u-fill-brand-light-blue u-clearfix u-hidden-xs u-hidden-sm">
+    <div class="u-container u-section-top">
+        <ul class="nav nav--tabs">
+            <?php foreach ($this->getChildGroup('detailed_info', 'getChildHtml') as $alias => $html):?>
+                <?php if ($title = $this->getChildData($alias, 'title')):?>
+                    <?php $cleanName = strtolower(str_replace(array(' ','&'), array('',''), $title)); ?>
+                    <li class="<?php echo "nav-{$alias}"?>"><a href="#" id="tab-header--<?php echo $cleanName; ?>" data-cc-group="tab-header" data-cc-action="activate" data-cc-target="tab-content--<?php echo $cleanName; ?>" ><?php echo $this->escapeHtml($title); ?><span></span></a></li>
+                <?php endif;?>
+            <?php endforeach;?>
+        </ul>
+    </div>
+</div>
+
+<div class="product-info__body u-clearfix">
+    <div class="u-section-sm-top u-section-lg-bottom">
+        <?php foreach ($this->getChildGroup('detailed_info', 'getChildHtml') as $alias => $html):?>
+            <?php $cleanName = strtolower(str_replace(array(' ','&'), array('',''), $title)); ?>
+            <div class="card card--accordion">
+                <div class="u-container u-container--md">
+                    <?php if ($title = $this->getChildData($alias, 'title')):?>
+                        <?php $cleanName = strtolower(str_replace(array(' ','&'), array('',''), $title)); ?>
+                        <div class="card__header u-hidden-md u-hidden-lg u-hidden-xl" id="tab-header2--<?php echo $cleanName; ?>" data-cc-group="tab-header2" data-cc-action="activate" data-cc-target="tab-content--<?php echo $cleanName; ?>">
+                        <h4><?php echo $this->escapeHtml($title); ?> <span></span></h4><i></i>
+                    </div>
+                    <?php endif;?>
+                    <div class="card__body u-fill-white u-toggle" id="tab-content--<?php echo $cleanName; ?>" data-cc-group="tab-content" data-cc-cascade="tab-header--<?php echo $cleanName; ?>,tab-header2--<?php echo $cleanName; ?>">
+                        <?php echo $html; ?>
+                    </div>
+                </div>
+            </div>
+        <?php endforeach;?>
+    </div>
+</div>

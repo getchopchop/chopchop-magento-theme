@@ -1,0 +1,48 @@
+<?php $_items = $this->getReviewsCollection()->getItems();?>
+<div class="box-collateral box-reviews" id="customer-reviews">
+    <?php if (count($_items)):?>
+        <div class="title">
+            <h5 class="title__sub"><?php echo $this->__('Customer') ?></h5>
+            <h3 class="title__main"><?php echo $this->__('Reviews') ?></h3>
+        </div>
+        <?php echo $this->getChildHtml('toolbar') ?>
+        <?php foreach ($_items as $_review):?>
+            <div class="title u-text-left">
+                <h4 class="title__main"><?php echo $this->escapeHtml($_review->getTitle()) ?></h4>
+                <p class="title__sub"><?php echo $this->__('<span class="u-text-grey">Review by <span>%s</span></span>', $this->escapeHtml($_review->getNickname())) ?></p>
+            </div>
+            <?php $_votes = $_review->getRatingVotes(); ?>
+            <?php if (count($_votes)): ?>
+            <table class="data-table ratings-table table--condensed">
+                <tbody>
+                    <?php foreach ($_votes as $_vote): ?>
+                    <tr>
+                        <th><?php echo $this->escapeHtml($_vote->getRatingCode()) ?></th>
+                        <td>
+                            <div class="reviews">
+                                <div class="reviews__stars rating-box">
+                                    <div class="reviews__negative">
+                                        <?php for($i=0;$i<5;$i++) : ?>
+                                        <?php echo Mage::helper('iweb_core/icons')->getSvg('custom--star'); ?>
+                                        <?php endfor; ?>
+                                    </div>
+                                    <div class="reviews__positive rating" style="width:<?php echo $_vote->getPercent() ?>%">
+                                        <?php for($i=0;$i<5;$i++) : ?>
+                                        <?php echo Mage::helper('iweb_core/icons')->getSvg('custom--star'); ?>
+                                        <?php endfor; ?>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+            <?php endif; ?>
+            <?php echo nl2br($this->escapeHtml($_review->getDetail())) ?>
+            <p><small class="date"><?php echo $this->__('(Posted on %s)', $this->formatDate($_review->getCreatedAt()), 'long') ?></small></p>
+            <hr />
+        <?php endforeach; ?>
+        <?php echo $this->getChildHtml('toolbar') ?>
+    <?php endif;?>
+</div>
