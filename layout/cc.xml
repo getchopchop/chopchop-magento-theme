@@ -71,6 +71,8 @@
             <action method="addItem"><type>skin_js</type><name>build/js/chopchop.lib.js</name></action>
             <action method="addItem"><type>skin_js</type><name>build/js/breakpoints.js</name></action>
             <action method="addItem"><type>skin_js</type><name>build/js/script.js</name></action>
+            
+            <!-- Move skin/js/Iweb_qtyWidget.js into the chop chop src/js to get it building -->
             <action method="addItem"><type>skin_js</type><name>build/vendor/iweb/Iweb_QtyWidget.js</name></action>
 
         </reference>
