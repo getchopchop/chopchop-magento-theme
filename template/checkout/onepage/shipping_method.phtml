@@ -1,0 +1,27 @@
+<form id="co-shipping-method-form" action="">
+    <div id="checkout-shipping-method-load">
+       <!-- Content loaded dynamically -->
+    </div>
+    <script type="text/javascript">
+    //<![CDATA[
+        var shippingMethod = new ShippingMethod('co-shipping-method-form', "<?php echo $this->getUrl('checkout/onepage/saveShippingMethod') ?>");
+    //]]>
+    </script>
+    <div id="onepage-checkout-shipping-method-additional-load">
+        <?php echo $this->getChildHtml('additional') ?>
+    </div>
+    <div class="buttons-set grid g-gutter" id="shipping-method-buttons-container">
+        <div class="g-col-sm-4">
+            <p class="required u-visually-hidden"><?php echo $this->__('* Required Fields') ?></p>
+            <button type="button" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Continue')) ?>" class="button btn btn--success btn--block" onclick="shippingMethod.save()">
+                <span><span><?php echo $this->__('Continue') ?></span></span>
+            </button>
+        </div>
+        <div class="g-col-sm-6">
+            <span class="loading" id="shipping-method-please-wait" style="display:none;">
+                <span class="u-shape-ring u-spin"></span>
+                <span class="loading__text"><?php echo $this->__('Loading next step...') ?></span>
+            </span>
+        </div>
+    </div>
+</form>

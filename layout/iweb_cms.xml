@@ -1,0 +1,138 @@
+<?xml version="1.0"?>
+<layout>
+
+
+    <!-- CMS Internal Layout Common -->
+    <cms_layout>
+        <action block="root" method="setTemplate"><tpl>page/2columns-left.phtml</tpl></action>
+        <action block="content" method="unsetChild"><class>cms.wrapper</class></action>
+
+        <reference name="left">
+            <block type="core/template" name="cms.links.wrapper" template="cms/links.phtml">
+                <action method="setTitle" translate="title"><title>Help</title></action>
+                <block type="cms/block" name="cms_links">
+                    <action method="setBlockId"><block_id>cms_links</block_id></action>
+                </block>
+            </block>
+        </reference>
+    </cms_layout>
+
+
+    <!-- CMS Pages Not Home -->
+    <cms_page_view>
+        <update handle="cms_layout" />
+
+        <action block="root" method="setContainerClass"><class>u-container</class></action>
+        
+        <reference name="page_content_heading">
+            <action method="setTag"><value>h1</value></action>
+            <action method="setClasses"><value>u-text-center</value></action>
+        </reference>
+        
+        <reference name="content">
+            <block type="core/template" name="cms.wrapper.section" template="cms/wrapper.phtml">
+                <action method="setSectionClass"><value>u-section-bottom</value></action>
+                <action method="insert"><class>cms.wrapper</class></action>
+            </block>
+        </reference>
+        
+    </cms_page_view>
+
+
+    <contacts_index_index>
+        <update handle="cms_layout" />
+
+        <action block="root" method="setContainerClass"><class>u-container</class></action>
+        
+        <reference name="breadcrumbs">
+            <action method="addCrumb" translate="crumbInfo.label crumbInfo.title crumbName" module="cms">
+                <crumbName>Home</crumbName>
+                <crumbInfo>
+                    <label>Home</label>
+                    <title>Home</title>
+                    <link>/</link>
+                </crumbInfo>
+            </action>
+            <action method="addCrumb" translate="crumbInfo.label crumbInfo.title crumbName" module="contacts">
+                <crumbName>Contact</crumbName>
+                <crumbInfo>
+                    <label>Contact</label>
+                    <title>Contact</title>
+                    <link>/contacts/</link>
+                </crumbInfo>
+            </action>
+        </reference>
+        
+        <reference name="content">
+            <action method="unsetChild"><name>contactForm</name></action>
+            <block type="core/template" name="contact.wrapper" template="contacts/wrapper.phtml">
+                <block type="cms/block" name="contact_page_info">
+                    <action method="setBlockId"><block_id>contact_page_info</block_id></action>
+                </block>
+                <action method="insert"><name>contactForm</name></action>
+            </block>
+        </reference>
+        
+    </contacts_index_index>
+
+
+    <!-- CMS 404 -->
+    <cms_index_noroute>
+        <update handle="cms_page_view" />
+        
+        <reference name="breadcrumbs">
+            <action method="addCrumb" translate="crumbInfo.label crumbInfo.title crumbName" module="cms">
+                <crumbName>Home</crumbName>
+                <crumbInfo>
+                    <label>Home</label>
+                    <title>Home</title>
+                    <link>/</link>
+                </crumbInfo>
+            </action>
+            <action method="addCrumb" translate="crumbInfo.label crumbInfo.title crumbName" module="cms">
+                <crumbName>Page not found</crumbName>
+                <crumbInfo>
+                    <label>Page not found</label>
+                    <title>Page not found</title>
+                </crumbInfo>
+            </action>
+        </reference>
+    </cms_index_noroute>
+
+
+    <!-- Sitemap -->
+    <catalog_seo_sitemap>
+        <update handle="cms_layout" />
+        
+        <action block="root" method="setContainerClass"><class>u-container</class></action>
+        
+        <reference name="root">
+            <block type="core/text_list" name="left.new" as="left">
+                <block type="core/template" name="cms.links.wrapper" template="cms/links.phtml">
+                    <action method="setTitle" translate="title"><title>Customer Services</title></action>
+                    <block type="cms/block" name="cms_links">
+                        <action method="setBlockId"><block_id>cms_links</block_id></action>
+                    </block>
+                </block>
+            </block>
+        </reference>
+        <reference name="breadcrumbs">
+            <action method="addCrumb" translate="crumbInfo.label crumbInfo.title crumbName" module="cms">
+                <crumbName>Home</crumbName>
+                <crumbInfo>
+                    <label>Home</label>
+                    <title>Home</title>
+                    <link>/</link>
+                </crumbInfo>
+            </action>
+            <action method="addCrumb" translate="crumbInfo.label crumbInfo.title crumbName" module="cms">
+                <crumbName>Sitemap</crumbName>
+                <crumbInfo>
+                    <label>Sitemap</label>
+                    <title>Sitemap</title>
+                </crumbInfo>
+            </action>
+        </reference>
+    </catalog_seo_sitemap>
+
+</layout>

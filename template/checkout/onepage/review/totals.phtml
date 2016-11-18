@@ -1,0 +1,19 @@
+<?php
+/**
+ * @see Mage_Checkout_Block_Cart_Totals
+ */
+?>
+<?php if ($this->getTotals()): ?>
+    <?php echo $this->renderTotals(null); ?>
+    <?php echo $this->renderTotals('footer'); ?>
+    <?php if ($this->needDisplayBaseGrandtotal()):?>
+    <tr>
+        <td>
+            <small><?php echo $this->helper('sales')->__('Your credit card will be charged for') ?></small>
+        </td>
+        <td>
+            <small><?php echo $this->displayBaseGrandtotal() ?></small>
+        </td>
+    </tr>
+    <?php endif?>
+<?php endif; ?>

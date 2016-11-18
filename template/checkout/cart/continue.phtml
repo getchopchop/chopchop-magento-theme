@@ -1,0 +1,5 @@
+<?php if($this->getContinueShoppingUrl()): ?>
+    <p>
+        <button type="button" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Continue Shopping')) ?>" class="button btn-continue btn--grey" onclick="setLocation('<?php echo Mage::helper('core')->quoteEscape($this->getContinueShoppingUrl()) ?>')"><span><span><?php echo $this->__('Continue Shopping') ?></span></span></button>
+    </p>
+<?php endif; ?>

@@ -1,0 +1,115 @@
+<?xml version="1.0"?>
+<layout>
+
+
+    <all_checkout>
+        <remove name="breadcrumbs" />
+        <reference name="root">
+            <action method="setContainerClass"><val>u-container</val></action>
+            <action method="setTemplate"><value>page/2columns-right.phtml</value></action>
+            <block type="core/text_list" name="iweb.right" as="right">
+                <block type="checkout/cart" name="checkout.types" template="checkout/checkout-types.phtml" />
+                <block type="core/template" name="checkout.onepage.review.info.wrapper" template="checkout/onepage/review/wrapper.phtml">
+                    <block type="checkout/cart_totals" name="checkout.onepage.review.info.totals" as="totals" template="checkout/onepage/review/totals.phtml"/>
+                    <block type="checkout/cart_coupon" name="checkout.onepage.coupon" as="coupon" template="checkout/coupon.phtml"/>
+                </block>
+            </block>
+        </reference>
+        
+        <action block="root" method="setRightSidebarClasses"><classes>g-col-md-5 g-col-lg-4</classes></action>
+        <action block="root" method="setMainClasses"><classes>g-col-md-7 g-col-lg-8</classes></action>
+        
+    </all_checkout>
+
+
+    <checkout_cart_index>
+        <update handle="all_checkout" />
+        
+        <reference name="checkout.cart">
+            <action method="unsetChild"><name>checkout.cart.methods</name></action>
+            <block type="checkout/cart_sidebar" name="cart.subtotal" template="checkout/cart/subtotal.phtml" as="subtotal" />
+            <block type="checkout/cart" name="cart.continue.button" template="checkout/cart/continue.phtml" as="continue" />
+        </reference>
+        
+        <reference name="checkout.onepage.review.info.wrapper">
+            <action method="insert">
+                <name>checkout.cart.methods</name>
+            </action>
+        </reference>
+        
+        <reference name="breadcrumbs">
+            <action method="addCrumb" translate="crumbInfo.label crumbInfo.title crumbName" module="cms">
+                <crumbName>Home</crumbName>
+                <crumbInfo>
+                    <label>Home</label>
+                    <title>Home</title>
+                    <link>/</link>
+                </crumbInfo>
+            </action>
+            <action method="addCrumb" translate="crumbInfo.label crumbInfo.title crumbName" module="checkout">
+                <crumbName>My Cart</crumbName>
+                <crumbInfo>
+                    <label>My Cart</label>
+                    <title>My Cart</title>
+                </crumbInfo>
+            </action>
+        </reference>
+        
+        <action block="checkout.cart" method="unsetChild"><name>shipping</name></action>
+        <action block="checkout.cart" method="unsetChild"><name>crosssell</name></action>
+
+    </checkout_cart_index>
+
+
+    <!--
+    Use EmptyHandles for this
+    https://github.com/drewhunter/EmptyHandles
+    -->
+    <checkout_cart_index_empty>
+        <action block="root" method="setTemplate"><tpl>page/1column.phtml</tpl></action>
+    </checkout_cart_index_empty>
+
+
+    <checkout_onepage_index>
+        <remove name="checkout.progress.wrapper" />
+        <update handle="all_checkout" />
+        
+        <remove name="top.menu" />
+        <remove name="top.container" />
+        <remove name="welcome" />
+        <remove name="top.links" />
+        <remove name="top.search" />
+        <remove name="banner.header.promo" />
+        <remove name="cart.summary" />
+        <!-- <remove name="drawer.left.html" /> -->
+        <remove name="drawer.right.html" />
+        <remove name="loader.html" />
+        <remove name="loader.overlay.html" />
+        <remove name="es_js_templates.results" />
+        <remove name="es_js_templates.product" />
+        <remove name="es_js_templates.searchfor" />
+        <remove name="es_js_templates.category" />
+        <remove name="es_js_templates.suggest" />
+        <remove name="es_js_init" />
+        <action block="header" method="setHeaderAdditionalClass"><classname>header--stripped</classname></action>
+        
+        <!-- <reference name="before.content">
+            <block type="core/template" name="checkout.onepage.title" template="checkout/onepage/title.phtml" />
+        </reference> -->
+    </checkout_onepage_index>
+
+
+    <checkout_onepage_success>
+        <update handle="all_checkout" />
+        <reference name="right">
+            <block type="checkout/onepage_success" name="success.summary" template="checkout/success/summary.phtml" />
+        </reference>
+    </checkout_onepage_success>
+
+
+    <paypal_express_review>
+        <action block="root" method="setContainerClass"><classname>u-container-sm</classname></action>
+    </paypal_express_review>
+
+
+</layout>

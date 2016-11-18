@@ -1,0 +1,20 @@
+<?php
+/**
+ * Shoping cart sidebar
+ *
+ * @see Mage_Checkout_Block_Cart_Sidebar
+ */
+
+?>
+<?php if ($this->getIsNeedToDisplaySideBar()):?>
+    <?php $_cartQty = $this->getSummaryCount() ?>
+    <?php $_total = Mage::helper('checkout')->formatPrice($this->getSubtotal()); ?>
+    <?php if ($_cartQty>0): ?>
+        <h5>
+            <a href="#" data-cc-action="toggle" data-cc-target="cart-totals-top">
+                <?php echo $this->__('Basket Subtotal %s', $_total) ?>
+                <?php echo Mage::helper('iweb_core/icons')->getSvg('general--angle-down'); ?>
+            </a>
+        </h5>
+    <?php endif ?>
+<?php endif;?>

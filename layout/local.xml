@@ -3,10 +3,6 @@
 
     <default>
         <!-- add iweb updates -->
-        
-        <!-- add chop chop updates pulled in from cc.xml -->
-        <update handle="cc_drawer" />
-        <update handle="cc_head" />
 
         <reference name="header">
 
@@ -76,64 +72,17 @@
 
 
     <checkout_cart_index>
-        <reference name="breadcrumbs">
-            <action method="addCrumb" translate="crumbInfo.label crumbInfo.title crumbName" module="cms">
-                <crumbName>Home</crumbName>
-                <crumbInfo>
-                    <label>Home</label>
-                    <title>Home</title>
-                    <link>/</link>
-                </crumbInfo>
-            </action>
-            <action method="addCrumb" translate="crumbInfo.label crumbInfo.title crumbName" module="checkout">
-                <crumbName>My Cart</crumbName>
-                <crumbInfo>
-                    <label>My Cart</label>
-                    <title>My Cart</title>
-                </crumbInfo>
-            </action>
-        </reference>
-        
-        <!-- action block="checkout.cart" method="unsetChild"><name>shipping</name></action>
-        <action block="checkout.cart" method="unsetChild"><name>crosssell</name></action> -->
 
     </checkout_cart_index>
 
 
-    <stripped_header>
-        <remove name="top.menu" />
-        <remove name="top.container" />
-        <remove name="welcome" />
-        <remove name="top.links" />
-        <remove name="top.search" />
-        <remove name="cart.summary" />
-        <!-- <remove name="drawer.left.html" /> -->
-        <remove name="drawer.right.html" />
-        <remove name="loader.html" />
-        <remove name="loader.overlay.html" />
-        <remove name="es_js_templates.results" />
-        <remove name="es_js_templates.product" />
-        <remove name="es_js_templates.searchfor" />
-        <remove name="es_js_templates.category" />
-        <remove name="es_js_templates.suggest" />
-        <remove name="es_js_init" />
-        <action block="header" method="setHeaderAdditionalClass"><classname>header-stripped</classname></action>
-    </stripped_header>
-
-
-    <all_checkout>
-        <action block="root" method="setTemplate"><value>page/2columns-right.phtml</value></action>
-    </all_checkout>
-
-
     <checkout_onepage_index>
-        <update handle="stripped_header" />
-        <update handle="all_checkout" />
+
     </checkout_onepage_index>
 
 
     <checkout_onepage_success>
-        <update handle="all_checkout" />
+
     </checkout_onepage_success>
 
 
@@ -142,141 +91,8 @@
     </paypal_express_review>
 
 
-    <!-- CMS Internal Layout Common -->
-    <cms_layout>
-        <action block="root" method="setTemplate"><tpl>page/2columns-left.phtml</tpl></action>
-        <reference name="left">
-            <block type="core/template" name="cms.links.wrapper" template="cms/links.phtml">
-                <action method="setTitle" translate="title"><title>Help</title></action>
-                <block type="cms/block" name="cms_links">
-                    <action method="setBlockId"><block_id>cms_links</block_id></action>
-                </block>
-            </block>
-        </reference>
-    </cms_layout>
-
-
-    <!-- CMS Pages Not Home -->
-    <cms_page_view>
-        <update handle="cms_layout" />
-
-        <action block="root" method="setContainerClass"><class>u-container</class></action>
-        
-        <reference name="page_content_heading">
-            <action method="setTag"><value>h1</value></action>
-            <action method="setClasses"><value>u-text-center</value></action>
-        </reference>
-    </cms_page_view>
-
-
-    <contacts_index_index>
-        <update handle="cms_layout" />
-
-        <action block="root" method="setContainerClass"><class>u-container</class></action>
-        
-        <reference name="breadcrumbs">
-            <action method="addCrumb" translate="crumbInfo.label crumbInfo.title crumbName" module="cms">
-                <crumbName>Home</crumbName>
-                <crumbInfo>
-                    <label>Home</label>
-                    <title>Home</title>
-                    <link>/</link>
-                </crumbInfo>
-            </action>
-            <action method="addCrumb" translate="crumbInfo.label crumbInfo.title crumbName" module="contacts">
-                <crumbName>Contact</crumbName>
-                <crumbInfo>
-                    <label>Contact</label>
-                    <title>Contact</title>
-                    <link>/contacts/</link>
-                </crumbInfo>
-            </action>
-        </reference>
-        
-        <reference name="content">
-            <action method="unsetChild"><name>contactForm</name></action>
-            <block type="core/template" name="contact.wrapper" template="contacts/wrapper.phtml">
-                <block type="cms/block" name="contact_page_info">
-                    <action method="setBlockId"><block_id>contact_page_info</block_id></action>
-                </block>
-                <action method="insert"><name>contactForm</name></action>
-            </block>
-        </reference>
-        
-    </contacts_index_index>
-
-
-    <!-- CMS 404 -->
-    <cms_index_noroute>
-        <update handle="cms_page_view" />
-        
-        <reference name="breadcrumbs">
-            <action method="addCrumb" translate="crumbInfo.label crumbInfo.title crumbName" module="cms">
-                <crumbName>Home</crumbName>
-                <crumbInfo>
-                    <label>Home</label>
-                    <title>Home</title>
-                    <link>/</link>
-                </crumbInfo>
-            </action>
-            <action method="addCrumb" translate="crumbInfo.label crumbInfo.title crumbName" module="cms">
-                <crumbName>Page not found</crumbName>
-                <crumbInfo>
-                    <label>Page not found</label>
-                    <title>Page not found</title>
-                </crumbInfo>
-            </action>
-        </reference>
-    </cms_index_noroute>
-
-
-    <!-- Sitemap -->
-    <catalog_seo_sitemap>
-        <update handle="cms_layout" />
-        
-        <action block="root" method="setContainerClass"><class>u-container</class></action>
-        
-        <reference name="root">
-            <block type="core/text_list" name="left.new" as="left">
-                <block type="core/template" name="cms.links.wrapper" template="cms/links.phtml">
-                    <action method="setTitle" translate="title"><title>Customer Services</title></action>
-                    <block type="cms/block" name="cms_links">
-                        <action method="setBlockId"><block_id>cms_links</block_id></action>
-                    </block>
-                </block>
-            </block>
-        </reference>
-        <reference name="breadcrumbs">
-            <action method="addCrumb" translate="crumbInfo.label crumbInfo.title crumbName" module="cms">
-                <crumbName>Home</crumbName>
-                <crumbInfo>
-                    <label>Home</label>
-                    <title>Home</title>
-                    <link>/</link>
-                </crumbInfo>
-            </action>
-            <action method="addCrumb" translate="crumbInfo.label crumbInfo.title crumbName" module="cms">
-                <crumbName>Sitemap</crumbName>
-                <crumbInfo>
-                    <label>Sitemap</label>
-                    <title>Sitemap</title>
-                </crumbInfo>
-            </action>
-        </reference>
-    </catalog_seo_sitemap>
-
-
-    <!-- CMS Home -->
-    <cms_index_index>
-        <reference name="content">
-            <action method="unsetChild"><name>cms.wrapper</name></action>
-            <action method="unsetChild"><name>page_content_heading</name></action>
-        </reference>
-    </cms_index_index>
-
-
     <customer_account>
-        <action block="root" method="setContainerClass"><class>u-container</class></action>
+
     </customer_account>
 
 
@@ -308,17 +124,5 @@
     <wishlist_index_index>
         
     </wishlist_index_index>
-
-
-    <!-- Demo of using wordpress blog,
-    you will probably need to move 
-    the breadcrumb position
-    -->
-    
-    <!-- <wordpress_proxy_proxy>
-        <action block="root" method="setContainerClass"><class>u-container</class></action>
-        <action block="content" method="unsetChild"><block>wordpress.breadcrumb</block></action>
-        <action block="before.content" method="insert"><block>wordpress.breadcrumb</block></action>
-    </wordpress_proxy_proxy> -->
 
 </layout>

@@ -4,24 +4,43 @@
 </div>
 <?php if( $this->getCollection() && $this->count()): ?>
     <?php echo $this->getToolbarHtml() ?>
-    <table class="data-table table--striped" id="my-reviews-table">
-        <col width="1" />
-        <col width="210" />
-        <col width="1" />
-        <col />
+    <table class="data-table" id="my-reviews-table">
+        <thead>
+            <th><?php echo $this->__('Review Date'); ?></th>
+            <th><?php echo $this->__('Product Name'); ?></th>
+            <th><?php echo $this->__('Star Rating'); ?></th>
+            <th><?php echo $this->__('Review Summary'); ?></th>
+        </thead>
         <tbody>
             <?php foreach ($this->getCollection() as $_review): ?>
             <tr>
-                <td><span class="nobr"><?php echo $this->dateFormat($_review->getReviewCreatedAt()); ?></span></td>
-                <td><h4 class="product-name"><a href="<?php echo $this->getProductLink() ?>id/<?php echo $_review->getEntityPkValue() ?>"><?php echo $this->escapeHtml($_review->getName()) ?></a></h4></td>
-                <td>
+                <td data-label="<?php echo $this->__('Review Date'); ?>">
+                    <span class="nobr"><?php echo $this->dateFormat($_review->getReviewCreatedAt()); ?></span>
+                </td>
+                <td data-label="<?php echo $this->__('Product Name'); ?>">
+                    <h5 class="product-name"><a href="<?php echo $this->getProductLink() ?>id/<?php echo $_review->getEntityPkValue() ?>"><?php echo $this->escapeHtml($_review->getName()) ?></a></h5>
+                </td>
+                <td data-label="<?php echo $this->__('Star Rating'); ?>">
                 <?php if($_review->getSum()): ?>
-                    <div class="rating-box">
-                        <div class="rating" style="width:<?php echo ( $_review->getSum() / $_review->getCount() ) ?>%;"></div>
+                    <div class="reviews">
+                        <div class="reviews__stars">
+                            <div class="reviews__negative">
+                                <?php for($i=0;$i<5;$i++) : ?>
+                                    <?php echo Mage::helper('iweb_core/icons')->getSvg('custom--star'); ?>
+                                <?php endfor; ?>
+                            </div>
+                            <div class="reviews__positive" style="width:<?php echo ( $_review->getSum() / $_review->getCount() ) ?>%;">
+                                <?php for($i=0;$i<5;$i++) : ?>
+                                    <?php echo Mage::helper('iweb_core/icons')->getSvg('custom--star'); ?>
+                                <?php endfor; ?>
+                            </div>
+                        </div>
                     </div>
                 <?php endif; ?>
                 </td>
-                <td><?php echo $this->helper('review')->getDetailHtml($_review->getDetail()) ?></td>
+                <td data-label="<?php echo $this->__('Review Summary'); ?>">
+                    <p class="u-ellipsis"><?php echo $this->helper('review')->getDetailHtml($_review->getDetail()) ?></p>
+                </td>
             </tr>
             <?php endforeach; ?>
         </tbody>

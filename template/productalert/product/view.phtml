@@ -1,0 +1,7 @@
+<?php /* @var $this Mage_ProductAlert_Block_Product_View */?>
+<p class="<?php echo $this->getHtmlClass() ?>">
+    <a href="<?php echo $this->escapeHtml($this->getSignupUrl()) ?>" title="<?php echo $this->escapeHtml($this->__($this->getSignupLabel())); ?>" class="btn btn--share">
+        <?php echo Mage::helper('iweb_core/icons')->getSvg('general--envelope'); ?>
+        <span><?php echo $this->escapeHtml($this->__($this->getSignupLabel())); ?></span>
+    </a>
+</p>

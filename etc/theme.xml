@@ -4,9 +4,32 @@
     <layout>
         
         <updates>
+            
+            <!-- unhook what you dont want from here -->
             <chopchop>
                 <file>cc.xml</file>
             </chopchop>
+            
+            <iweb_checkout>
+                <file>iweb_checkout.xml</file>
+            </iweb_checkout>
+            
+            <iweb_cms>
+                <file>iweb_cms.xml</file>
+            </iweb_cms>
+            
+            <!-- <iweb_catalog>
+                <file>iweb_catalog.xml</file>
+            </iweb_catalog> -->
+            
+            <iweb_customer>
+                <file>iweb_customer.xml</file>
+            </iweb_customer>
+            
+            <iweb_wordpress>
+                <file>iweb_wordpress.xml</file>
+            </iweb_wordpress>
+            
         </updates>
         
     </layout>

@@ -1,0 +1,227 @@
+<?php
+/**
+ * @var Mage_Page_Block_Html_Header $this
+ */
+?>
+<header class="header">
+    <div class="u-container u-container--full">
+        <div class="header__body">
+            
+            <div class="header__burger u-visible-xs u-visible-sm">
+                <a href="#" class="btn btn--icon" data-cc-target="drawer-left" data-cc-action="activate">
+                    <?php echo Mage::helper('iweb_core/icons')->getSvg('custom--burger'); ?>
+                </a>
+            </div>
+
+            <div class="header__logo">
+                <a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" class="logo">
+                    <picture>
+                        <source media="(max-width: 25.99em)" srcset="<?php echo $this->getLogoSrcSmall() ?>">
+                        <img src="<?php echo $this->getLogoSrc() ?>" class="logo__img" width="305" height="50" alt="<?php echo $this->getLogoAlt() ?>" />
+                    </picture>
+                </a>
+            </div>
+
+            <?php echo $this->getChildHtml('topMenu') ?>
+
+            <div class="header__options">
+                <div class="header__search u-hidden-xs u-hidden-sm u-hidden-md">
+                    <?php echo $this->getChildHtml('topSearch') ?>
+                </div>
+                <ul class="nav nav--inline nav--space">
+                    <li class="u-visible-xs u-visible-sm u-visible-md">
+                        <a href="#" class="btn btn--icon">
+                            <?php echo Mage::helper('iweb_core/icons')->getSvg('custom--search'); ?>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="<?php echo Mage::getUrl('customer/account'); ?>" class="btn btn--icon">
+                            <?php echo Mage::helper('iweb_core/icons')->getSvg('custom--user'); ?>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="<?php echo Mage::getUrl('checkout/cart'); ?>" class="btn btn--icon" data-cc-target="drawer-right" data-ccnav-toggle-your-goal-action="activate">
+                            <?php echo Mage::helper('iweb_core/icons')->getSvg('custom--basket'); ?>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+        <div class="header__dropdown u-toggle js-menu-header">
+            
+            <div class="menu js-menu">
+                <div  class="tabs">
+                    
+                    <div class="tabs__header menu__header" id="nav-toggle-our-products" data-cc-group="collapse1-headers" data-cc-action="activate" data-cc-target="collapse1-body-0">
+                        <h4>Our Products</h4>
+                    </div>
+                    <div class="tabs__body menu__body" id="collapse1-body-0" data-cc-group="collapse1-bodies" data-cc-cascade-activate="nav-toggle-our-products">
+                        
+                        <div class="dropdown">
+                            <div class="dropdown__body">
+                                <div class="u-container">
+                                    <div class="grid g-gutter g-center">
+                                        
+                                        <div class="g-col-xs-6 g-col-md-4 g-col-lg-2">
+                                            <div class="dropdown-item">
+                                                <a href="#">
+                                                    <div class="dropdown-product__body">
+                                                        <img src="http://pimsweb1.cms.iwebcloud.co.uk/300x300?bg=ccc&amp;fg=fff" class="u-img-responsive">
+                                                    </div>
+                                                    <div class="dropdown-product__footer">
+                                                        <h5>100% Pure Dextrose</h5>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="g-col-xs-6 g-col-md-4 g-col-lg-2">
+                                            <div class="dropdown-item">
+                                                <a href="#">
+                                                    <div class="dropdown-product__body">
+                                                        <img src="http://pimsweb1.cms.iwebcloud.co.uk/300x300?bg=ccc&amp;fg=fff" class="u-img-responsive">
+                                                    </div>
+                                                    <div class="dropdown-product__footer">
+                                                        <h5>100% Pure Dextrose</h5>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="g-col-xs-6 g-col-md-4 g-col-lg-2">
+                                            <div class="dropdown-item">
+                                                <a href="#">
+                                                    <div class="dropdown-product__body">
+                                                        <img src="http://pimsweb1.cms.iwebcloud.co.uk/300x300?bg=ccc&amp;fg=fff" class="u-img-responsive">
+                                                    </div>
+                                                    <div class="dropdown-product__footer">
+                                                        <h5>100% Pure Dextrose</h5>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="g-col-xs-6 g-col-md-4 g-col-lg-2">
+                                            <div class="dropdown-item">
+                                                <a href="#">
+                                                    <div class="dropdown-product__body">
+                                                        <img src="http://pimsweb1.cms.iwebcloud.co.uk/300x300?bg=ccc&amp;fg=fff" class="u-img-responsive">
+                                                    </div>
+                                                    <div class="dropdown-product__footer">
+                                                        <h5>100% Pure Dextrose</h5>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="g-col-xs-6 g-col-md-4 g-col-lg-2">
+                                            <div class="dropdown-item">
+                                                <a href="#">
+                                                    <div class="dropdown-product__body">
+                                                        <img src="http://pimsweb1.cms.iwebcloud.co.uk/300x300?bg=ccc&amp;fg=fff" class="u-img-responsive">
+                                                    </div>
+                                                    <div class="dropdown-product__footer">
+                                                        <h5>100% Pure Dextrose</h5>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="g-col-xs-6 g-col-md-4 g-col-lg-2">
+                                            <div class="dropdown-item">
+                                                <a href="#">
+                                                    <div class="dropdown-product__body">
+                                                        <img src="http://pimsweb1.cms.iwebcloud.co.uk/300x300?bg=ccc&amp;fg=fff" class="u-img-responsive">
+                                                    </div>
+                                                    <div class="dropdown-product__footer">
+                                                        <h5>100% Pure Dextrose</h5>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="dropdown__footer">
+                                <div class="u-container u-container--full">
+                                    <a href="#" class="btn btn--arrow btn--invert">View all products</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    
+                    <div class="tabs__header menu__header" id="nav-toggle-your-goal" data-cc-group="collapse1-headers" data-cc-action="activate" data-cc-target="collapse1-body-1">
+                        <h4>Your Goal</h4>
+                    </div>
+                    <div class="tabs__body menu__body" id="collapse1-body-1" data-cc-group="collapse1-bodies" data-cc-cascade-activate="nav-toggle-your-goal">
+                        
+                        <div class="dropdown">
+                            <div class="dropdown__body">
+                                <div class="u-container">
+                                    <div class="grid g-gutter g-center">
+                                        
+                                        <div class="g-col-xs-6 g-col-md-4 g-col-lg-2">
+                                            <div class="dropdown-item">
+                                                <a href="#">
+                                                    <div class="dropdown-product__body">
+                                                        <img src="http://pimsweb1.cms.iwebcloud.co.uk/300x300?bg=ccc&amp;fg=fff" class="u-img-responsive">
+                                                    </div>
+                                                    <div class="dropdown-product__footer">
+                                                        <h5>100% Pure Dextrose</h5>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="g-col-xs-6 g-col-md-4 g-col-lg-2">
+                                            <div class="dropdown-item">
+                                                <a href="#">
+                                                    <div class="dropdown-product__body">
+                                                        <img src="http://pimsweb1.cms.iwebcloud.co.uk/300x300?bg=ccc&amp;fg=fff" class="u-img-responsive">
+                                                    </div>
+                                                    <div class="dropdown-product__footer">
+                                                        <h5>100% Pure Dextrose</h5>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="g-col-xs-6 g-col-md-4 g-col-lg-2">
+                                            <div class="dropdown-item">
+                                                <a href="#">
+                                                    <div class="dropdown-product__body">
+                                                        <img src="http://pimsweb1.cms.iwebcloud.co.uk/300x300?bg=ccc&amp;fg=fff" class="u-img-responsive">
+                                                    </div>
+                                                    <div class="dropdown-product__footer">
+                                                        <h5>100% Pure Dextrose</h5>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="dropdown__footer">
+                                <div class="u-container u-container--full">
+                                    <a href="#" class="btn btn--arrow btn--invert">View all goals</a>
+                                </div>
+                            </div>
+                            
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</header>
+
+<?php echo $this->getChildHtml('banner_confidence'); ?>

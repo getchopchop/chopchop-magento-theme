@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<layout>
+
+    <!-- Demo of using wordpress blog,
+    you will probably need to move 
+    the breadcrumb position
+    -->
+    <wordpress_proxy_proxy>
+        <action block="root" method="setContainerClass"><class>u-container</class></action>
+        <action block="content" method="unsetChild"><block>wordpress.breadcrumb</block></action>
+        <action block="before.content" method="insert"><block>wordpress.breadcrumb</block></action>
+    </wordpress_proxy_proxy>
+
+</layout>

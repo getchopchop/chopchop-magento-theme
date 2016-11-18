@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<layout>
+
+    <sales_order_history>
+        <action block="my.account.wrapper" method="unsetChild"><name>customer.account.link.back</name></action>
+    </sales_order_history>
+
+</layout>

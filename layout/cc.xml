@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <layout>
 
-    <cc_drawer>
+    <default>
         
         <!-- Drawers/Modals -->
         <reference name="before_body_end">
@@ -27,9 +27,7 @@
 
             </block>
         </reference>
-    </cc_drawer>
 
-    <cc_head>
         <reference name="head">
             <!-- meta viewport tag -->
             <block type="core/text" name="viewport.meta">
@@ -54,10 +52,10 @@
             <!-- ADD Build CSS -->
             <action method="addItem"><type>skin_css</type><name>build/vendor/normalize.css/normalize.css</name></action>
             <action method="addItem"><type>skin_css</type><name>build/css/styles.css</name></action>
+            <action method="addItem"><type>skin_js</type><name>build/vendor/picturefill/picturefill.js</name></action>
+            <!-- <action method="addItem"><type>skin_js</type><name>build/vendor/lazysizes/lazysizes.js</name></action> -->
 
             <!-- ADD Build JS -->
-            <!-- <action method="addItem"><type>skin_js</type><name>build/vendor/picturefill/picturefill.js</name></action> -->
-            <!-- <action method="addItem"><type>skin_js</type><name>build/vendor/lazysizes/lazysizes.js</name></action> -->
             <action method="addItem"><type>skin_js</type><name>build/vendor/enquire/enquire.js</name></action>
             <action method="addItem"><type>skin_js</type><name>build/vendor/svgxuse/svgxuse.js</name></action>
             <action method="addItem"><type>skin_js</type><name>build/vendor/svg4everybody/svg4everybody.js</name><params/><if>lt IE 9</if></action>
@@ -76,48 +74,20 @@
             <action method="addItem"><type>skin_js</type><name>build/vendor/iweb/Iweb_QtyWidget.js</name></action>
 
         </reference>
-    </cc_head>
+        
+    </default>
 
-    <cms_index_index>
-        <action block="iweb.root.proxy" method="addBodyClass"><classname>template-homepage</classname></action>
-    </cms_index_index>
-
-    <catalog_category_view>
-        <action block="iweb.root.proxy" method="addBodyClass"><classname>template-product-listing</classname></action>
-    </catalog_category_view>
-
-    <catalog_product_view>
-        <action block="iweb.root.proxy" method="addBodyClass"><classname>template-product-information</classname></action>
-    </catalog_product_view>
-
-    <checkout_cart_index>
-        <action block="iweb.root.proxy" method="addBodyClass"><classname>template-basket</classname></action>
-    </checkout_cart_index>
-
-    <checkout_onepage_index>
-        <action block="iweb.root.proxy" method="addBodyClass"><classname>template-checkout</classname></action>
-    </checkout_onepage_index>
-
-    <checkout_onepage_success>
-        <action block="iweb.root.proxy" method="addBodyClass"><classname>template-checkout</classname></action>
-    </checkout_onepage_success>
 
     <customer_account_create>
         <action block="root" method="setContainerClass"><classname>u-container-sm</classname></action>
     </customer_account_create>
 
+
     <customer_account_forgotpassword>
         <action block="root" method="setContainerClass"><classname>u-container-sm</classname></action>
     </customer_account_forgotpassword>
 
-    <iweb_customer_account>
-        <action block="iweb.root.proxy" method="addBodyClass"><classname>template-account</classname></action>
-    </iweb_customer_account>
-
-    <paypal_express_review>
-        <action block="root" method="setContainerClass"><classname>u-container-sm</classname></action>
-    </paypal_express_review>
-
+    <!-- this is cc related -->
     <remember_me_modal>
         <reference name="modal.html">
             <action method="setModalSize"><size>modal--sm</size></action>
@@ -126,6 +96,18 @@
             <action method="insert"><name>persistent.remember.me.tooltip</name></action>
         </reference>
     </remember_me_modal>
+
+
+    <customer_account>
+        <action block="root" method="setContainerClass"><class>u-container</class></action>
+    </customer_account>
+
+    <customer_address_index>
+    </customer_address_index>
+
+
+    <customer_account_index>
+    </customer_account_index>
 
 
     <customer_account_login>
@@ -144,5 +126,5 @@
         <action block="checkout.onepage.billing" method="unsetChild"><name>persistent.remember.me.tooltip</name></action>
         <update handle="remember_me_modal" />
     </checkout_onepage_index>
-
+    
 </layout>
