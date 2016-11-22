@@ -119,15 +119,15 @@ $canApplyMsrp = Mage::helper('catalog')->canApplyMsrp($_item->getProduct(), Mage
                     
                     <div class="quantity js-qty">
                         <div class="quantity__amount">
-                            <a href="#" class="btn btn--icon btn--square js-qty-down">
-                                <?php echo Mage::helper('iweb_core/icons')->getSvg('custom--minus'); ?>
+                            <a href="#" class="btn btn--brown quantity__desc js-qty-down">
+                                <?php echo Mage::helper('iweb_core/icons')->getSvg('general', 'minus'); ?>
                                 <span class="u-visually-hidden"><?php echo $this->__('Decrease quantity'); ?></span>
                             </a>
                             <input name="cart[<?php echo $_item->getId() ?>][qty]"
                            data-cart-item-id="<?php echo $this->jsQuoteEscape($_item->getSku()) ?>"
-                           value="<?php echo $this->getQty() ?>" size="4" title="<?php echo $this->__('Qty') ?>" class="input-text qty js-qty-input" maxlength="12" />
-                            <a href="#" class="btn btn--icon btn--square js-qty-up">
-                                <?php echo Mage::helper('iweb_core/icons')->getSvg('custom--plus'); ?>
+                           value="<?php echo $this->getQty() ?>" size="4" title="<?php echo $this->__('Qty') ?>" class="input-text u-text-center input--sm qty js-qty-input" maxlength="12" />
+                            <a href="#" class="btn btn--brown quantity__inc js-qty-up">
+                                <?php echo Mage::helper('iweb_core/icons')->getSvg('general', 'plus'); ?>
                                 <span class="u-visually-hidden"><?php echo $this->__('Increase quantity'); ?></span>
                             </a>
                         </div>

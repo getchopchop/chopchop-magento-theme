@@ -1,33 +1,31 @@
-<div class="bordered-box">
-    <div class="u-section-xs u-container">
-        <?php if ($this->getOrderId()):?>
+<div class="u-section-xs">
+    <?php if ($this->getOrderId()):?>
 
-            <?php if ($this->getCanViewOrder()) :?>
-            <p class="h3"><?php echo $this->__('Your order # is: %s', $this->getOrderId()) ?></p>
-            <a href="<?php echo $this->getViewOrderUrl(); ?>" class="btn btn--primary"><?php echo $this->__('View Order'); ?></a>
-            <br /><br />
-            <?php  else :?>
-            <p class="h3"><?php echo $this->__('Your order # is: %s.', $this->escapeHtml($this->getOrderId())) ?></p>
-            <?php endif;?>
+        <?php if ($this->getCanViewOrder()) :?>
+        <p class="h3"><?php echo $this->__('Your order # is: %s', $this->getOrderId()) ?></p>
+        <a href="<?php echo $this->getViewOrderUrl(); ?>" class="btn btn--primary"><?php echo $this->__('View Order'); ?></a>
+        <br /><br />
+        <?php  else :?>
+        <p class="h3"><?php echo $this->__('Your order # is: %s.', $this->escapeHtml($this->getOrderId())) ?></p>
+        <?php endif;?>
 
-            <p class="micro"><?php echo $this->__('You will receive an order confirmation email with details of your order and a link to track its progress.') ?></p>
-            <?php if ($this->getCanViewOrder() && $this->getCanPrintOrder()) :?>
-                <?php echo $this->__('<a href="%s" onclick="this.target=\'_blank\'" class="btn btn--primary">Print confirmation</a>', $this->getPrintUrl()) ?>
-            <?php endif;?>
+        <p class="micro"><?php echo $this->__('You will receive an order confirmation email with details of your order and a link to track its progress.') ?></p>
+        <?php if ($this->getCanViewOrder() && $this->getCanPrintOrder()) :?>
+            <?php echo $this->__('<a href="%s" onclick="this.target=\'_blank\'" class="btn btn--primary">Print confirmation</a>', $this->getPrintUrl()) ?>
+        <?php endif;?>
 
-        <?php endif;?>
-        
-        <?php if ($this->getAgreementRefId()): ?>
-            <p><?php echo $this->__('Your billing agreement # is: %s.', sprintf('<a href="%s">%s</a>', $this->escapeHtml($this->getAgreementUrl()), $this->escapeHtml($this->getAgreementRefId())))?></p>
-        <?php endif;?>
-        <?php if ($profiles = $this->getRecurringProfiles()):?>
-        <p><?php echo $this->__('Your recurring payment profiles:'); ?></p>
-        <ul class="disc">
-        <?php foreach($profiles as $profile):?>
-        <?php $profileIdHtml = ($this->getCanViewProfiles() ? sprintf('<a href="%s">%s</a>', $this->escapeHtml($this->getProfileUrl($profile)), $this->escapeHtml($this->getObjectData($profile, 'reference_id'))) : $this->escapeHtml($this->getObjectData($profile, 'reference_id')));?>
-            <li><?php echo $this->__('Payment profile # %s: "%s".', $profileIdHtml, $this->escapeHtml($this->getObjectData($profile, 'schedule_description')))?></li>
-        <?php endforeach;?>
-        </ul>
-        <?php endif;?>
-    </div>
+    <?php endif;?>
+    
+    <?php if ($this->getAgreementRefId()): ?>
+        <p><?php echo $this->__('Your billing agreement # is: %s.', sprintf('<a href="%s">%s</a>', $this->escapeHtml($this->getAgreementUrl()), $this->escapeHtml($this->getAgreementRefId())))?></p>
+    <?php endif;?>
+    <?php if ($profiles = $this->getRecurringProfiles()):?>
+    <p><?php echo $this->__('Your recurring payment profiles:'); ?></p>
+    <ul class="disc">
+    <?php foreach($profiles as $profile):?>
+    <?php $profileIdHtml = ($this->getCanViewProfiles() ? sprintf('<a href="%s">%s</a>', $this->escapeHtml($this->getProfileUrl($profile)), $this->escapeHtml($this->getObjectData($profile, 'reference_id'))) : $this->escapeHtml($this->getObjectData($profile, 'reference_id')));?>
+        <li><?php echo $this->__('Payment profile # %s: "%s".', $profileIdHtml, $this->escapeHtml($this->getObjectData($profile, 'schedule_description')))?></li>
+    <?php endforeach;?>
+    </ul>
+    <?php endif;?>
 </div>
