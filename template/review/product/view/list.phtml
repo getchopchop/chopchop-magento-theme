@@ -23,12 +23,12 @@
                                 <div class="reviews__stars rating-box">
                                     <div class="reviews__negative">
                                         <?php for($i=0;$i<5;$i++) : ?>
-                                        <?php echo Mage::helper('iweb_core/icons')->getSvg('custom--star'); ?>
+                                            <?php echo Mage::helper('iweb_core/icons')->getSvg('general', 'star-full'); ?>
                                         <?php endfor; ?>
                                     </div>
                                     <div class="reviews__positive rating" style="width:<?php echo $_vote->getPercent() ?>%">
                                         <?php for($i=0;$i<5;$i++) : ?>
-                                        <?php echo Mage::helper('iweb_core/icons')->getSvg('custom--star'); ?>
+                                            <?php echo Mage::helper('iweb_core/icons')->getSvg('general', 'star-full'); ?>
                                         <?php endfor; ?>
                                     </div>
                                 </div>
