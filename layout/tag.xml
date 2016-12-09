@@ -5,3 +5,4 @@ If that day is today, delete
 this file, Magento will fallback
 to the base tag.xml
 -->
+<layout></layout>

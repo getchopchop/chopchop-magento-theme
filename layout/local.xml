@@ -1,5 +1,69 @@
 <?xml version="1.0"?>
 <layout>
 
+    <default>
+        <!-- add iweb updates -->
+
+        <reference name="header">
+
+        </reference>
+
+        <reference name="footer">
+
+        </reference>
+        
+    </default>
+
+    <!-- Product List, search result, advanced search result -->
+    <all_product_listing>
+        
+    </all_product_listing>
+
+
+    <catalog_category_default>
+
+    </catalog_category_default>
+
+
+    <catalog_category_view>
+        <update handle="all_product_listing" />
+    </catalog_category_view>
+
+
+    <catalog_category_layered>
+        <update handle="all_product_listing" />
+    </catalog_category_layered>
+
+
+    <catalogsearch_result_index>
+        <update handle="all_product_listing" />
+    </catalogsearch_result_index>
+
+
+    <catalog_product_view>
+        <update handle="iweb_media" />
+        
+        <action block="root" method="setTemplate"><value>page/1column.phtml</value></action>
+        
+        <reference name="product.info">
+            
+            <!-- Tabs Block Demo -->
+            <block type="catalog/product_view" name="product.tabs" as="tabs" template="catalog/product/view/tabs.phtml">
+                <block type="core/text_list" name="product.tab.1">
+                    <action method="addToParentGroup"><group>detailed_info</group></action>
+                    <action method="setTitle" translate="value"><value>Description</value></action>
+                    <action method="insert"><name>product.description</name></action>
+                </block>
+            </block>
+            
+        </reference>
+
+    </catalog_product_view>
+
+
+
+    <wishlist_index_index>
+        
+    </wishlist_index_index>
 
 </layout>
