@@ -1,0 +1,35 @@
+<?php if($this->getCanShow()) : ?>
+<?php $_order = $this->getOrder() ?>
+<table class="data-table table" id="my-orders-table">
+    <thead>
+        <tr>
+            <th><?php echo $this->__('Product Name') ?></th>
+            <th><?php echo $this->__('SKU') ?></th>
+            <th class="a-right"><?php echo $this->__('Price') ?></th>
+            <th class="a-right"><?php echo $this->__('Qty') ?></th>
+        </tr>
+    </thead>
+    <?php $_items = $_order->getItemsCollection(); ?>
+    <?php $_index = 0; ?>
+    <?php $_count = $_items->count(); ?>
+    <tbody>
+    <?php foreach ($_items as $_item): ?>
+    <?php if ($_item->getParentItem()) continue; ?>
+        <?php echo $this->getItemHtml($_item) ?>
+    <?php endforeach; ?>
+    </tbody>
+</table>
+<div class="grid">
+    <div class="g-col-md-6">
+         <button type="button" class="button" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Continue Shopping')) ?>" onclick="window.location='<?php echo $this->getUrl() ?>'"><span><span><?php echo $this->__('Continue Shopping') ?></span></span></button>
+    </div>
+    <div class="g-col-md-6">
+        <table class="data-table">
+            <tfoot>
+                <?php echo $this->getChildHtml('order_totals') ?>
+            </tfoot>
+        </table>
+    </div>
+</div>
+<script type="text/javascript">decorateTable('my-orders-table', {'tbody' : ['odd', 'even'], 'tbody tr' : ['first', 'last']})</script>
+<?php endif; ?>

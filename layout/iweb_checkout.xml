@@ -4,26 +4,45 @@
 
     <all_checkout>
         <remove name="breadcrumbs" />
+        <remove name="footer.body" />
+        
         <reference name="root">
-            <action method="setContainerClass"><val>u-container</val></action>
             <action method="setTemplate"><value>page/2columns-right.phtml</value></action>
+            <action method="setRightSidebarClass"><classes>g-col-md-5 g-col-lg-4</classes></action>
+            <action method="setContentClass"><classes>g-col-md-7 g-col-lg-8</classes></action>
+        </reference>
+        
+        <action block="footer" method="setAdditionalClass"><classname>footer--stripped</classname></action>
+        
+        <reference name="after.content">
+            <block type="core/template" name="checkout.confidence.footer" template="checkout/onepage/confidence/footer.phtml" />
+        </reference>
+    </all_checkout>
+
+
+    <pre_buying_checkout>
+        <reference name="root">
             <block type="core/text_list" name="iweb.right" as="right">
                 <block type="checkout/cart" name="checkout.types" template="checkout/checkout-types.phtml" />
                 <block type="core/template" name="checkout.onepage.review.info.wrapper" template="checkout/onepage/review/wrapper.phtml">
                     <block type="checkout/cart_totals" name="checkout.onepage.review.info.totals" as="totals" template="checkout/onepage/review/totals.phtml"/>
                     <block type="checkout/cart_coupon" name="checkout.onepage.coupon" as="coupon" template="checkout/coupon.phtml"/>
+                    <action method="append"><name>footer.payment.icons</name></action>
                 </block>
             </block>
         </reference>
-        
-        <action block="root" method="setRightSidebarClasses"><classes>g-col-md-5 g-col-lg-4</classes></action>
-        <action block="root" method="setMainClasses"><classes>g-col-md-7 g-col-lg-8</classes></action>
-        
-    </all_checkout>
+    </pre_buying_checkout>
 
 
     <checkout_cart_index>
         <update handle="all_checkout" />
+        <update handle="pre_buying_checkout" />
+        
+        <reference name="root">
+            <action method="setContainerClass"><class>u-container-lg u-section</class></action>
+            <action method="setContentClass"><class>g-col-md-8</class></action>
+            <action method="setRightSidebarClass"><class>g-col-md-4</class></action>
+        </reference>
         
         <reference name="checkout.cart">
             <action method="unsetChild"><name>checkout.cart.methods</name></action>
@@ -34,24 +53,6 @@
         <reference name="checkout.onepage.review.info.wrapper">
             <action method="insert">
                 <name>checkout.cart.methods</name>
-            </action>
-        </reference>
-        
-        <reference name="breadcrumbs">
-            <action method="addCrumb" translate="crumbInfo.label crumbInfo.title crumbName" module="cms">
-                <crumbName>Home</crumbName>
-                <crumbInfo>
-                    <label>Home</label>
-                    <title>Home</title>
-                    <link>/</link>
-                </crumbInfo>
-            </action>
-            <action method="addCrumb" translate="crumbInfo.label crumbInfo.title crumbName" module="checkout">
-                <crumbName>My Cart</crumbName>
-                <crumbInfo>
-                    <label>My Cart</label>
-                    <title>My Cart</title>
-                </crumbInfo>
             </action>
         </reference>
         
@@ -71,17 +72,21 @@
 
 
     <checkout_onepage_index>
-        <remove name="checkout.progress.wrapper" />
         <update handle="all_checkout" />
+        <update handle="pre_buying_checkout" />
         
+        <remove name="checkout.progress.wrapper" />
         <remove name="top.menu" />
         <remove name="top.container" />
         <remove name="welcome" />
+        <remove name="header.promo.cms" />
         <remove name="top.links" />
         <remove name="top.search" />
-        <remove name="banner.header.promo" />
         <remove name="cart.summary" />
-        <!-- <remove name="drawer.left.html" /> -->
+        <remove name="cart.link" />
+        <remove name="header.toggles" />
+        <remove name="menu.toggle" />
+        <remove name="drawer.left.html" />
         <remove name="drawer.right.html" />
         <remove name="loader.html" />
         <remove name="loader.overlay.html" />
@@ -91,8 +96,19 @@
         <remove name="es_js_templates.category" />
         <remove name="es_js_templates.suggest" />
         <remove name="es_js_init" />
-        <action block="header" method="setHeaderAdditionalClass"><classname>header--stripped</classname></action>
         
+        <reference name="header">
+            <action method="setHeaderAdditionalClass"><classname>header--stripped</classname></action>
+            <action method="setHeaderContainerClass"><value>u-container-md</value></action>
+            <block type="core/template" name="checkout.confidence.header" as="summary" template="checkout/onepage/confidence/header.phtml" />
+        </reference>
+        
+        <reference name="root">
+            <action method="setContainerClass"><class>u-container-md u-section-sm</class></action>
+            <action method="setContentClass"><class>g-col-md-7 g-col-lg-8</class></action>
+            <action method="setRightSidebarClass"><class>g-col-md-5 g-col-lg-4</class></action>
+        </reference>
+    
         <!-- <reference name="before.content">
             <block type="core/template" name="checkout.onepage.title" template="checkout/onepage/title.phtml" />
         </reference> -->
