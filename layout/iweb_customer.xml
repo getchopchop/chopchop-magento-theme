@@ -1,6 +1,41 @@
 <?xml version="1.0"?>
 <layout>
 
+    <customer_logged_out>
+
+    </customer_logged_out>
+
+
+    <customer_logged_in>
+
+    </customer_logged_in>
+
+
+    <customer_account>
+
+    </customer_account>
+
+
+    <customer_address_index>
+
+    </customer_address_index>
+
+
+    <customer_account_index>
+
+    </customer_account_index>
+
+
+    <customer_account_login>
+
+    </customer_account_login>
+
+
+    <customer_account_create>
+
+    </customer_account_create>
+
+
     <sales_order_history>
         <action block="my.account.wrapper" method="unsetChild"><name>customer.account.link.back</name></action>
     </sales_order_history>
