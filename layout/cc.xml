@@ -2,7 +2,7 @@
 <layout>
 
     <default>
-        
+
         <!-- Drawers/Modals -->
         <reference name="before_body_end">
             <block type="core/text_list" name="drawers">
@@ -103,6 +103,7 @@
     <customer_account>
         <action block="root" method="setContainerClass"><class>u-container</class></action>
     </customer_account>
+
 
     <customer_address_index>
     </customer_address_index>

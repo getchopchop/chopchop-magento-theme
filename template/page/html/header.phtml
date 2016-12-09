@@ -4,49 +4,32 @@
  */
 ?>
 <header class="header">
-    <div class="u-container u-container--full">
-        <div class="header__body">
-            
-            <div class="header__burger u-visible-xs u-visible-sm">
-                <a href="#" class="btn btn--icon" data-cc-target="drawer-left" data-cc-action="activate">
-                    <?php echo Mage::helper('iweb_core/icons')->getSvg('general', 'menu'); ?>
-                </a>
-            </div>
 
-            <div class="header__logo">
-                <a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" class="logo">
-                    <picture>
-                        <source media="(max-width: 25.99em)" srcset="<?php echo $this->getLogoSrcSmall() ?>">
-                        <img src="<?php echo $this->getLogoSrc() ?>" class="logo__img" width="305" height="50" alt="<?php echo $this->getLogoAlt() ?>" />
-                    </picture>
-                </a>
-            </div>
-
-            <?php echo $this->getChildHtml('topMenu') ?>
-
-            <div class="header__options">
-                <div class="header__search u-hidden-xs u-hidden-sm u-hidden-md">
-                    <?php echo $this->getChildHtml('topSearch') ?>
-                </div>
-                <ul class="nav nav--inline nav--space">
-                    <li class="u-visible-xs u-visible-sm u-visible-md">
-                        <a href="#" class="btn btn--icon">
-                            <?php echo Mage::helper('iweb_core/icons')->getSvg('general', 'search3'); ?>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="<?php echo Mage::getUrl('customer/account'); ?>" class="btn btn--icon">
-                            <?php echo Mage::helper('iweb_core/icons')->getSvg('general', 'user'); ?>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="<?php echo Mage::getUrl('checkout/cart'); ?>" class="btn btn--icon" data-cc-target="drawer-right" data-ccnav-toggle-your-goal-action="activate">
-                            <?php echo Mage::helper('iweb_core/icons')->getSvg('general', 'cart'); ?>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-
-        </div>
-    </div>
+    <a href="#" class="btn btn--icon" data-cc-target="drawer-left" data-cc-action="activate">
+        <?php echo Mage::helper('iweb_core/icons')->getSvg('general', 'menu'); ?>
+    </a>
+    
+    <a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" class="logo">
+        <picture>
+            <source media="(max-width: 25.99em)" srcset="<?php echo $this->getLogoSrcSmall() ?>">
+            <img src="<?php echo $this->getLogoSrc() ?>" class="logo__img" width="305" height="50" alt="<?php echo $this->getLogoAlt() ?>" />
+        </picture>
+    </a>
+    
+    <?php echo $this->getChildHtml('topMenu') ?>
+    
+    <?php echo $this->getChildHtml('topSearch') ?>
+    
+    <a href="#" class="btn btn--icon">
+        <?php echo Mage::helper('iweb_core/icons')->getSvg('general', 'search3'); ?>
+    </a>
+    
+    <a href="<?php echo Mage::getUrl('customer/account'); ?>" class="btn btn--icon">
+        <?php echo Mage::helper('iweb_core/icons')->getSvg('general', 'user'); ?>
+    </a>
+    
+    <a href="<?php echo Mage::getUrl('checkout/cart'); ?>" class="btn btn--icon" data-cc-target="drawer-right" data-ccnav-toggle-your-goal-action="activate">
+        <?php echo Mage::helper('iweb_core/icons')->getSvg('general', 'cart'); ?>
+    </a>
+    
 </header>
