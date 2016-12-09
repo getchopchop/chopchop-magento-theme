@@ -2,7 +2,7 @@
 <layout>
 
     <default>
-
+        
         <!-- Drawers/Modals -->
         <reference name="before_body_end">
             <block type="core/text_list" name="drawers">
@@ -50,7 +50,7 @@
             <action method="removeItem"><type>skin_css</type><name>css/iwebelasticsearch/autocomplete.css</name></action>
 
             <!-- ADD Build CSS -->
-            <action method="addItem"><type>skin_css</type><name>build/vendor/normalize.css/normalize.css</name></action>
+            <action method="addItem"><type>skin_css</type><name>chopchop/build/vendor/normalize.css/normalize.css</name></action>
             <action method="addItem"><type>skin_css</type><name>build/css/styles.css</name></action>
             <action method="addItem"><type>skin_js</type><name>build/vendor/picturefill/picturefill.js</name></action>
             <!-- <action method="addItem"><type>skin_js</type><name>build/vendor/lazysizes/lazysizes.js</name></action> -->
@@ -103,7 +103,6 @@
     <customer_account>
         <action block="root" method="setContainerClass"><class>u-container</class></action>
     </customer_account>
-
 
     <customer_address_index>
     </customer_address_index>

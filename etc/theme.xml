@@ -18,13 +18,17 @@
                 <file>iweb_cms.xml</file>
             </iweb_cms>
             
-            <!-- <iweb_catalog>
+            <iweb_catalog>
                 <file>iweb_catalog.xml</file>
-            </iweb_catalog> -->
+            </iweb_catalog>
             
             <iweb_customer>
                 <file>iweb_customer.xml</file>
             </iweb_customer>
+            
+            <iweb_wishlist>
+                <file>iweb_wishlist.xml</file>
+            </iweb_wishlist>
             
             <iweb_wordpress>
                 <file>iweb_wordpress.xml</file>
