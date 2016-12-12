@@ -1,16 +1,11 @@
-<div class="u-container u-container--sm u-section-lg-bottom u-text-center">
+<div class="u-container u-container--sm u-section">
     
     <?php echo $this->getMessagesBlock()->toHtml() ?>
     
-    <div class="page-title title">
+    <div class="page-title title u-text-center">
         <h1 class="title__main"><?php echo $this->__('Your order has been received.') ?></h1>
         <h2 class="sub-title title__sub"><?php echo $this->__('Thank you for your purchase!') ?></h2>
     </div>
 
     <?php echo $this->getChildHtml(); ?>
-
-    <div class="buttons-set">
-        <button type="button" class="button" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Continue Shopping')) ?>" onclick="window.location='<?php echo $this->getUrl() ?>'"><span><span><?php echo $this->__('Continue Shopping') ?></span></span></button>
-    </div>
-
 </div>

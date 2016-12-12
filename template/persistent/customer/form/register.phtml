@@ -162,10 +162,10 @@
             <?php echo $this->getChildHtml('persistent.remember.me.tooltip'); ?>
         </div>
             <div class="card__footer buttons-set">
-                <p class="required"><?php echo $this->__('* Required Fields') ?></p>
-                <p class="back-link"><a href="<?php echo $this->escapeUrl($this->getBackUrl()) ?>" class="back-link"><small>&laquo; </small><?php echo $this->__('Back') ?></a></p>
-                <button type="submit" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Submit')) ?>" class="button"><span><span><?php echo $this->__('Submit') ?></span></span></button>
-            </div>
+            <p class="required"><?php echo $this->__('* Required Fields') ?></p>
+            <p class="back-link"><a href="<?php echo $this->escapeUrl($this->getBackUrl()) ?>" class="back-link"><small>&laquo; </small><?php echo $this->__('Back') ?></a></p>
+            <button type="submit" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Submit')) ?>" class="button btn--lg btn--primary"><span><span><?php echo $this->__('Submit') ?></span></span></button>
+        </div>
         </div>
         <?php if (Mage::helper('checkout')->isContextCheckout()): ?>
             <input name="context" type="hidden" value="checkout" />
