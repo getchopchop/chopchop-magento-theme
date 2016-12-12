@@ -4,6 +4,7 @@ $catalogSearchHelper =  $this->helper('catalogsearch');
 <form id="search_mini_form" class="single-form" action="<?php echo $catalogSearchHelper->getResultUrl() ?>" method="get">
     <input id="search" type="text" name="<?php echo $catalogSearchHelper->getQueryParamName() ?>" value="<?php echo $catalogSearchHelper->getEscapedQueryText() ?>" placeholder="Search" maxlength="<?php echo $catalogSearchHelper->getMaxQueryLength();?>" />
     <button type="submit" class="btn btn--text" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Search')) ?>">
+        <span><?php echo $this->__('Search'); ?></span>
         <?php echo Mage::helper('iweb_core/icons')->getSvg('general', 'search3'); ?>
     </button>
     <div id="search_autocomplete" class="search-autocomplete"></div>
