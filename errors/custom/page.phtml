@@ -11,38 +11,27 @@
 <link rel="stylesheet" href="css/styles.css" type="text/css" />
 <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
 <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
+<style>
+body {
+    height: 90vh;
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+</style>
 </head>
 <body>
-
-    <header class="header">
-        <div class="u-container-sm">
-            <div class="header__body">
-
-                <div class="header__logo">
-                    <a href="<?php echo $this->getBaseUrl()?>" class="logo">
-                        <picture>
-                            <source media="(max-width: 25.99em)" srcset="images/logo-sm.svg">
-                            <img src="images/logo.svg" class="logo__img" width="305" height="50" />
-                        </picture>
-                        <span class="u-visually-hidden">MyMemory</span>
-                    </a>
-                </div>
-
-            </div>
-        </div>
-    </header>
-
-    <div class="main-container col1-layout template template--errors u-clearfix">
-        <div class="main u-section-top u-section-lg-bottom u-container-sm">
-            <?php require_once $contentTemplate; ?>
-        </div>
+    <div class="u-container-sm">
+        <h1>
+            <a href="<?php echo $this->getBaseUrl()?>" class="logo">
+                <img src="images/logo.svg" width="200" height="50" />
+                <span class="u-visually-hidden">MyMemory</span>
+            </a>
+        </h1>
+        <?php require_once $contentTemplate; ?>
+        <p class="footer__copyright micro">Copyright &copy; 2017 MyMemory. All Rights Reserved.</p>
     </div>
-
-    <div class="main-container col1-layout template template--errors u-clearfix">
-        <div class="main u-section-top u-section-lg-bottom u-container-sm">
-            <p class="footer__copyright micro">Copyright &copy; 2017 MyMemory. All Rights Reserved.</p>
-        </div>
-    </div>
-
 </body>
 </html>
