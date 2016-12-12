@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<layout>
+
+    <default>
+        
+        <reference name="head">
+
+            <!-- Remove Magento JS -->
+            <action method="removeItem"><type>js</type><name>scriptaculous/builder.js</name></action>
+            <action method="removeItem"><type>js</type><name>varien/menu.js</name></action>
+            <action method="removeItem"><type>js</type><name>lib/ds-sleight.js</name></action>
+            <action method="removeItem"><type>skin_js</type><name>js/ie6.js</name></action>
+            
+            <!-- Remove Magento CSS -->
+            <action method="removeItem"><type>skin_css</type><name>css/widgets.css</name></action>
+            <action method="removeItem"><type>skin_css</type><name>css/styles.css</name></action>
+            <action method="removeItem"><type>skin_css</type><name>css/styles-ie.css</name></action>
+            <action method="removeItem"><type>skin_css</type><name>css/print.css</name></action>
+
+            <!-- Remove Module CSS -->
+            <action method="removeItem"><type>skin_css</type><name>css/iwebelasticsearch/autocomplete.css</name></action>
+            
+        </reference>
+        
+    </default>
+</layout>

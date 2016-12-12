@@ -6,6 +6,11 @@
         <updates>
             
             <!-- unhook what you dont want from here -->
+            
+            <iweb_reset>
+                <file>iweb_reset.xml</file>
+            </iweb_reset>
+            
             <chopchop>
                 <file>cc.xml</file>
             </chopchop>
