@@ -8,14 +8,13 @@
 <?php echo $this->getChildHtml('global_notices') ?>
 <?php echo $this->getChildHtml('header') ?>
 <?php echo $this->getChildHtml('before_main') ?>
-<?php echo $this->getChildHtml('global_messages') ?>
 <div class="main-container col1-layout">
     <div class="main">
         <?php echo $this->getChildHtml('before_breadcrumbs') ?>
         <?php echo $this->getChildHtml('breadcrumbs') ?>
         <div class="<?php echo $this->getContainerClass(); ?>">
+            <?php echo $this->getChildHtml('before_content') ?>
             <div class="col-wrapper">
-                <?php echo $this->getChildHtml('before_content') ?>
                 <div class="col-main <?php echo $this->getContentClass(); ?>">
                     <?php echo $this->getChildHtml('content') ?>
                 </div>
