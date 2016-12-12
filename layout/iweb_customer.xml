@@ -12,7 +12,11 @@
 
 
     <customer_account>
-
+        <reference name="root">
+            <action method="setTemplate"><value>page/2columns-left.phtml</value></action>
+            <action method="setLeftSidebarClass"><class>g-col-md-3</class></action>
+            <action method="setContentClass"><class>g-col-md-9</class></action>
+        </reference>
     </customer_account>
 
 

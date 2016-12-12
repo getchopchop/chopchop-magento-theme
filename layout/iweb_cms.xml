@@ -4,7 +4,11 @@
 
     <!-- CMS Internal Layout Common -->
     <cms_layout>
-        <action block="root" method="setTemplate"><tpl>page/2columns-left.phtml</tpl></action>
+        <reference name="root">
+            <action method="setTemplate"><value>page/2columns-left.phtml</value></action>
+            <action method="setLeftSidebarClass"><class>g-col-md-3</class></action>
+            <action method="setContentClass"><class>g-col-md-9</class></action>
+        </reference>
         <action block="content" method="unsetChild"><class>cms.wrapper</class></action>
 
         <reference name="left">

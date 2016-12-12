@@ -8,11 +8,11 @@
         
         <reference name="root">
             <action method="setTemplate"><value>page/2columns-right.phtml</value></action>
-            <action method="setRightSidebarClass"><classes>g-col-md-5 g-col-lg-4</classes></action>
-            <action method="setContentClass"><classes>g-col-md-7 g-col-lg-8</classes></action>
+            <action method="setRightSidebarClass"><class>g-col-md-5 g-col-lg-4</class></action>
+            <action method="setContentClass"><class>g-col-md-7 g-col-lg-8</class></action>
         </reference>
         
-        <action block="footer" method="setAdditionalClass"><classname>footer--stripped</classname></action>
+        <action block="footer" method="setAdditionalClass"><class>footer--stripped</class></action>
         
         <reference name="after.content">
             <block type="core/template" name="checkout.confidence.footer" template="checkout/onepage/confidence/footer.phtml" />

@@ -3,7 +3,11 @@
     
     <!-- Product List, search result, advanced search result -->
     <all_product_listing>
-        
+        <reference name="root">
+            <action method="setTemplate"><value>page/2columns-left.phtml</value></action>
+            <action method="setLeftSidebarClass"><class>g-col-md-3</class></action>
+            <action method="setContentClass"><class>g-col-md-9</class></action>
+        </reference>
     </all_product_listing>
 
 
@@ -30,7 +34,10 @@
     <catalog_product_view>
         <update handle="iweb_media" />
         
-        <action block="root" method="setTemplate"><value>page/1column.phtml</value></action>
+        <reference name="root">
+            <action method="setTemplate"><value>page/1column.phtml</value></action>
+            <action method="setContainerClass"><class>u-container-lg</class></action>
+        </reference>
         
         <reference name="product.info">
             
