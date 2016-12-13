@@ -8,7 +8,7 @@ $canApplyMsrp = Mage::helper('catalog')->canApplyMsrp($_item->getProduct(), Mage
     
     <div class="g-col-sm-7 g-col-md-6 g-col-lg-5 g-col-xl-6">
     
-        <div class="flag flag--gutter">
+        <div class="grid g-stretch">
             <div>
                 <?php if ($this->hasProductUrl()):?><a href="<?php echo $this->getProductUrl() ?>" title="<?php echo $this->escapeHtml($this->getProductName()) ?>" class="product-image"><?php endif;?><img src="<?php echo $this->getProductThumbnail()->resize(65); ?>" width="65" height="65" alt="<?php echo $this->escapeHtml($this->getProductName()) ?>" /><?php if ($this->hasProductUrl()):?></a><?php endif;?>
             </div>
