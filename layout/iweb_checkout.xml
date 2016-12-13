@@ -68,6 +68,7 @@
     -->
     <checkout_cart_index_empty>
         <action block="root" method="setTemplate"><tpl>page/1column.phtml</tpl></action>
+        <action block="root" method="setContentClass"><class>g-col-xs-12</class></action>
     </checkout_cart_index_empty>
 
 
