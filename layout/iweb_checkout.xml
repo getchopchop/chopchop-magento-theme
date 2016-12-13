@@ -99,9 +99,7 @@
         <remove name="es_js_init" />
         
         <reference name="header">
-            <action method="setHeaderAdditionalClass"><classname>header--stripped</classname></action>
-            <action method="setHeaderContainerClass"><value>u-container-md</value></action>
-            <block type="core/template" name="checkout.confidence.header" as="summary" template="checkout/onepage/confidence/header.phtml" />
+            <block type="core/template" name="checkout.confidence.header" as="confidence" template="checkout/onepage/confidence/header.phtml" />
         </reference>
         
         <reference name="root">

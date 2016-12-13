@@ -17,8 +17,6 @@
         </picture>
     </a>
     
-    <?php echo $this->getChildHtml('topMenu') ?>
-    
     <?php echo $this->getChildHtml('topSearch') ?>
     
     <a href="#" class="btn">
@@ -35,5 +33,10 @@
         <span><?php echo $this->__('My Cart'); ?></span>
         <?php echo Mage::helper('iweb_core/icons')->getSvg('general', 'cart'); ?>
     </a>
+    
+    <?php /* confidence used on checkout */ ?>
+    <?php echo $this->getChildHtml('confidence') ?>
+    
+    <?php echo $this->getChildHtml('topMenu') ?>
     
 </header>
