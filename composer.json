@@ -1,9 +1,9 @@
 {
   "name": "mymemory/mymemory-theme",
   "type": "magento-module",
-  "require": [
-    {"iweb/iweb-core": "dev-master"}
-  ],
+  "require": {
+      "iweb/iweb-core": "dev-master"
+  },
   "repositories": [
     {"type": "vcs", "url": "git@gitlab.iweb.co.uk:iweb-modules/iweb-core.git"}
   ]
