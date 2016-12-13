@@ -10,7 +10,7 @@
     <div id="onepage-checkout-shipping-method-additional-load">
         <?php echo $this->getChildHtml('additional') ?>
     </div>
-    <div class="buttons-set grid g-gutter" id="shipping-method-buttons-container">
+    <div class="buttons-set grid g-gutter-x" id="shipping-method-buttons-container">
         <div class="g-col-sm-4">
             <p class="required u-visually-hidden"><?php echo $this->__('* Required Fields') ?></p>
             <button type="button" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Continue')) ?>" class="button btn btn--success btn--block" onclick="shippingMethod.save()">

@@ -1,7 +1,7 @@
 <div class="u-clearfix u-section-xs-bottom">
     <div class="u-section-xs">
         <h3><?php echo $this->__('Total'); ?></h3>
-        <table id="order-summary-totals-table">
+        <table id="order-summary-totals-table" class="data-table table--striped">
             <?php echo $this->getChildHtml('totals'); ?>
         </table>
         <?php echo $this->getChildHtml('checkout.cart.methods'); ?>
