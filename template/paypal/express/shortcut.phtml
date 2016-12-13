@@ -6,9 +6,10 @@
 <span class="paypal-logo u-text-center">
 <?php $shortcutHtmlId = $this->getShortcutHtmlId() ?>
 <?php $bmlShortcutHtmlId = $this->getBmlShortcutHtmlId() ?>
-<a data-action="checkout-form-submit" id="<?php echo $shortcutHtmlId ?>" href="<?php echo $this->getCheckoutUrl() ?>" class="btn btn--grey btn--block pp-checkout-url" style="margin-bottom: 1em;">
-    <img src="<?php echo $this->getSkinUrl('build/img/pp-logo-100px.png') ?>" alt="<?php echo Mage::helper('paypal')->__('Checkout with PayPal'); ?>" title="<?php echo Mage::helper('paypal')->__('Checkout with PayPal'); ?>" style="margin: auto;" /> <span class="u-hidden"><?php echo $this->__('Checkout with PayPal'); ?></span>
+<p><a data-action="checkout-form-submit" id="<?php echo $shortcutHtmlId ?>" href="<?php echo $this->getCheckoutUrl() ?>" class="btn btn--block btn--lg pp-checkout-url">
+    <img src="<?php echo $this->getSkinUrl('chopchop/img/pp-logo-100px.png') ?>" alt="<?php echo Mage::helper('paypal')->__('Checkout with PayPal'); ?>" title="<?php echo Mage::helper('paypal')->__('Checkout with PayPal'); ?>" style="margin: auto;" /> <span class="u-hidden"><?php echo $this->__('Checkout with PayPal'); ?></span>
 </a>
+</p>
 <?php if ($this->getIsBmlEnabled()): ?>
     </span>
 
