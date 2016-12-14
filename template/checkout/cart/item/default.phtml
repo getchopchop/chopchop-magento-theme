@@ -113,9 +113,7 @@ $canApplyMsrp = Mage::helper('catalog')->canApplyMsrp($_item->getProduct(), Mage
 
     <div class="g-col-sm-5 g-col-md-6 g-col-lg-7 g-col-xl-6">
         
-        
-
-                <label for="cart[<?php echo $_item->getId() ?>][qty]"><?php echo $this->__('Qty:'); ?></label>
+        <label for="cart[<?php echo $_item->getId() ?>][qty]"><?php echo $this->__('Qty:'); ?></label>
 
         <div class="grid g-center g-gutter-x">
             <div class="g-col-xs-4">
@@ -124,7 +122,7 @@ $canApplyMsrp = Mage::helper('catalog')->canApplyMsrp($_item->getProduct(), Mage
             <div class="g-col-xs-8">
                 
                 <div>
-                    <button type="submit" name="update_cart_action" data-cart-item-update value="update_qty" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Update')); ?>" class="button btn--sm btn--text btn-update js-update-qty" disabled>
+                    <button type="submit" name="update_cart_action" data-cart-item-update value="update_qty" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Update')); ?>" class="button btn--sm btn--text btn-update">
                         <span><span><?php echo $this->__('Update'); ?></span></span>
                     </button>
                     <a href="<?php echo $this->getDeleteUrl()?>" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Remove item')) ?>" class="btn-remove btn-remove2 btn btn--text btn--sm"><?php echo $this->__('Remove item')?></a>
