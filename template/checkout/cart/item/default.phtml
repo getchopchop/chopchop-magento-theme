@@ -8,7 +8,7 @@ $canApplyMsrp = Mage::helper('catalog')->canApplyMsrp($_item->getProduct(), Mage
     
     <div class="g-col-sm-7 g-col-md-6 g-col-lg-5 g-col-xl-6">
     
-        <div class="grid g-stretch">
+        <div class="grid g-stretch-last">
             <div>
                 <?php if ($this->hasProductUrl()):?><a href="<?php echo $this->getProductUrl() ?>" title="<?php echo $this->escapeHtml($this->getProductName()) ?>" class="product-image"><?php endif;?><img src="<?php echo $this->getProductThumbnail()->resize(65); ?>" width="65" height="65" alt="<?php echo $this->escapeHtml($this->getProductName()) ?>" /><?php if ($this->hasProductUrl()):?></a><?php endif;?>
             </div>
@@ -112,40 +112,27 @@ $canApplyMsrp = Mage::helper('catalog')->canApplyMsrp($_item->getProduct(), Mage
     </div>
 
     <div class="g-col-sm-5 g-col-md-6 g-col-lg-7 g-col-xl-6">
-    
-        <div class="u-text-center js-qty-row">
-            <div class="grid g-center">
-                <div class="g-col-lg-7">
-                    
-                    <div class="quantity js-qty">
-                        <div class="quantity__amount">
-                            <a href="#" class="btn btn--brown quantity__desc js-qty-down">
-                                <?php echo Mage::helper('iweb_core/icons')->getSvg('general', 'minus'); ?>
-                                <span class="u-visually-hidden"><?php echo $this->__('Decrease quantity'); ?></span>
-                            </a>
-                            <input name="cart[<?php echo $_item->getId() ?>][qty]"
-                           data-cart-item-id="<?php echo $this->jsQuoteEscape($_item->getSku()) ?>"
-                           value="<?php echo $this->getQty() ?>" size="4" title="<?php echo $this->__('Qty') ?>" class="input-text u-text-center input--sm qty js-qty-input" maxlength="12" />
-                            <a href="#" class="btn btn--brown quantity__inc js-qty-up">
-                                <?php echo Mage::helper('iweb_core/icons')->getSvg('general', 'plus'); ?>
-                                <span class="u-visually-hidden"><?php echo $this->__('Increase quantity'); ?></span>
-                            </a>
-                        </div>
-                    </div>
-                    
+        
+        
+
+                <label for="cart[<?php echo $_item->getId() ?>][qty]"><?php echo $this->__('Qty:'); ?></label>
+
+        <div class="grid g-center g-gutter-x">
+            <div class="g-col-xs-4">
+                <input type="number" name="cart[<?php echo $_item->getId() ?>][qty]" data-cart-item-id="<?php echo $this->jsQuoteEscape($_item->getSku()) ?>" value="<?php echo $this->getQty() ?>" size="4" title="<?php echo $this->__('Qty') ?>" class="input-text u-text-center qty" maxlength="12" />
+            </div>
+            <div class="g-col-xs-8">
+                
+                <div>
+                    <button type="submit" name="update_cart_action" data-cart-item-update value="update_qty" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Update')); ?>" class="button btn--sm btn--text btn-update js-update-qty" disabled>
+                        <span><span><?php echo $this->__('Update'); ?></span></span>
+                    </button>
+                    <a href="<?php echo $this->getDeleteUrl()?>" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Remove item')) ?>" class="btn-remove btn-remove2 btn btn--text btn--sm"><?php echo $this->__('Remove item')?></a>
                 </div>
-                <div class="g-col-lg-5">
-                    
-                    <div>
-                        <button type="submit" name="update_cart_action" data-cart-item-update value="update_qty" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Update')); ?>" class="button btn--sm btn--text btn-update" disabled>
-                            <span><span><?php echo $this->__('Update'); ?></span></span>
-                        </button>
-                        <a href="<?php echo $this->getDeleteUrl()?>" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Remove item')) ?>" class="btn-remove btn-remove2 btn btn--text btn--sm"><?php echo $this->__('Remove item')?></a>
-                    </div>
-                    
-                </div>
+                
             </div>
         </div>
+
     
         <?php if ($this->helper('wishlist')->isAllowInCart()) : ?>
             <?php if ($isVisibleProduct): ?>

@@ -42,10 +42,11 @@
             <action method="addItem"><type>skin_css</type><name>chopchop/vendor/normalize.css/normalize.css</name></action>
             <action method="addItem"><type>skin_css</type><name>chopchop/css/styles.css</name></action>
             <action method="addItem"><type>skin_js</type><name>chopchop/vendor/picturefill/picturefill.js</name></action>
-            <!-- <action method="addItem"><type>skin_js</type><name>chopchop/vendor/lazysizes/lazysizes.js</name></action> -->
+            <action method="addItem"><type>skin_js</type><name>chopchop/vendor/lazysizes/lazysizes.min.js</name></action>
 
             <!-- ADD Build JS -->
             <action method="addItem"><type>skin_js</type><name>chopchop/vendor/jquery/jquery.js</name></action>
+            <action method="addItem"><type>skin_js</type><name>chopchop/vendor/jquery-ui/jquery-ui.min.js</name></action>
             <action method="addItem"><type>skin_js</type><name>chopchop/vendor/jquery/jquery-no-conflict.js</name></action>
             <action method="addItem"><type>skin_js</type><name>chopchop/vendor/enquire/enquire.js</name></action>
             <action method="addItem"><type>skin_js</type><name>chopchop/vendor/svgxuse/svgxuse.js</name></action>
@@ -54,7 +55,7 @@
                 <action method="setText">
                     <text><![CDATA[
 <!--[if IE 9]>
-<script>svg4everybody(); // run it now or whenever you are ready</script>
+<script>svg4everybody();</script>
 <![endif]-->
                         ]]></text>
                 </action>
@@ -62,6 +63,9 @@
             <action method="addItem"><type>skin_js</type><name>chopchop/js/chopchop.lib.js</name></action>
             <action method="addItem"><type>skin_js</type><name>chopchop/js/script.js</name></action>
             
+            <!-- jQuery widgets -->
+            <action method="addItem"><type>skin_js</type><name>chopchop/vendor/llapgoch/melodeon.widget.js</name></action>
+            <!-- <action method="addItem"><type>skin_js</type><name>chopchop/vendor/llapgoch/stepper.widget.js</name></action> -->
         </reference>
         
     </default>

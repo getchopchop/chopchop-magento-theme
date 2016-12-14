@@ -39,22 +39,6 @@
         <?php endforeach ?>
     </form>
     
-    <script type="text/javascript">
-    (function($){
-        var qtyWidget = new Iweb.QtyWidget({
-            'delegateContainerSelector':'.js-qty'
-        });
-        
-        $(qtyWidget).on('input_update', function(ev, data){
-            if(data.inputUpdateType == 'different_value'){
-                data.$container.closest('.js-qty-row').find('.btn-update').removeAttr('disabled');
-            }else{
-                data.$container.closest('.js-qty-row').find('.btn-update').attr('disabled', 'disabled');
-            }
-        });
-    }(jQuery));
-    </script>
-    
     <div class="cart-collaterals">
         <?php echo $this->getChildHtml('continue') ?>
         <?php echo $this->getChildHtml('crosssell') ?>
