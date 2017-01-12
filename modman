@@ -1,9 +1,9 @@
 # Magento Theme
-etc/                app/design/frontend/mymemory/default/etc
-layout/             app/design/frontend/mymemory/default/layout
-locale/             app/design/frontend/mymemory/default/locale
-template/           app/design/frontend/mymemory/default/template
-skin/               skin/frontend/mymemory/default/
+etc/                app/design/frontend/package/default/etc
+layout/             app/design/frontend/package/default/layout
+locale/             app/design/frontend/package/default/locale
+template/           app/design/frontend/package/default/template
+skin/               skin/frontend/package/default/
 
 # Magento Error Pages
 errors/custom/page.phtml    errors/custom/page.phtml
