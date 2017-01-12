@@ -14,7 +14,7 @@
         <?php echo $this->getChildHtml('breadcrumbs') ?>
         <div class="<?php echo $this->getContainerClass(); ?>">
             <?php echo $this->getChildHtml('before_content') ?>
-            <div class="col-wrapper grid g-gutter">
+            <div class="col-wrapper <?php echo $this->getWrapperClass(); ?>">
                 <div class="col-left sidebar <?php echo $this->getLeftSidebarClass(); ?>">
                     <?php echo $this->getChildHtml('left') ?>
                 </div>

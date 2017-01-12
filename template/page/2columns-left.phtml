@@ -15,13 +15,13 @@
         <?php echo $this->getChildHtml('breadcrumbs') ?>
         <div class="<?php echo $this->getContainerClass(); ?>">
             <?php echo $this->getChildHtml('before_content') ?>
-            <div class="col-wrapper grid g-gutter">
-                <div class="col-left sidebar <?php echo $this->getLeftSidebarClass(); ?>">
+            <div class="col-wrapper <?php echo $this->getWrapperClass(); ?>">
+                <aside class="col-left sidebar <?php echo $this->getLeftSidebarClass(); ?>">
                     <?php echo $this->getChildHtml('left') ?>
-                </div>
-                <div class="col-main <?php echo $this->getContentClass(); ?>">
+                </aside>
+                <main class="col-main <?php echo $this->getContentClass(); ?>">
                     <?php echo $this->getChildHtml('content') ?>
-                </div>
+                </main>
             </div>
             <?php echo $this->getChildHtml('after_content') ?>
         </div>
