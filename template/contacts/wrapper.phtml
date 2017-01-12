@@ -1,18 +1,11 @@
 <div class="contacts">
-    
-    <h1 class="title__main"><?php echo $this->__('Contact Us'); ?></h1>
-    
+    <h1><?php echo $this->__('Contact Us'); ?></h1>
     <div class="grid g-gutter u-section-bottom u-section-xs-top">
         <div class="g-col-lg-6">
-            <div class="bordered-box">
-                <div class="u-section-xs u-container">
-                    <?php echo $this->getChildHtml('contact_page_info'); ?>
-                </div>
-            </div>
+            <?php echo $this->getChildHtml('contact_page_info'); ?>
         </div>
         <div class="g-col-lg-6">
             <?php echo $this->getChildHtml('contactForm'); ?>
         </div>
     </div>
-    
 </div>
