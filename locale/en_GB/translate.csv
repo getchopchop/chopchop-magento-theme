@@ -28,6 +28,7 @@
 "Are you sure you want to remove this product from your wishlist?","Are you sure you want to remove this product from your favourites?"
 "Product Details and Comment","Product Details"
 "%1$s has been added to your wishlist. Click <a href=""%2$s"">here</a> to continue shopping.","%1$s has been added to your favourites. Click <a href=""%2$s"">here</a> to continue shopping."
+"Your current wishlist items","Your current favourites"
 
 # Pricing
 "Regular Price:","Was"
@@ -108,6 +109,7 @@
 "Address Book","Addresses"
 "My Orders","Orders"
 "Edit Account Information","Edit Account Details"
+"Change Shipping Address","Change Delivery Address"
 
 # Reviews
 "My Product Reviews","My Reviews"
