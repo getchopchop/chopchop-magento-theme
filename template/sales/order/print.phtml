@@ -1,0 +1,73 @@
+<?php $_order = $this->getOrder() ?>
+
+<div class="card">
+    <div class="card__header">
+        <h1 class="h4"><?php echo $this->__('Order #%s', $_order->getRealOrderId()) ?></h1>
+        <span class="order-date"><?php echo $this->__('Order Date: %s', $this->formatDate($_order->getCreatedAtStoreDate(), 'long')) ?></span>
+    </div>
+    <div class="card__body">
+        <div class="col2-set">
+            <?php if (!$_order->getIsVirtual()): ?>
+            <div class="col-1">
+                <h2 class="h4"><?php echo $this->__('Shipping Address') ?></h2>
+                <address><?php echo $_order->getShippingAddress()->format('html') ?></address>
+            </div>
+            <div class="col-2">
+            <?php else: ?>
+            <div class="col-1">
+            <?php endif; ?>
+                <h2 class="h4"><?php echo $this->__('Billing Address') ?></h2>
+                <address><?php echo $_order->getBillingAddress()->format('html') ?></address>
+            </div>
+        <?php if (!$_order->getIsVirtual()): ?>
+        </div>
+        <div class="col2-set">
+            <div class="col-1">
+                <h2 class="h4"><?php echo $this->__('Shipping Method') ?></h2>
+                <p><?php echo $this->escapeHtml($_order->getShippingDescription()) ?></p>
+            </div>
+        <?php endif; ?>
+            <div class="col-2">
+                <h2 class="h4"><?php echo $this->__('Payment Method') ?></h2>
+                <p><?php echo $this->getPaymentInfoHtml() ?></p>
+            </div>
+        </div>
+        
+    </div>
+</div>
+<br />
+<div class="card">
+    <div class="card__header">
+        <h2 class="h4"><?php echo $this->__('Items Ordered') ?></h2>
+    </div>
+    <div class="card__body">
+        <table class="data-table" id="my-orders-table">
+            <thead>
+                <tr>
+                    <th><?php echo $this->__('Product Name') ?></th>
+                    <th><?php echo $this->__('SKU') ?></th>
+                    <th class="a-right"><?php echo $this->__('Qty') ?></th>
+                    <th class="a-right" style="width: 100pt;"><?php echo $this->__('Price') ?></th>
+                </tr>
+            </thead>
+            <?php $_items = $_order->getItemsCollection(); ?>
+            <?php $_count = $_items->count(); ?>
+            <?php foreach ($_items as $_item): ?>
+            <?php if ($_item->getParentItem()) continue; ?>
+            <tbody>
+                <?php echo $this->getItemHtml($_item) ?>
+            </tbody>
+                <?php endforeach; ?>
+        </table>
+        <h2 class="h4 u-hidden"><?php echo $this->__('Order Total') ?></h2>
+        <table class="data-table totals-table">
+            <tbody>
+                <?php echo $this->getChildHtml('order_totals') ?>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+<script type="text/javascript">window.print();</script>

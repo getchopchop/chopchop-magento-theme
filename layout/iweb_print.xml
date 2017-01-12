@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<layout>
+
+    <print>
+        <reference name="head">
+            <action method="removeItem"><type>skin_css</type><name>css/widgets.css</name></action>
+            <action method="removeItem"><type>skin_css</type><name>css/styles.css</name></action>
+            <action method="removeItem"><type>skin_css</type><name>css/print.css</name></action>
+            <action method="addItem"><type>skin_css</type><name>chopchop/vendor/normalize.css/normalize.css</name></action>
+            <action method="addItem"><type>skin_css</type><name>chopchop/css/print.css</name></action>
+        </reference>
+    </print>
+    
+</layout>

@@ -39,6 +39,10 @@
                 <file>iweb_wordpress.xml</file>
             </iweb_wordpress>
             
+            <iweb_print>
+                <file>iweb_print.xml</file>
+            </iweb_print>
+            
         </updates>
         
     </layout>
