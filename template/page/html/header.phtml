@@ -7,7 +7,7 @@
 
     <a href="#" class="btn" data-cc-target="drawer-left" data-cc-action="activate">
         <span><?php echo $this->__('Menu'); ?></span>
-        <?php echo Mage::helper('iweb_core/icons')->getSvg('general', 'menu'); ?>
+        <?php echo Mage::helper('chopchop/icon')->getSvgHtml('general', 'menu'); ?>
     </a>
     
     <a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" class="logo">
@@ -21,17 +21,17 @@
     
     <a href="#" class="btn">
         <span><?php echo $this->__('Search'); ?></span>
-        <?php echo Mage::helper('iweb_core/icons')->getSvg('general', 'search3'); ?>
+        <?php echo Mage::helper('chopchop/icon')->getSvgHtml('general', 'search3'); ?>
     </a>
     
     <a href="<?php echo Mage::getUrl('customer/account'); ?>" class="btn">
         <span><?php echo $this->__('My Account'); ?></span>
-        <?php echo Mage::helper('iweb_core/icons')->getSvg('general', 'user'); ?>
+        <?php echo Mage::helper('chopchop/icon')->getSvgHtml('general', 'user'); ?>
     </a>
     
     <a href="<?php echo Mage::getUrl('checkout/cart'); ?>" class="btn" data-cc-target="drawer-right">
         <span><?php echo $this->__('My Cart'); ?></span>
-        <?php echo Mage::helper('iweb_core/icons')->getSvg('general', 'cart'); ?>
+        <?php echo Mage::helper('chopchop/icon')->getSvgHtml('general', 'cart'); ?>
     </a>
     
     <?php /* confidence used on checkout */ ?>

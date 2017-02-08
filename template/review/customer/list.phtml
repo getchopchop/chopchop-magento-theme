@@ -26,12 +26,12 @@
                         <div class="reviews__stars">
                             <div class="reviews__negative">
                                 <?php for($i=0;$i<5;$i++) : ?>
-                                    <?php echo Mage::helper('iweb_core/icons')->getSvg('general', 'star-full'); ?>
+                                    <?php echo Mage::helper('chopchop/icon')->getSvgHtml('general', 'star-full'); ?>
                                 <?php endfor; ?>
                             </div>
                             <div class="reviews__positive" style="width:<?php echo ( $_review->getSum() / $_review->getCount() ) ?>%;">
                                 <?php for($i=0;$i<5;$i++) : ?>
-                                    <?php echo Mage::helper('iweb_core/icons')->getSvg('general', 'star-full'); ?>
+                                    <?php echo Mage::helper('chopchop/icon')->getSvgHtml('general', 'star-full'); ?>
                                 <?php endfor; ?>
                             </div>
                         </div>
