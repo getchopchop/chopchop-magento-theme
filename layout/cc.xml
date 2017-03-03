@@ -42,11 +42,11 @@
             <action method="addItem"><type>skin_css</type><name>chopchop/vendor/normalize.css/normalize.css</name></action>
             <action method="addItem"><type>skin_css</type><name>chopchop/css/styles.css</name></action>
             <action method="addItem"><type>skin_js</type><name>chopchop/vendor/picturefill/picturefill.js</name></action>
-            <action method="addItem"><type>skin_js</type><name>chopchop/vendor/lazysizes/lazysizes.min.js</name></action>
+            <!-- <action method="addItem"><type>skin_js</type><name>chopchop/vendor/lazysizes/lazysizes.min.js</name></action> -->
 
             <!-- ADD Build JS -->
             <action method="addItem"><type>skin_js</type><name>chopchop/vendor/jquery/jquery.js</name></action>
-            <action method="addItem"><type>skin_js</type><name>chopchop/vendor/jquery-ui/jquery-ui.min.js</name></action>
+            <action method="addItem"><type>skin_js</type><name>chopchop/vendor/jquery/jquery-ui.min.js</name></action>
             <action method="addItem"><type>skin_js</type><name>chopchop/vendor/jquery/jquery-no-conflict.js</name></action>
             <action method="addItem"><type>skin_js</type><name>chopchop/vendor/enquire/enquire.js</name></action>
             <action method="addItem"><type>skin_js</type><name>chopchop/vendor/svgxuse/svgxuse.js</name></action>
@@ -60,7 +60,9 @@
                         ]]></text>
                 </action>
             </block>
-            <action method="addItem"><type>skin_js</type><name>chopchop/js/chopchop.lib.js</name></action>
+            <action method="addItem"><type>skin_js</type><name>chopchop/js/chop.base.widget.js</name></action>
+            <action method="addItem"><type>skin_js</type><name>chopchop/js/chop.toggle.widget.js</name></action>
+            <action method="addItem"><type>skin_js</type><name>chopchop/js/chop.collapsible.widget.js</name></action>
             <action method="addItem"><type>skin_js</type><name>chopchop/js/script.js</name></action>
             
             <!-- jQuery widgets -->
