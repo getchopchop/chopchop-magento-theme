@@ -40,6 +40,7 @@
         
         <reference name="root">
             <action method="setContainerClass"><class>u-container-lg u-section</class></action>
+            <action method="setWrapperClass"><class>grid g-gutter-lg</class></action>
             <action method="setContentClass"><class>g-col-md-8</class></action>
             <action method="setRightSidebarClass"><class>g-col-md-4</class></action>
         </reference>
@@ -123,7 +124,7 @@
 
 
     <paypal_express_review>
-        <action block="root" method="setContainerClass"><classname>u-container-sm</classname></action>
+        <action block="root" method="setContainerClass"><classname>u-container-sm u-section-sm</classname></action>
     </paypal_express_review>
 
 

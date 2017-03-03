@@ -1,34 +1,35 @@
 <script type="text/javascript" src="<?php echo $this->getJsUrl('varien/accordion.js') ?>"></script>
 <script type="text/javascript" src="<?php echo $this->getSkinUrl('js/opcheckout.js') ?>"></script>
-<script type="text/javascript" src="<?php echo $this->getSkinUrl('build/js/opcheckout_rwd.js') ?>"></script>
 
-<div class="u-section-sm">
-    <ol class="opc u-list-unstyled" id="checkoutSteps">
-    <?php $i=0; foreach($this->getSteps() as $_stepId => $_stepInfo): ?>
-    <?php if (!$this->getChild($_stepId) || !$this->getChild($_stepId)->isShow()): continue; endif; $i++ ?>
-        <li id="opc-<?php echo $_stepId ?>" class="section<?php echo !empty($_stepInfo['allow'])?' allow':'' ?><?php echo !empty($_stepInfo['complete'])?' saved':'' ?>">
-
-            <div class="step-title step-title--top" id="opc-step-<?php echo $_stepId ?>">
-                <button class="btn btn--block">
-                    <span class="tag tag--sm tag--badge">
-                        <?php echo Mage::helper('chopchop/icon')->getSvgHtml('general', 'checkmark', 'icon--checkmark icon--sm'); ?>
-                    </span>
-                    <span class="number"><?php echo $i ?>.</span>
-                    <span class="label"><?php echo $_stepInfo['label'] ?></span>
-                </button>
-            </div>
-            <div id="checkout-step-<?php echo $_stepId ?>" class="step a-item card" style="display:none;">
-                <div class="card__header">
-                    <h3 class="step-title"><?php echo $_stepInfo['label'] ?></h3>
-                </div>
-                <div class="card__body">
-                    <?php echo $this->getChildHtml($_stepId) ?>
+<ol class="opc u-list-unstyled" id="checkoutSteps">
+<?php $i=0; foreach($this->getSteps() as $_stepId => $_stepInfo): ?>
+<?php if (!$this->getChild($_stepId) || !$this->getChild($_stepId)->isShow()): continue; endif; $i++ ?>
+    <li id="opc-<?php echo $_stepId ?>" class="section<?php echo !empty($_stepInfo['allow'])?' allow':'' ?><?php echo !empty($_stepInfo['complete'])?' saved':'' ?>">
+        <div class="card u-space-bottom">
+            <div class="card__header step-title">
+                <div class="grid g-center g-stretch-first">
+                    <div>
+                        <h3><span class="number"><?php echo $i ?>.</span> <?php echo $_stepInfo['label'] ?></h3>
+                    </div>
+                    <div class="grid g-center g-stretch-first">
+                        <div>
+                            <a href="#" class="btn btn--sm btn--text"><?php echo $this->__('Edit') ?></a>
+                        </div>
+                        <div>
+                            <span class="tag tag--sm u-fill-brand-green">
+                                <?php echo Mage::helper('chopchop/icon')->getSvgHtml('general', 'checkmark', 'icon--checkmark u-text-white'); ?>
+                            </span>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </li>
-    <?php endforeach ?>
-    </ol>
-</div>
+            <div id="checkout-step-<?php echo $_stepId ?>" class="card__body step a-item" style="display:none;">
+                <?php echo $this->getChildHtml($_stepId) ?>
+            </div>
+        </div>
+    </li>
+<?php endforeach ?>
+</ol>
 
 <script type="text/javascript">
 //<![CDATA[
