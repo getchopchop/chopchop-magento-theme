@@ -3,6 +3,7 @@
 
     <default>
         
+        <action block="root" method="setWrapperClass"><class>grid g-gutter</class></action>
         <reference name="header">
             
         </reference>
