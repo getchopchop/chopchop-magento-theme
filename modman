@@ -1,9 +1,9 @@
 # Magento Theme
-etc/                app/design/frontend/package/default/etc
-layout/             app/design/frontend/package/default/layout
-locale/             app/design/frontend/package/default/locale
-template/           app/design/frontend/package/default/template
-skin/               skin/frontend/package/default/
+etc/                app/design/frontend/chopchop/default/etc
+layout/             app/design/frontend/chopchop/default/layout
+locale/             app/design/frontend/chopchop/default/locale
+template/           app/design/frontend/chopchop/default/template
+skin/               skin/frontend/chopchop/default/
 
 # Magento Error Pages
 errors/custom/page.phtml    errors/custom/page.phtml
