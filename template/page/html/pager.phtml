@@ -40,7 +40,7 @@
     <?php if($this->getLastPageNum()>1): ?>
     <nav class="pages pagination">
         <strong class="u-visually-hidden"><?php echo $this->__('Page:') ?></strong>
-        <ol class="nav nav--inline nav--pills nav--space">
+        <ol class="nav nav--inline nav--space">
         <?php if (!$this->isFirstPage()): ?>
             <li class="is-first nav__paged">
                 <a class="previous<?php if(!$this->getAnchorTextForPrevious()): ?> i-previous<?php endif;?>" href="<?php echo $this->getPreviousPageUrl() ?>" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Previous')) ?>">
