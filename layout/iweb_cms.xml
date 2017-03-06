@@ -6,14 +6,15 @@
     <cms_layout>
         <reference name="root">
             <action method="setTemplate"><value>page/2columns-left.phtml</value></action>
+            <action method="setContainerClass"><class>u-container-lg u-section-sm</class></action>
             <action method="setLeftSidebarClass"><class>g-col-md-3</class></action>
             <action method="setContentClass"><class>g-col-md-9</class></action>
+            <action method="setWrapperClass"><class>grid g-gutter-lg</class></action>
         </reference>
-        <action block="content" method="unsetChild"><class>cms.wrapper</class></action>
 
         <reference name="left">
             <block type="core/template" name="cms.links.wrapper" template="cms/links.phtml">
-                <action method="setTitle" translate="title"><title>Help</title></action>
+                <action method="setTitle" translate="title"><title>Help &amp; Support</title></action>
                 <block type="cms/block" name="cms_links">
                     <action method="setBlockId"><block_id>cms_links</block_id></action>
                 </block>
@@ -25,19 +26,25 @@
     <!-- CMS Pages Not Home -->
     <cms_page_view>
         <update handle="cms_layout" />
-
-        <action block="root" method="setContainerClass"><class>u-container</class></action>
+        
+        <reference name="content">
+            <action method="unsetChild"><name>cms.wrapper</name></action>
+            <action method="unsetChild"><name>page_content_heading</name></action>
+            
+            <block type="page/html_wrapper" name="cms.card.wrapper">
+                <action method="setElementClass"><className>card</className></action>
+                <action method="insert"><name>page_content_heading</name></action>
+                <block type="page/html_wrapper" name="cms.card.body">
+                    <action method="setElementClass"><className>card__body</className></action>
+                    <action method="insert"><name>cms.wrapper</name></action>
+                </block>
+                
+            </block>
+        </reference>
         
         <reference name="page_content_heading">
             <action method="setTag"><value>h1</value></action>
-            <action method="setClasses"><value>u-text-center</value></action>
-        </reference>
-        
-        <reference name="content">
-            <block type="core/template" name="cms.wrapper.section" template="cms/wrapper.phtml">
-                <action method="setSectionClass"><value>u-section-bottom</value></action>
-                <action method="insert"><class>cms.wrapper</class></action>
-            </block>
+            <action method="setClasses"><value>h2</value></action>
         </reference>
         
     </cms_page_view>
@@ -45,8 +52,6 @@
 
     <contacts_index_index>
         <update handle="cms_layout" />
-
-        <action block="root" method="setContainerClass"><class>u-container</class></action>
         
         <reference name="breadcrumbs">
             <action method="addCrumb" translate="crumbInfo.label crumbInfo.title crumbName" module="cms">
@@ -107,9 +112,7 @@
     <!-- Sitemap -->
     <catalog_seo_sitemap>
         <update handle="cms_layout" />
-        
-        <action block="root" method="setContainerClass"><class>u-container</class></action>
-        
+                
         <reference name="root">
             <block type="core/text_list" name="left.new" as="left">
                 <block type="core/template" name="cms.links.wrapper" template="cms/links.phtml">
@@ -139,4 +142,9 @@
         </reference>
     </catalog_seo_sitemap>
 
+
+    <cms_index_index>
+        <!-- <action block="content" method="unsetChild"><class>cms.wrapper</class></action> -->
+    </cms_index_index>
+    
 </layout>

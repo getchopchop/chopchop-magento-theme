@@ -1,6 +1,9 @@
-<div class="u-section-separator">
-    <h4><?php echo $this->getTitle(); ?></h4>
-    <div class="u-toggle-content u-toggle-content--md" id="nav-customer" data-cc-toggle-target-callback="nav-customer-title">
+<div class="card">
+    <div class="card__header" data-cc-toggle-action="toggle" data-cc-toggle-target="#nav-customer" id="nav-customer-header">
+        <h4><?php echo $this->getTitle(); ?></h4>
+        <span class="facet__icon u-hidden-md u-hidden-lg u-hidden-xl"></span>
+    </div>
+    <div class="card__body u-toggle-xs u-toggle-sm" id="nav-customer" data-cc-toggle-target-callback="#nav-customer-title">
         <?php echo $this->getChildHtml(); ?>
     </div>
 </div>

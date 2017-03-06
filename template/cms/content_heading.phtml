@@ -1,0 +1,16 @@
+<?php
+$_content = "";
+if( $this->getContentHeading() ) {
+    $_content = $this->getContentHeading();
+} else {
+    $_content = $this->getContent();
+}
+$_tag = $this->getTag();
+$_classes = $this->getClasses();
+?>
+
+<?php if($_tag && $_content): ?>
+<div class="card__header">
+    <?php echo sprintf('<%s class="%s">%s</%s>', $_tag, $_classes, $this->escapeHtml($_content), $_tag); ?>
+</div>
+<?php endif; ?>
