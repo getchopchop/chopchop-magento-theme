@@ -1,0 +1,33 @@
+<?php $_product = $this->getProduct(); ?>
+<?php $buttonTitle = $this->__('Add to Cart'); ?>
+
+<?php
+$_qtyClass = "";
+if(!$this->getShowQtyLabel()) :
+    $_qtyClass = "u-visually-hidden";
+endif;
+?>
+
+<?php if($_product->isSaleable()): ?>
+    
+<div class="add-to-cart">
+    <?php if(!$_product->isGrouped()): ?>
+    <label for="qty" class="<?php echo $_qtyClass; ?>"><?php echo $this->__('Qty:') ?></label>
+    <?php endif; ?>
+    <div class="<?php echo $this->getAddToCartWrapperClasses(); ?>">
+        <?php if(!$_product->isGrouped()): ?>
+        <div>
+            <div class="field-group">
+                <div class="field-group__field">
+                    <input type="number" name="qty" id="qty" maxlength="12" min="<?php echo $this->getProductDefaultQty() * 1 ?>" value="<?php echo $this->getProductDefaultQty() * 1 ?>" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Qty')) ?>" class="input-text qty <?php echo $this->getQtyInputClass(); ?>" />
+                </div>
+            </div>
+        </div>
+        <?php endif; ?>
+        <div>
+            <button type="button" title="<?php echo $buttonTitle ?>" id="product-addtocart-button" class="button btn-cart btn btn--lg btn--green" onclick="productAddToCartForm.submit(this)"><span><span><?php echo $buttonTitle ?></span></span></button>
+            <?php echo $this->getChildHtml('', true, true) ?>
+        </div>
+    </div>
+</div>
+<?php endif; ?>

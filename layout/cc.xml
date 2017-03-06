@@ -63,6 +63,7 @@
             <action method="addItem"><type>skin_js</type><name>chopchop/js/chop.base.widget.js</name></action>
             <action method="addItem"><type>skin_js</type><name>chopchop/js/chop.toggle.widget.js</name></action>
             <action method="addItem"><type>skin_js</type><name>chopchop/js/chop.collapsible.widget.js</name></action>
+            <action method="addItem"><type>skin_js</type><name>chopchop/js/chop.scroll.js</name></action>
             <action method="addItem"><type>skin_js</type><name>chopchop/js/script.js</name></action>
             
             <!-- jQuery widgets -->
