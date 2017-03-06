@@ -2,20 +2,26 @@
 <layout>
 
     <customer_logged_out>
-
+        <!--<reference name="drawer.right">
+            <block type="customer/form_login" name="drawer.right.customer.login.form" as="login_form" before="-" template="persistent/customer/form/login/form.phtml" />
+        </reference>-->
     </customer_logged_out>
 
 
     <customer_logged_in>
-
+        <!-- <reference name="drawer.right">
+            <action method="insert"><name>customer_account_navigation</name></action>
+        </reference> -->
     </customer_logged_in>
 
 
     <customer_account>
         <reference name="root">
             <action method="setTemplate"><value>page/2columns-left.phtml</value></action>
+            <action method="setContainerClass"><class>u-container-lg u-section-sm</class></action>
             <action method="setLeftSidebarClass"><class>g-col-md-3</class></action>
             <action method="setContentClass"><class>g-col-md-9</class></action>
+            <action method="setWrapperClass"><class>grid g-gutter-lg</class></action>
         </reference>
     </customer_account>
 
@@ -31,17 +37,31 @@
 
 
     <customer_account_login>
-
+        <action block="root" method="setContainerClass"><class>u-container-lg u-section-sm</class></action>
+        <reference name="customer_form_login">
+            <block type="customer/form_login" name="customer.login.form" as="login_form" template="persistent/customer/form/login/form.phtml" />
+        </reference>
     </customer_account_login>
 
 
     <customer_account_create>
-
+        <action block="root" method="setContainerClass"><class>u-container-sm u-section-sm</class></action>
     </customer_account_create>
+
+
+    <customer_account_forgotpassword>
+        <action block="root" method="setContainerClass"><class>u-container-sm u-section-sm</class></action>
+    </customer_account_forgotpassword>
 
 
     <sales_order_history>
         <action block="my.account.wrapper" method="unsetChild"><name>customer.account.link.back</name></action>
+        <action block="my.account.wrapper" method="setElementClass"><name>my-account card</name></action>
     </sales_order_history>
+
+    <sales_order_view>
+        <action block="my.account.wrapper" method="setElementClass"><value>my-account card-group</value></action>
+    </sales_order_view>
+
 
 </layout>
