@@ -1,0 +1,8 @@
+<?php if($this->getShowToggle()) :?>
+<p class="u-visible-xs u-visible-sm">
+    <a href="#" class="btn btn--block" data-cc-toggle-action="activate" data-cc-toggle-target="#drawer-left-facet">
+        <span><?php echo $this->__('Filter results'); ?></span>
+        <?php echo Mage::helper('chopchop/icon')->getSvgHtml('general', 'plus'); ?>
+    </a>
+</p>
+<?php endif; ?>

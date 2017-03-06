@@ -1,0 +1,18 @@
+<?php if( sizeof($this->getTerms()) > 0 ): ?>
+    <div class="recent-search card">
+        <div class="card__header u-visually-">
+            <h4 class="h4"><?php echo $this->__('Recent Searches'); ?></h4>
+        </div>
+        <div class="card__body">
+            <ul class="nav nav--pills">
+                <?php foreach ($this->getTerms() as $_term): ?>
+                <li>
+                    <a href="<?php echo $this->getSearchUrl($_term) ?>"><?php echo $this->escapeHtml($_term->getName()) ?></a>
+                </li>
+                <?php endforeach; ?>
+            </ul>
+        </div>
+    </div>
+<?php else: ?>
+    <p class="note-msg"><?php echo $this->__('There are no search terms available.'); ?></p>
+<?php endif; ?>

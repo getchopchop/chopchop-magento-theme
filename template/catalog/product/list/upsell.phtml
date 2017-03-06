@@ -1,0 +1,50 @@
+<?php if(count($this->getItemCollection()->getItems())): ?>
+<h2><?php echo $this->__('You may also be interested in the following product(s)') ?></h2>
+<div class="scroll js-scroll is-start">
+    <a href="#" class="scroll__arrow scroll__arrow--left"></a>
+    <a href="#" class="scroll__arrow scroll__arrow--right"></a>
+    <div class="scroll__container js-scroll__container">
+        <div class="scroll__body">
+    <?php // $this->setColumnCount(5); // uncomment this line if you want to have another number of columns. also can be changed in layout ?>
+    
+    <?php $this->resetItemsIterator() ?>
+    <?php for($_i=0;$_i<$this->getRowCount();$_i++): ?>
+        <?php for($_j=0;$_j<$this->getColumnCount();$_j++): ?>
+            <?php if($_link=$this->getIterableItem()): ?>
+                <div>
+                    
+                    <?php $_hasLabel = ""; ?>
+                    <?php if (($_label = $this->helper('mymemory_labels')->getLabelHtml($_link)) !== ''): ?>
+                        <?php $_hasLabel = " has-tag"; ?>
+                    <?php endif; ?>
+                    
+                    <div class="product-card<?php echo $_hasLabel; ?>">
+                        
+                        <div class="product-card__image">
+                            <div class="layer">
+                                <a href="<?php echo $_link->getProductUrl() ?>" title="<?php echo $this->escapeHtml($_link->getName()) ?>" class="product-image image"><img src="<?php echo $this->getSkinUrl('chopchop/img/placeholder/1px.gif'); ?>" data-src="<?php echo $this->helper('catalog/image')->init($_link, 'small_image')->resize(300) ?>" width="300" height="300" alt="<?php echo $this->escapeHtml($_link->getName()) ?>" class="lazyload" /></a>
+                            </div>
+                        </div>
+                        <div class="product-card__body">
+                            <div>
+                                <a href="<?php echo $_link->getProductUrl() ?>" title="<?php echo $this->escapeHtml($_link->getName()) ?>" class="product-name"><?php echo $this->escapeHtml($_link->getName()) ?></a>
+                            </div>
+                            <?php echo $this->getReviewsSummaryHtml($_link) ?>
+                        </div>
+                        <div class="product-card__footer">
+                            <?php echo $this->getPriceHtml($_link, true, '-upsell') ?>
+                            <a href="<?php echo $_link->getProductUrl() ?>" class="btn btn--green btn--block" todo><?php echo $this->__('Add to Cart'); ?></a>
+                        </div>
+                        
+                        <?php if ($_label): ?>
+                            <?php echo $_label; ?>
+                        <?php endif; ?>
+                    </div>
+                </div>
+            <?php endif; ?>
+        <?php endfor; ?>
+    <?php endfor; ?>
+    </div>
+    </div>
+</div>
+<?php endif ?>

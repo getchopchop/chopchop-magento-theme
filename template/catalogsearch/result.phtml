@@ -1,0 +1,14 @@
+<?php $_resultCount = $this->getResultCount(); ?>
+
+<?php if ($_resultCount): ?>
+    
+    <?php echo $this->getProductListHtml(); ?>
+
+<?php else : ?>
+
+<div class="card-group">
+    <?php echo $this->getChildHtml('noresult_search'); ?>
+    <?php echo $this->getChildHtml('noresult_searchTerms'); ?>
+</div>
+
+<?php endif; ?>

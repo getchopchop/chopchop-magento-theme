@@ -1,13 +1,28 @@
-<form action="<?php echo $this->getFormActionUrl() ?>" method="post" id="newsletter-validate-detail" class="single-form single-form--invert">
-    <div class="field-group input-box">
-        <input type="text" name="email" id="newsletter" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Sign up for our newsletter')) ?>" class="input-text required-entry validate-email" placeholder="<?php echo Mage::helper('core')->quoteEscape($this->__('Sign up for our newsletter')) ?>" class="u-fill-white">
+<div class="u-container-md u-section-sm">
+    <div class="grid g-center-y g-gutter-sm">
+        <div class="g-col-md-4">
+            <h4><?php echo $this->__('Receive offers to your inbox'); ?></h4>
+        </div>
+        <div class="g-col-md-8">
+            <label for="email" class="u-visually-hidden"><?php echo $this->__('Your email address'); ?></label>
+            <form action="<?php echo $this->getFormActionUrl() ?>" method="post" id="newsletter-validate-detail" autocomplete="off" class="single-form single-form--lg">
+                <div class="grid g-stretch-first">
+                    <div class="">
+                        <input type="text" name="email" id="newsletter" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Sign up for our newsletter')) ?>" placeholder="<?php echo Mage::helper('core')->quoteEscape($this->__('Sign up for our newsletter')) ?>" class="required-entry validate-email">
+                    </div>
+                    <div>
+                        <button type="submit" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Subscribe')) ?>" class="btn btn--red">
+                            <?php echo Mage::helper('core')->quoteEscape($this->__('Subscribe')) ?>
+                        </button>
+                    </div>
+                </div>
+                <script type="text/javascript">
+                //<![CDATA[
+                    var newsletterSubscriberFormDetail = new VarienForm('newsletter-validate-detail');
+                //]]>
+                </script>
+            </form>
+        </div>
     </div>
-    <button type="submit" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Subscribe')) ?>" class="btn btn--text">
-        <?php echo Mage::helper('chopchop/icon')->getSvgHtml('general', 'arrow-right6'); ?>
-    </button>
-    <script type="text/javascript">
-    //<![CDATA[
-        var newsletterSubscriberFormDetail = new VarienForm('newsletter-validate-detail');
-    //]]>
-    </script>
-</form>
+</div>
+<hr>

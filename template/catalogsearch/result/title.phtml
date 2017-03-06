@@ -1,0 +1,7 @@
+<?php $_resultCount = $this->getResultCount(); ?>
+
+<?php if ($_resultCount): ?>
+    <?php echo $this->getMessagesBlock()->toHtml() ?>
+<?php endif; ?>
+
+<h1 class="h2"><?php echo $this->__('%s products were found for "%s"', $_resultCount, $this->helper('catalogsearch')->getEscapedQueryText()); ?></h1>

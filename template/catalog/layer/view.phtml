@@ -1,0 +1,36 @@
+<?php
+/**
+ * Category layered navigation
+ *
+ * @see Mage_Catalog_Block_Layer_View
+ */
+?>
+<?php if($this->canShowBlock()): ?>
+    
+<div class="js-filters-lg">
+    <div class="u-block-lg card block-layered-nav js-filters">
+        <?php echo $this->getStateHtml() ?>
+        <?php if($this->canShowOptions()): ?>
+            <h2 class="h3"><?php echo $this->__('Refine results'); ?></h2>
+            <p class="block-subtitle u-visually-hidden"><?php echo $this->__('Shopping Options') ?></p>
+            <div id="narrow-by-list">
+                <?php $_filters = $this->getFilters() ?>
+                <?php foreach ($_filters as $_filter): ?>
+                    <?php if($_filter->getItemsCount()): ?>
+                        <div class="facet">
+                            <?php $cleanName = strtolower(str_replace(" ","-",$_filter->getName())); ?>
+                            <div class="facet__header is-active" data-cc-toggle-action="toggle" data-cc-toggle-target="#filter-<?php echo $cleanName; ?>" id="filter-title-<?php echo $cleanName; ?>">
+                                <h4><?php echo $this->__($_filter->getName()) ?></h4>
+                                <span class="facet__icon"></span>
+                            </div>
+                            <div class="facet__body u-toggle is-active" id="filter-<?php echo $cleanName; ?>" data-cc-toggle-target-callback="#filter-title-<?php echo $cleanName; ?>">
+                                <?php echo $_filter->getHtml() ?>
+                            </div>
+                        </div>
+                    <?php endif; ?>
+                <?php endforeach; ?>
+            </div>
+        <?php endif; ?>
+    </div>
+</div>
+<?php endif; ?>

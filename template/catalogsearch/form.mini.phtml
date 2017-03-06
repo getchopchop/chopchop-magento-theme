@@ -1,13 +1,22 @@
 <?php
 $catalogSearchHelper =  $this->helper('catalogsearch');
 ?>
-<form id="search_mini_form" class="single-form" action="<?php echo $catalogSearchHelper->getResultUrl() ?>" method="get">
-    <input id="search" type="text" name="<?php echo $catalogSearchHelper->getQueryParamName() ?>" value="<?php echo $catalogSearchHelper->getEscapedQueryText() ?>" placeholder="Search" maxlength="<?php echo $catalogSearchHelper->getMaxQueryLength();?>" />
-    <button type="submit" class="btn btn--text" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Search')) ?>">
-        <span><?php echo $this->__('Search'); ?></span>
-        <?php echo Mage::helper('chopchop/icon')->getSvgHtml('general', 'search3'); ?>
-    </button>
-    <div id="search_autocomplete" class="search-autocomplete"></div>
+<form id="search_mini_form" class="single-form <?php echo $this->getSearchClass(); ?>" action="<?php echo $catalogSearchHelper->getResultUrl() ?>" method="get">
+    <label for="search" class="u-visually-hidden"><?php echo $this->__('Search'); ?></label>
+    <div class="grid g-stretch-first g-center-y">
+        <div>
+            <div class="suggestive-search js-suggestive-search">
+                <input id="search" type="text" name="<?php echo $catalogSearchHelper->getQueryParamName() ?>" value="<?php echo $catalogSearchHelper->getEscapedQueryText() ?>" placeholder="Search" maxlength="<?php echo $catalogSearchHelper->getMaxQueryLength();?>" />
+                <div id="search_autocomplete" class="search-autocomplete"></div>
+            </div>
+        </div>
+        <div>
+            <button type="submit" class="btn btn--red" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Search')) ?>">
+                <span class="u-visually-hidden"><?php echo $this->__('Search'); ?></span>
+                <?php echo Mage::helper('chopchop/icon')->getSvgHtml('general', 'search3'); ?>
+            </button>
+        </div>
+    </div>
     <script type="text/javascript">
     //<![CDATA[
         var searchForm = new Varien.searchForm('search_mini_form', 'search', '<?php echo Mage::helper('core')->jsQuoteEscape($this->__('Search entire store here...')) ?>');

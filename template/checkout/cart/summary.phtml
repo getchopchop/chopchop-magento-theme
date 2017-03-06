@@ -1,0 +1,35 @@
+<?php
+/**
+ * Shoping cart sidebar
+ *
+ * @see Mage_Checkout_Block_Cart_Sidebar
+ */
+
+?>
+<?php if ($this->getIsNeedToDisplaySideBar()):?>
+    
+    <?php
+    $_cartQty = $this->getSummaryCount();
+
+    $_items = "";
+    $_total = Mage::helper('checkout')->formatPrice($this->getSubtotal());
+    if ($_cartQty == 1): 
+        $_items = $this->__('(1)');
+    else :
+        $_items = $this->__('(%d)', $_cartQty);
+    endif;
+    ?>
+    
+    <a href="<?php echo $this->getUrl('checkout/cart'); ?>" class="u-visible-xs u-visible-sm btn">
+        <span class="u-visually-hidden"><?php echo $this->__('My Cart'); ?></span>
+        <?php echo Mage::helper('chopchop/icon')->getSvgHtml('general', 'cart'); ?>
+        <span> <span class="summary__items"><?php echo $_items; ?></span><span class="u-hidden-xs"> <?php echo $this->__('My Cart'); ?></span>
+        </span>
+    </a>
+    <a href="<?php echo $this->getUrl('checkout/cart'); ?>" class="u-hidden-xs u-hidden-sm btn btn--lg">
+        <span class="u-visually-hidden"><?php echo $this->__('My Cart'); ?></span>
+        <?php echo Mage::helper('chopchop/icon')->getSvgHtml('general', 'cart'); ?>
+        <span> <span class="summary__items"><?php echo $_items; ?></span><span class="u-hidden-md"> <?php echo $this->__('My Cart'); ?></span>
+        </span>
+    </a>
+<?php endif;?>

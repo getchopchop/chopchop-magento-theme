@@ -8,9 +8,18 @@
 <?php $_menu = $this->getHtml('level-top') ?>
 
 <?php if($_menu): ?>
-    <nav id="nav">
-        <ol class="nav nav--primary">
-            <?php echo $_menu ?>
-        </ol>
-    </nav>
+<nav id="nav">
+    <div class="u-container u-hidden-xs u-hidden-sm">
+        <div class="js-primary-nav-lg">
+            <ul class="nav nav--primary js-melodeon js-primary-nav">
+                <li class="nav__depth-1 has-child">
+                    <a href="#" class="js-melodeon-default"><?php echo $this->__('Browse all departments'); ?></a>
+                    <ul>
+                        <?php echo $_menu ?>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
 <?php endif ?>

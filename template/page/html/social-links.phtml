@@ -3,7 +3,7 @@
     $_twitterUrl = Mage::getModel('core/variable')->loadByCode('twitter_url')->getValue('plain');
     $_instagramUrl = Mage::getModel('core/variable')->loadByCode('instagram_url')->getValue('plain');
 ?>
-<ul class="social-icons">
+<ul class="social-icons u-list-inline">
     <li>
         <a href="<?php echo $_instagramUrl; ?>" class="btn btn--icon btn--lg btn--invert">
             <?php echo Mage::helper('chopchop/icon')->getSvgHtml('social', 'instagram'); ?>

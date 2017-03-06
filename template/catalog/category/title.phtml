@@ -1,0 +1,49 @@
+<?php
+/**
+ * Category view template
+ *
+ * @see Mage_Catalog_Block_Category_View
+ */
+?>
+<?php
+    $_helper    = $this->helper('catalog/output');
+    $_category  = $this->getCurrentCategory();
+    $_imgHtml   = '';
+    if ($_imgUrl = $_category->getImageUrl()) {
+        $_imgHtml = '<p class="category-image"><img src="'.$_imgUrl.'" alt="'.$this->escapeHtml($_category->getName()).'" title="'.$this->escapeHtml($_category->getName()).'" /></p>';
+        $_imgHtml = $_helper->categoryAttribute($_category, $_imgHtml, 'image');
+    }
+?>
+
+<?php echo $this->getMessagesBlock()->toHtml() ?>
+
+<?php if($_imgUrl): ?>
+    <?php echo $_imgHtml ?>
+<?php endif; ?>
+
+<div class="grid g-collapse g-gutter-x g-baseline u-space-lg-bottom">
+    <div>
+        <?php if($this->IsRssCatalogEnable() && $this->IsTopCategory()): ?>
+            <a href="<?php echo $this->getRssLink() ?>" class="link-rss"><?php echo $this->__('Subscribe to RSS Feed') ?></a>
+        <?php endif; ?>
+        <h1 class="u-text-brand-red"><?php echo $_helper->categoryAttribute($_category, $_category->getName(), 'name') ?></h1>
+    </div>
+    <?php if($_description=$this->getCurrentCategory()->getDescription()): ?>
+    <div>
+        <p><a href="#" data-cc-toggle-action="toggle" data-cc-toggle-target="#more-info"><?php echo $this->__('Read more info'); ?></a></p>
+    </div>
+    <?php endif; ?>
+</div>
+
+<?php if($_description = $this->getCurrentCategory()->getDescription()): ?>
+<div class="u-section-sm-bottom u-toggle card u-clearfix" id="more-info">
+    <div class="card__body">
+        <div class="u-container-sm">
+            <div class="category-description std">
+                <h2><?php echo $this->__('About %s', $_helper->categoryAttribute($_category, $_category->getName(), 'name')); ?></h2>
+                <?php echo $_helper->categoryAttribute($_category, $_description, 'description') ?>
+            </div>
+        </div>
+    </div>
+</div>
+<?php endif; ?>

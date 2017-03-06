@@ -1,21 +1,6 @@
-<footer class="footer">
-    
-    <?php echo $this->getChildHtml('social_links'); ?>
-        
-    <?php echo $this->getChildHtml('footer_newsletter'); ?>
-        
-    <?php echo $this->getChildHtml('footer_links'); ?>
-        
-    <?php echo $this->getChildHtml('footer_links_company'); ?>
-        
-    <?php echo $this->getChildHtml('footer_links_info'); ?>
-        
-    <?php echo $this->getChildHtml('payment_icons'); ?>
-    
-    <p><address><?php echo $this->getCopyright(); ?></address></p>
-    
-    <p><?php echo Mage::getModel('core/variable')->loadByCode('company_number')->getValue('plain'); ?> VAT No. <?php echo Mage::getStoreConfig('general/store_information/merchant_vat_number'); ?>.<br>
-        <?php echo Mage::getStoreConfig('general/store_information/address'); ?>
-    </p>
-    
-</footer>
+<?php echo $this->getChildHtml('topper'); ?>
+<div class="u-clearfix u-fill-grey-darker">
+    <?php echo $this->getChildHtml('newsletter'); ?>
+    <?php echo $this->getChildHtml('body'); ?>
+</div>
+<?php echo $this->getChildHtml('footer'); ?>

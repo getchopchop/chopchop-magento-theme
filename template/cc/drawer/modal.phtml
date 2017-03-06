@@ -1,6 +1,6 @@
-<div class="modal <?php echo $this->getModalSize(); ?>" id="modal" data-cc-cascade="overlay" data-cc-action="deactivate" data-cc-target="modal" data-cc-trigger-on="direct-only">
+<div class="modal <?php echo $this->getModalSize(); ?>" id="modal" data-cc-toggle-target-callback="#overlay" data-cc-toggle-action="deactivate" data-cc-toggle-target="#modal" data-cc-trigger-on="direct-only">
     <?php if($this->getShowModalClose()) : ?>
-        <a href="#" data-cc-action="deactivate" data-cc-target="modal" class="btn btn--sm btn--close">
+        <a href="#" data-cc-toggle-action="deactivate" data-cc-toggle-target="modal" class="btn btn--sm btn--close">
             <span class="shape-cross"></span>
             <span class="btn__text"><?php echo $this->__('Close'); ?></span>
         </a>

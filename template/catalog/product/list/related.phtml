@@ -1,0 +1,35 @@
+<?php if($this->getItems()->getSize()): ?>
+<div class="card u-section-xs-top">
+    <div class="card__header">
+        <h2 class="h3"><?php echo $this->__('Related Products') ?></h2>
+    </div>
+    <div class="card__body">
+        <?php foreach($this->getItems() as $_item): ?>
+            
+            <?php $_hasLabel = ""; ?>
+            <?php if (($_label = $this->helper('mymemory_labels')->getLabelHtml($_item)) !== ''): ?>
+                <?php $_hasLabel = " has-tag"; ?>
+            <?php endif; ?>
+            
+        <form method="post" action="<?php echo $this->getAddToCartUrl($_item) ?>" class="product-flag<?php echo $_hasLabel; ?>">
+            <div class="product-flag__image">
+                <div class="layer">
+                    <a href="#">
+                        <img src="<?php echo $this->getSkinUrl('chopchop/img/placeholder/1px.gif'); ?>" data-src="<?php echo $this->helper('catalog/image')->init($_item, 'thumbnail')->resize(200) ?>" width="200" height="200" alt="<?php echo $this->escapeHtml($_item->getName()) ?>" class="u-center lazyload" />
+                    </a>
+                </div>
+            </div>
+            <div class="product-flag__body">
+                <div><a href="<?php echo $_item->getProductUrl() ?>"><?php echo $this->escapeHtml($_item->getName()) ?></a></div>
+                <?php echo $this->getPriceHtml($_item, true, '-related') ?>
+                <button type="submit" class="btn btn--green"><?php echo $this->__('Add to Cart'); ?></button>
+            </div>
+            
+            <?php if ($_label): ?>
+                <?php echo $_label; ?>
+            <?php endif; ?>
+        </form>
+        <?php endforeach ?>
+    </div>
+</div>
+<?php endif ?>

@@ -1,0 +1,22 @@
+<footer role="contentinfo" class="u-clearfix u-fill-black t-light-grey">
+    <div class="u-container-lg u-section-sm">
+        
+        <div class="grid g-stretch-first g-gutter g-center-y">
+            
+            <div>
+                <p class="micro">
+                    <span><?php echo $this->getCopyright(); ?></span>
+                    <br>
+                    <?php echo $this->__('Registered Company Number: %s', Mage::getModel('core/variable')->loadByCode('company_number')->getValue('plain')); ?><br>
+                    <?php echo Mage::getStoreConfig('general/store_information/address'); ?>
+                </p>
+                <?php echo $this->getChildHtml('iweb_footer_links'); ?>
+            </div>
+            
+            <div>
+                <?php echo $this->getChildHtml('social_links'); ?>
+            </div>
+            
+        </div>
+    </div>
+</footer>

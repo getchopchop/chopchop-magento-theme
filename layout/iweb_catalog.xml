@@ -5,19 +5,40 @@
     <all_product_listing>
         <reference name="root">
             <action method="setTemplate"><value>page/2columns-left.phtml</value></action>
-            <action method="setLeftSidebarClass"><class>g-col-md-3</class></action>
-            <action method="setContentClass"><class>g-col-md-9</class></action>
+            <action method="setContainerClass"><class>u-space-top u-section-bottom u-container</class></action>
+            <action method="setWrapperClass"><class>content-grid</class></action>
+            <action method="setLeftSidebarClass"><class>content-grid__side</class></action>
+            <action method="setContentClass"><class>content-grid__main</class></action>
+        </reference>
+        
+        <reference name="before.content">
+            <block type="core/template" name="category.layer.toggle" template="catalog/layer/toggle.phtml">
+                <action method="setShowToggle"><val>1</val></action>
+            </block>
+            
+            <block type="page/html_wrapper" name="toolbar.top.wrapper">
+                <action method="setElementClass"><classname>toolbar-top</classname></action>
+                <block type="catalog/product_list" name="toolbar_only" template="catalog/product/list/toolbar-only.phtml">
+                    <block type="catalog/product_list_toolbar" name="product_list_toolbar_only" template="catalog/product/list/toolbar.phtml" />
+                </block>
+            </block>
+        </reference>
+        
+        <reference name="drawer.left">
+            <block type="core/template" name="drawer.left.facet.placeholder" template="cc/drawer/left/facet.phtml" />
         </reference>
     </all_product_listing>
 
 
     <catalog_category_default>
-
+        <update handle="all_product_listing" />
     </catalog_category_default>
 
 
     <catalog_category_view>
-        <update handle="all_product_listing" />
+        <reference name="before.content">
+            <block type="catalog/category_view" name="category.title" template="catalog/category/title.phtml" />
+        </reference>
     </catalog_category_view>
 
 
@@ -28,6 +49,21 @@
 
     <catalogsearch_result_index>
         <update handle="all_product_listing" />
+        <reference name="before.content">
+            <block type="catalogsearch/result" name="catalogsearch.result.title" before="-" template="catalogsearch/result/title.phtml">
+                <block type="catalog/product_list" name="search_result_list" />
+            </block>
+        </reference>
+        <reference name="search.result">
+            <block type="page/html_wrapper" name="search.result.wrapper" as="noresult_search">
+                <action method="setElementClass"><classname>card</classname></action>
+                <block type="page/html_wrapper" name="search.result.body">
+                    <action method="setElementClass"><classname>card__body</classname></action>
+                    <block type="core/template" name="noresult.search" template="catalogsearch/form.mini.phtml" />
+                </block>
+            </block>
+            <block type="catalogsearch/term" name="noresult.seo.searchterm" template="catalogsearch/term.phtml" as="noresult_searchTerms" />
+        </reference>
     </catalogsearch_result_index>
 
 

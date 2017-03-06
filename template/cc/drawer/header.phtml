@@ -1,6 +1,6 @@
 <?php if ($this->getTitle() || $this->getDeactivateTarget()) : ?>
 <hgroup class="title title--drawer">
     <p class="title__main h2"><?php echo $this->getTitle(); ?></p>
-    <a href="#" class="title__btn btn btn--icon btn--invert btn--close" data-cc-action="deactivate" data-cc-target="<?php echo $this->getDeactivateTarget(); ?>"><?php echo Mage::helper('chopchop/icon')->getSvgHtml('general', 'cross'); ?></a>
+    <a href="#" class="title__btn btn btn--icon btn--invert btn--close" data-cc-toggle-action="deactivate" data-cc-toggle-target="<?php echo $this->getDeactivateTarget(); ?>"><?php echo Mage::helper('chopchop/icon')->getSvgHtml('general', 'cross'); ?></a>
 </hgroup>
 <?php endif; ?>

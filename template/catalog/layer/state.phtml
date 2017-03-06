@@ -1,0 +1,28 @@
+<?php
+/**
+ * Category layered navigation state
+ *
+ * @see Mage_Catalog_Block_Layer_State
+ */
+?>
+<?php $_filters = $this->getActiveFilters() ?>
+<?php if(!empty($_filters)): ?>
+
+<div class="currently">
+    <p class="block-subtitle u-visually-hidden"><?php echo $this->__('Currently Shopping by:') ?></p>
+    <p class="u-space-lg">
+    <?php foreach ($_filters as $_filter): ?>
+        <a href="<?php echo $_filter->getRemoveUrl() ?>" class="tag" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Remove This Item')) ?>">
+            <span class="value"><?php echo $this->stripTags($_filter->getLabel()) ?></span>
+            <?php echo Mage::helper('chopchop/icon')->getSvgHtml('general', 'cross', 'icon--sm'); ?>
+        </a>
+    <?php endforeach; ?>
+    
+    <?php if ($this->getLayer()->getState()->getFilters()): ?>
+        <a href="<?php echo $this->getClearUrl() ?>" class="tag u-fill-white"><?php echo $this->__('Clear All') ?></a>
+    <?php endif; ?>
+    
+    </p>
+</div>
+<?php endif; ?>
+

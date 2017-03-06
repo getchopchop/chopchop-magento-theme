@@ -11,7 +11,7 @@
     <?php $_total = Mage::helper('checkout')->formatPrice($this->getSubtotal()); ?>
     <?php if ($_cartQty>0): ?>
         <h5>
-            <a href="#" data-cc-action="toggle" data-cc-target="cart-totals-top">
+            <a href="#" data-cc-toggle-action="toggle" data-cc-toggle-target="cart-totals-top">
                 <?php echo $this->__('Basket Subtotal %s', $_total) ?>
                 <?php echo Mage::helper('chopchop/icon')->getSvgHtml('general', 'arrow-down6'); ?>
             </a>
