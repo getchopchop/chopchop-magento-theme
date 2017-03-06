@@ -1,0 +1,19 @@
+<?php /* @var $this Mage_Catalog_Block_Product_View_Abstract */?>
+<?php $_product = $this->getProduct() ?>
+
+<?php echo $this->getChildHtml('product_type_data_extra') ?>
+<?php echo $this->getPriceHtml($_product) ?>
+
+<?php if ($this->displayProductStockStatus()): ?>
+    <?php if ($_product->isAvailable()): ?>
+        <p class="availability in-stock lead">
+            <span class="u-visually-hidden"><?php echo $this->__('Availability:') ?></span>
+            <strong class="u-text-contextual-success"><?php echo Mage::helper('chopchop/icon')->getSvgHtml('general', 'radio-checked'); ?> <?php echo $this->__('In stock') ?></strong>
+        </p>
+    <?php else: ?>
+        <p class="availability out-of-stock lead">
+            <span class="u-visually-hidden"><?php echo $this->__('Availability:') ?></span>
+            <strong class="u-text-contextual-error"><?php echo Mage::helper('chopchop/icon')->getSvgHtml('general', 'cross'); ?> <?php echo $this->__('Out of stock') ?></strong>
+        </p>
+    <?php endif; ?>
+<?php endif; ?>

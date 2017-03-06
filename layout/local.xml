@@ -5,7 +5,8 @@
         
         <update handle="iweb_root_text_lists" />
         
-        <action block="root" method="setWrapperClass"><class>grid g-gutter</class></action>
+        <action block="root" method="setWrapperClass"><class>u-container</class></action>
+        <action block="root" method="setContentClass"><class>grid g-gutter</class></action>
         <action block="top.search" method="setSearchClass"><class>single-form--lg js-search</class></action>
         
         <reference name="header">
