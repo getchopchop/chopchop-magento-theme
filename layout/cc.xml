@@ -49,6 +49,7 @@
             <action method="addItem"><type>skin_js</type><name>chopchop/vendor/jquery/jquery-ui.min.js</name></action>
             <action method="addItem"><type>skin_js</type><name>chopchop/vendor/jquery/jquery-no-conflict.js</name></action>
             <action method="addItem"><type>skin_js</type><name>chopchop/vendor/enquire/enquire.js</name></action>
+            <action method="addItem"><type>skin_js</type><name>chopchop/vendor/lazysizes/lazysizes.min.js</name></action>
             <action method="addItem"><type>skin_js</type><name>chopchop/vendor/svgxuse/svgxuse.js</name></action>
             <action method="addItem"><type>skin_js</type><name>chopchop/vendor/svg4everybody/svg4everybody.js</name><params/><if>lt IE 9</if></action>
             <block type="core/text" name="run.svg4everybody">
