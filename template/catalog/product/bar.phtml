@@ -1,0 +1,45 @@
+<?php
+/**
+ * Product view template
+ *
+ * @see Mage_Catalog_Block_Product_View
+ * @see Mage_Review_Block_Product_View
+ */
+?>
+<?php $_helper = $this->helper('catalog/output'); ?>
+<?php $_product = $this->getProduct(); ?>
+
+<div class="js-fixed-bar fixed-bar u-hidden-xs u-hidden-sm">
+    <div class="u-container u-block-top u-block-bottom">
+        <div class="grid g-gutter-x g-stretch-first g-center-y">
+            <div class="g-col-md-3">
+                <div class="grid g-stretch-last g-gutter-x g-center">
+                    <div style="min-width: 5em;">
+                        <div class="layer layer--lg">
+                            <?php
+                                $_img = '<img src="'.$this->getSkinUrl('chopchop/img/placeholder/1px.gif').'" data-src="'.$this->helper('catalog/image')->init($_product, 'thumbnail')->resize(50).'" alt="'.$this->escapeHtml($this->getImageLabel()).'" title="'.$this->escapeHtml($this->getImageLabel()).'" class="lazyload" />';
+                                echo $_helper->productAttribute($_product, $_img, 'thumbnail');
+                            ?>
+                        </div>
+                    </div>
+                    <div class="g-col-sm-10">
+                        <div class="title">
+                            <p class="h4 fixed-bar__title"><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></p>
+                            <?php echo $this->getReviewsSummaryHtml($_product, false, true)?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="grid g-collapse g-gutter-x g-center-y">
+                    <div class="js-price-clone">
+                        <!-- clone price block into here -->
+                    </div>
+                    <div>
+                        <?php echo $this->getChildHtml('addtocart') ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

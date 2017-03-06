@@ -1,0 +1,36 @@
+<?php
+/**
+ * Category left navigation
+ *
+ * @see Mage_Catalog_Block_Navigation
+ */
+?>
+<?php if (!Mage::registry('current_category')) return ?>
+<?php $_categories = $this->getCurrentChildCategories() ?>
+<?php $_count = is_array($_categories)?count($_categories):$_categories->count(); ?>
+<?php if($_count): ?>
+
+    <div class="u-block-lg card block-layered-nav">
+        <h2 class="h3"><?php echo $this->__('Filter results'); ?></h2>
+        <div class="facet" id="narrow-by-list2">
+            <div class="facet__header is-active" data-cc-toggle-action="toggle" data-cc-toggle-target="#filter-category" id="filter-title-category">
+                <h4><?php echo $this->__('Category') ?></h4>
+                <span class="facet__icon"></span>
+            </div>
+            <div class="facet__body u-toggle is-active" id="filter-category" data-cc-toggle-target-callback="#filter-title-category">
+                <ol class="nav nav--checklist">
+                <?php foreach ($_categories as $_category): ?>
+                    <?php if($_category->getIsActive()): ?>
+                    <li>
+                        <a href="<?php echo $this->getCategoryUrl($_category) ?>"<?php if ($this->isCategoryActive($_category)): ?> class="is-active current"<?php endif; ?>>
+                            <?php echo $this->escapeHtml($_category->getName()) ?> <span class="u-text-grey micro">(<?php echo $_category->getProductCount() ?>)</span>
+                        </a>
+                    </li>
+                    <?php endif; ?>
+                <?php endforeach ?>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+<?php endif; ?>
