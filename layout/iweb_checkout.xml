@@ -36,7 +36,6 @@
 
 
     <checkout_cart_index>
-        <remove name="root" />
         <update handle="all_checkout" />
         <update handle="pre_buying_checkout" />
         
@@ -87,7 +86,7 @@
         <remove name="top.search" />
         <remove name="cart.summary" />
         <remove name="cart.link" />
-        <remove name="hheader.auxiliary" />
+        <remove name="header.auxiliary" />
         <remove name="drawer.left.html" />
         <remove name="drawer.right.html" />
         <remove name="loader.html" />
