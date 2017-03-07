@@ -70,9 +70,12 @@
     <catalog_product_view>
         <update handle="iweb_media" />
         
+        <!-- Reset Upsells Below -->
+        <action method="unsetChild"><name>product.info.upsell</name></action>
+        
         <reference name="root">
             <action method="setTemplate"><value>page/1column.phtml</value></action>
-            <action method="setContainerClass"><class>u-container-lg</class></action>
+            <action method="setContainerClass"><class>u-container-lg js-fixed-bar-trigger</class></action>
         </reference>
         
         <reference name="product.info">
@@ -83,6 +86,25 @@
                     <action method="addToParentGroup"><group>detailed_info</group></action>
                     <action method="setTitle" translate="value"><value>Description</value></action>
                     <action method="insert"><name>product.description</name></action>
+                </block>
+            </block>
+            
+            <block type="catalog/product_list_related" name="catalog.product.related" as="related" template="catalog/product/list/related.phtml"/>
+            
+        </reference>
+        
+        <reference name="after.main">
+            <action block="product.info.upsell" method="setItemLimit"><type>upsell</type><limit>12</limit></action>
+            
+            <block type="page/html_wrapper" name="upsell.wrapper">
+                <action method="setElementClass"><classname>u-container u-section-sm</classname></action>
+                <action method="insert"><name>product.info.upsell</name></action>
+            </block>
+            
+            <block type="catalog/product_view" name="product.bar" template="catalog/product/bar.phtml">
+                <block type="catalog/product_view" name="product.bar.addtocart" as="addtocart" template="catalog/product/view/addtocart.phtml">
+                    <action method="setAddToCartWrapperClasses"><val>grid g-gutter-x-sm g-center-y g-stretch-first</val></action>
+                    <action method="setQtyInputClass"><val>lead narrow</val></action>
                 </block>
             </block>
             
