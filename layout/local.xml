@@ -31,6 +31,7 @@
             <block type="core/template" name="footer.topper" as="topper" template="page/html/footer/topper.phtml" />
             <block type="newsletter/subscribe" name="newsletter" template="newsletter/subscribe.phtml"/>
             <block type="page/html_footer" name="footer.body" as="body" template="page/html/footer/body.phtml">
+                <action method="setCacheKey"><key helper="core/url/getCurrentUrl" /></action>
                 <block type="core/template" name="footer.payment.icons" as="payment_icons" template="page/html/payment-icons.phtml" />
                 <block type="core/template" name="footer.links.info" as="footer_links_info" template="page/html/footer/info-links.phtml" />
                 <block type="core/template" name="footer.links.company" as="footer_links_company" template="page/html/footer/company-links.phtml" />
