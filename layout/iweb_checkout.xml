@@ -2,6 +2,7 @@
 <layout>
 
 
+
     <all_checkout>
         <remove name="breadcrumbs" />
         <remove name="footer.body" />
@@ -27,7 +28,7 @@
                 <block type="core/template" name="checkout.onepage.review.info.wrapper" template="checkout/onepage/review/wrapper.phtml">
                     <block type="checkout/cart_totals" name="checkout.onepage.review.info.totals" as="totals" template="checkout/onepage/review/totals.phtml"/>
                     <block type="checkout/cart_coupon" name="checkout.onepage.coupon" as="coupon" template="checkout/coupon.phtml"/>
-                    <action method="append"><name>footer.payment.icons</name></action>
+                    <block type="core/template" name="checkout.payment.icons" as="payment_icons" template="page/html/payment-icons.phtml" />
                 </block>
             </block>
         </reference>
@@ -35,6 +36,7 @@
 
 
     <checkout_cart_index>
+        <remove name="root" />
         <update handle="all_checkout" />
         <update handle="pre_buying_checkout" />
         
@@ -59,7 +61,6 @@
         
         <action block="checkout.cart" method="unsetChild"><name>shipping</name></action>
         <action block="checkout.cart" method="unsetChild"><name>crosssell</name></action>
-
     </checkout_cart_index>
 
 
@@ -100,11 +101,13 @@
         <remove name="es_js_init" />
         
         <reference name="header">
+            <!-- <action method="setLogoSrc"><src>chopchop/img/logo/logo.svg</src></action> -->
+            <action method="setHeaderContainerClass"><val>u-container-lg</val></action>
             <block type="core/template" name="checkout.confidence.header" as="confidence" template="checkout/onepage/confidence/header.phtml" />
         </reference>
         
         <reference name="root">
-            <action method="setContainerClass"><class>u-container-md u-section-sm</class></action>
+            <action method="setContainerClass"><class>u-container-lg u-section-sm</class></action>
             <action method="setContentClass"><class>g-col-md-7 g-col-lg-8</class></action>
             <action method="setRightSidebarClass"><class>g-col-md-5 g-col-lg-4</class></action>
         </reference>
@@ -117,6 +120,9 @@
 
     <checkout_onepage_success>
         <update handle="all_checkout" />
+        <reference name="root">
+            <action method="setContainerClass"><class>u-container-lg u-section</class></action>
+        </reference>
         <reference name="right">
             <block type="checkout/onepage_success" name="success.summary" template="checkout/success/summary.phtml" />
         </reference>

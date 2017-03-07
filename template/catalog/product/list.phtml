@@ -82,11 +82,10 @@
                 <div class="product-card__footer">
                     <?php echo $this->getPriceHtml($_product, true) ?>
                     <?php if($_product->isSaleable()): ?>
-                        <?php $addToCartUrl = $this->getAddToCartUrl($_product); ?>
+                        <button type="button" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Add to Cart')) ?>" class="button btn-cart btn--block" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button>
                     <?php else: ?>
-                        <?php $addToCartUrl = Mage::helper('productalert')->setProduct($_product)->getSaveUrl('stock'); ?>
+                        <p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
                     <?php endif; ?>
-                    <button type="button" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Add to Cart')) ?>" class="btn btn--green btn--block" onclick="setLocation('<?php echo $addToCartUrl ?>')"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button>
                 </div>
             </div>
             

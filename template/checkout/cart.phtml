@@ -10,37 +10,47 @@
 
     <?php echo $this->getMessagesBlock()->toHtml() ?>
 
-    <h1 class="h3"><?php echo $this->__('Shopping Cart') ?></h1>
-    
-    <div class="u-visible-xs u-visible-sm">
-        <?php echo $this->getChildHtml('subtotal'); ?>
-        <div id="cart-totals-top" class="u-toggle">
-            <?php echo $this->getChildHtml('totals'); ?>
+    <div class="card">
+        <div class="card__header">
+            <h1 class="h3"><?php echo $this->__('Shopping Cart') ?></h1>
         </div>
-        <?php if(!$this->hasError()): ?>
-            <p class="u-text-right">
-                <?php foreach ($this->getMethods('top_methods') as $method): ?>
-                    <?php if ($methodHtml = $this->getMethodHtml($method)): ?>
-                        <?php echo $methodHtml; ?>
-                    <?php endif; ?>
-                <?php endforeach; ?>
-            </p>
-        <?php endif; ?>
-    </div>
-
-    <?php echo $this->getChildHtml('form_before') ?>
-    <form action="<?php echo $this->getFormActionUrl() ?>" method="post">
-        <?php echo $this->getBlockHtml('formkey'); ?>
-        <?php foreach($this->getItems() as $_item): ?>
-            <div class="grid g-gutter">
-                <?php echo $this->getItemHtml($_item) ?>
-                <hr />
+        
+        <div class="card__body">
+            <div class="u-visible-xs u-visible-sm">
+                <?php echo $this->getChildHtml('subtotal'); ?>
+                <div id="cart-totals-top" class="u-toggle">
+                    <?php echo $this->getChildHtml('totals'); ?>
+                </div>
+                <?php if(!$this->hasError()): ?>
+                    <p class="u-text-right">
+                        <?php foreach ($this->getMethods('top_methods') as $method): ?>
+                            <?php if ($methodHtml = $this->getMethodHtml($method)): ?>
+                                <?php echo $methodHtml; ?>
+                            <?php endif; ?>
+                        <?php endforeach; ?>
+                    </p>
+                <?php endif; ?>
             </div>
-        <?php endforeach ?>
-    </form>
+
+            <?php echo $this->getChildHtml('form_before') ?>
+            <form action="<?php echo $this->getFormActionUrl() ?>" method="post">
+                <?php echo $this->getBlockHtml('formkey'); ?>
+                <?php foreach($this->getItems() as $_item): ?>
+                    <div class="grid g-gutter">
+                        <?php echo $this->getItemHtml($_item) ?>
+                        <hr />
+                    </div>
+                <?php endforeach ?>
+            </form>
+        </div>
+
+        <div class="card__footer grid g-center g-stretch-first">
+            <?php echo $this->getChildHtml('continue') ?>
+        </div>
+
+    </div>
     
     <div class="cart-collaterals">
-        <?php echo $this->getChildHtml('continue') ?>
         <?php echo $this->getChildHtml('crosssell') ?>
         <?php /* Extensions placeholder */ ?>
         <?php echo $this->getChildHtml('checkout.cart.extra') ?>

@@ -1,10 +1,32 @@
-<div class="u-clearfix u-section-xs-bottom">
-    <div class="u-section-xs">
-        <h3><?php echo $this->__('Total'); ?></h3>
-        <table id="order-summary-totals-table" class="data-table table--striped">
-            <?php echo $this->getChildHtml('totals'); ?>
-        </table>
-        <?php echo $this->getChildHtml('checkout.cart.methods'); ?>
-        <?php echo $this->getChildHtml('coupon') ?>
+<div class="card-group">
+    <div class="card">
+        <div class="card__header">
+            <h3><?php echo $this->__('Order Total'); ?></h3>
+        </div>
+        <div class="card__body">
+            <table id="order-summary-totals-table" class="data-table table--striped">
+                <?php echo $this->getChildHtml('totals'); ?>
+            </table>
+            <br />
+            <?php echo $this->getChildHtml('checkout.cart.methods'); ?>
+        </div>
+    </div>
+    <?php echo $this->getChildHtml('coupon') ?>
+</div>
+<div class="u-space">
+    <div class="card">
+        <div class="card__header">
+            <div class="grid g-center g-stretch-first">
+                <div>
+                    <h3><?php echo $this->__('We accept'); ?></h3>
+                </div>
+                <div>
+                    <?php echo Mage::helper('chopchop/icon')->getSvgHtml('general', 'lock4'); ?>
+                </div>
+            </div>
+        </div>
+        <div class="card__body">
+            <?php echo $this->getChildHtml('payment_icons') ?>
+        </div>
     </div>
 </div>

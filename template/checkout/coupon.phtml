@@ -1,32 +1,35 @@
-<form id="discount-coupon-form" action="<?php echo $this->getFormActionUrl() ?>" method="post">
-    <div class="discount u-section-xs">
-        <a href="#" data-cc-toggle-action="toggle" data-cc-toggle-target="voucher-form"><?php echo $this->__('Discount or gift voucher?') ?></a>
-        <div class="discount-form u-toggle" id="voucher-form">
-            <input type="hidden" name="remove" id="remove-coupone" value="0" />
-            <div class="input-box">
-                <input class="input-text" id="coupon_code" name="coupon_code" value="<?php echo $this->escapeHtml($this->getCouponCode()) ?>" />
+<div class="card">
+    <div class="card__body">
+        <form id="discount-coupon-form" action="<?php echo $this->getFormActionUrl() ?>" method="post" class="discount">
+            <a href="#" data-cc-toggle-action="toggle" data-cc-toggle-target="#voucher-form"><?php echo $this->__('Discount or gift voucher?') ?></a>
+            <div class="discount-form u-toggle" id="voucher-form">
+                <br />
+                <input type="hidden" name="remove" id="remove-coupone" value="0" />
+                <div class="input-box">
+                    <input class="input-text" id="coupon_code" name="coupon_code" value="<?php echo $this->escapeHtml($this->getCouponCode()) ?>" />
+                </div>
+                <div class="buttons-set">
+                    <button type="button" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Apply Coupon')) ?>" class="button btn--red" onclick="discountForm.submit(false)" value="<?php echo Mage::helper('core')->quoteEscape($this->__('Apply Coupon')) ?>"><span><span><?php echo $this->__('Apply Coupon') ?></span></span></button>
+                    <?php if(strlen($this->getCouponCode())): ?>
+                        &nbsp; <button type="button" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Cancel Coupon')) ?>" class="button btn--red" onclick="discountForm.submit(true)" value="<?php echo Mage::helper('core')->quoteEscape($this->__('Cancel Coupon')) ?>"><span><span><?php echo $this->__('Cancel Coupon') ?></span></span></button>
+                    <?php endif;?>
+                </div>
             </div>
-            <div class="buttons-set">
-                <button type="button" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Apply Coupon')) ?>" class="button" onclick="discountForm.submit(false)" value="<?php echo Mage::helper('core')->quoteEscape($this->__('Apply Coupon')) ?>"><span><span><?php echo $this->__('Apply Coupon') ?></span></span></button>
-                <?php if(strlen($this->getCouponCode())): ?>
-                    &nbsp; <button type="button" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Cancel Coupon')) ?>" class="button" onclick="discountForm.submit(true)" value="<?php echo Mage::helper('core')->quoteEscape($this->__('Cancel Coupon')) ?>"><span><span><?php echo $this->__('Cancel Coupon') ?></span></span></button>
-                <?php endif;?>
-            </div>
-        </div>
+        </form>
+        <script type="text/javascript">
+        //<![CDATA[
+        var discountForm = new VarienForm('discount-coupon-form');
+        discountForm.submit = function (isRemove) {
+            if (isRemove) {
+                $('coupon_code').removeClassName('required-entry');
+                $('remove-coupone').value = "1";
+            } else {
+                $('coupon_code').addClassName('required-entry');
+                $('remove-coupone').value = "0";
+            }
+            return VarienForm.prototype.submit.bind(discountForm)();
+        }
+        //]]>
+        </script>
     </div>
-</form>
-<script type="text/javascript">
-//<![CDATA[
-var discountForm = new VarienForm('discount-coupon-form');
-discountForm.submit = function (isRemove) {
-    if (isRemove) {
-        $('coupon_code').removeClassName('required-entry');
-        $('remove-coupone').value = "1";
-    } else {
-        $('coupon_code').addClassName('required-entry');
-        $('remove-coupone').value = "0";
-    }
-    return VarienForm.prototype.submit.bind(discountForm)();
-}
-//]]>
-</script>
+</div>
