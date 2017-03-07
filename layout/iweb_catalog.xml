@@ -79,12 +79,17 @@
         
         <reference name="root">
             <action method="setTemplate"><value>page/1column.phtml</value></action>
-            <action method="setContainerClass"><class>u-container-lg</class></action>
+            <action method="setContainerClass"><class>u-container-xl</class></action>
         </reference>
         
         <reference name="product.info">
             
             <block type="iweb_core/catalog_product_view_generic" name="product.short.description" as="short_description" template="catalog/product/view/short-description.phtml" />
+            
+            <block type="page/html_wrapper" name="product.title.wrapper" as="title">
+                <action method="setElementClass"><classname>u-section-xs-top g-col-lg-8 g-col-xl-9</classname></action>
+                <block type="catalog/product_view" name="product.title" template="catalog/product/view/title.phtml"/>
+            </block>
             
             <!-- Tabs Block Demo -->
             <block type="catalog/product_view" name="product.tabs" as="tabs" template="catalog/product/view/tabs.phtml">

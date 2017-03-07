@@ -1,0 +1,9 @@
+<?php $_helper = $this->helper('catalog/output'); ?>
+<?php $_product = $this->getProduct(); ?>
+<div class="product-name title">
+    <h1 class="u-hidden-xs u-hidden-sm h2"><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></h1>
+    <h4 class="u-hidden-xs u-hidden-sm"><?php echo $this->getSubTitle(); ?></h4>
+    <p class="u-visible-xs u-visible-sm h3"><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></p>
+    <p class="u-visible-xs u-visible-sm"><?php echo $this->getSubTitle(); ?></p>
+    <?php echo $this->getReviewsSummaryHtml($_product, false, true)?>
+</div>
