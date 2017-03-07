@@ -11,68 +11,23 @@
     <div class="page-title">
         <h1><?php echo $this->__('Login or Create an Account') ?></h1>
     </div>
-    <form action="<?php echo $this->getPostActionUrl() ?>" method="post" id="login-form">
-        <?php echo $this->getBlockHtml('formkey'); ?>
-        <div class="col2-set grid g-gutter">
-            <div class="col-1 g-col-md-6 new-users">
-                <div class="card">
-                    <div class="card__header">
-                        <h2 class="h3"><?php echo $this->__('New Customers') ?></h2>
-                    </div>
-                    <div class="card__body">
-                        <p><?php echo $this->__('By creating an account with our store, you will be able to move through the checkout process faster, store multiple shipping addresses, view and track your orders in your account and more.') ?></p>
-                    </div>
-                    <div class="card__footer buttons-set">
-                        <button type="button" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Create an Account')) ?>" class="button" onclick="window.location='<?php echo Mage::helper('persistent')->getCreateAccountUrl($this->getCreateAccountUrl()) ?>';"><span><span><?php echo $this->__('Create an Account') ?></span></span></button>
-                    </div>
+    
+    <div class="col2-set grid g-gutter g-reverse">
+        <div class="col-1 g-col-md-6 new-users">
+            <div class="card">
+                <div class="card__header">
+                    <h2 class="h3"><?php echo $this->__('New Customers') ?></h2>
                 </div>
-            </div>
-            <div class="col-2 g-col-md-6 registered-users">
-                <div class="card">
-                    <div class="card__header">
-                        <h2 class="h3"><?php echo $this->__('Registered Customers') ?></h2>
-                    </div>
-                    <div class="card__body">
-                        <p><?php echo $this->__('If you have an account with us, please log in.') ?></p>
-                        <ul class="form-list">
-                            <li class="field-group">
-                                <label for="email" class="field-group__label required"><em>*</em><?php echo $this->__('Email Address') ?></label>
-                                <div class="field-group__field input-box">
-                                    <input type="text" name="login[username]" value="<?php echo $this->escapeHtml($this->getUsername()) ?>" id="email" class="input-text required-entry validate-email" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Email Address')) ?>" />
-                                </div>
-                            </li>
-                            <li class="field-group">
-                                <label for="pass" class="field-group__label required"><em>*</em><?php echo $this->__('Password') ?></label>
-                                <div class="field-group__field input-box">
-                                    <input type="password" name="login[password]" class="input-text required-entry validate-password" id="pass" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Password')) ?>" />
-                                </div>
-                            </li>
-                            <?php echo $this->getChildHtml('form.additional.info'); ?>
-                            <?php echo $this->getChildHtml('persistent.remember.me'); ?>
-                        </ul>
-                        <?php echo $this->getChildHtml('persistent.remember.me.tooltip'); ?>
-                        <p class="required"><?php echo $this->__('* Required Fields') ?></p>
-                    </div>
-                    <div class="buttons-set card__footer">
-                        <div class="grid g-center g-collapse g-space">
-                            <div>
-                                <button type="submit" class="button" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Login')) ?>" name="send" id="send2"><span><span><?php echo $this->__('Login') ?></span></span></button>
-                            </div>
-                            <div class="u-text-right">
-                                <a href="<?php echo $this->getForgotPasswordUrl() ?>" class="f-left"><?php echo $this->__('Forgot Your Password?') ?></a>
-                            </div>
-                        </div>
-                    </div>
+                <div class="card__body">
+                    <p><?php echo $this->__('By creating an account with our store, you will be able to move through the checkout process faster, store multiple shipping addresses, view and track your orders in your account and more.') ?></p>
+                </div>
+                <div class="card__footer buttons-set">
+                    <button type="button" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Create an Account')) ?>" class="button" onclick="window.location='<?php echo Mage::helper('persistent')->getCreateAccountUrl($this->getCreateAccountUrl()) ?>';"><span><span><?php echo $this->__('Create an Account') ?></span></span></button>
                 </div>
             </div>
         </div>
-        <?php if (Mage::helper('checkout')->isContextCheckout()): ?>
-            <input name="context" type="hidden" value="checkout" />
-        <?php endif; ?>
-    </form>
-    <script type="text/javascript">
-    //<![CDATA[
-        var dataForm = new VarienForm('login-form', true);
-    //]]>
-    </script>
+        <div class="col-2 g-col-md-6 registered-users">
+            <?php echo $this->getChildHtml('login_form'); ?>
+        </div>
+    </div>
 </div>
