@@ -1,0 +1,26 @@
+<?php
+/**
+ * Product description template
+ *
+ * @see Mage_Catalog_Block_Product_View_Description
+ */
+?>
+<?php $_description = $this->getProduct()->getDescription(); ?>
+<?php if ($_description): ?>
+<div class="u-toggle-xs u-toggle-sm u-toggle-md" id="full-description">
+    <div class="grid g-center">
+        <div class="g-col-xl-8">
+            <div class="std"><?php echo $this->helper('catalog/output')->productAttribute($this->getProduct(), $_description, 'description') ?></div>
+        </div>
+    </div>
+</div>
+<div class="u-visible-xs u-visible-sm u-visible-md">
+    <p class="u-text-center u-toggle is-active" id="full-description-show" data-cc-toggle-group="full-description-buttons">
+        <a href="#" class="btn" data-cc-toggle-target="#full-description, #full-description-hide" data-cc-toggle-action="toggle">Read full description</a>
+    </p>
+
+    <p class="u-text-center u-toggle" id="full-description-hide" data-cc-toggle-group="full-description-buttons">
+        <a href="#" class="btn" data-cc-toggle-target="#full-description, #full-description-show" data-cc-toggle-action="toggle">Close full description</a>
+    </p>
+</div>
+<?php endif; ?>

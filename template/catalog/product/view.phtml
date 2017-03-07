@@ -1,0 +1,205 @@
+<?php
+/**
+ * Product view template
+ *
+ * @see Mage_Catalog_Block_Product_View
+ * @see Mage_Review_Block_Product_View
+ */
+?>
+<?php $_helper = $this->helper('catalog/output'); ?>
+<?php $_product = $this->getProduct(); ?>
+<script type="text/javascript">
+    var optionsPrice = new Product.OptionsPrice(<?php echo $this->getJsonConfig() ?>);
+</script>
+
+<div id="messages_product_view"><?php echo $this->getMessagesBlock()->toHtml() ?></div>
+
+
+<?php echo $this->getChildHtml('title'); ?>
+
+<!-- Primary Product Section -->
+<div class="grid g-gutter-x-lg">
+    <div class="g-col-sm-6 g-col-md-7 g-col-lg-8 g-col-xl-9 u-section-xs-top u-full-height u-hidden-xs">
+        
+        <div class="card">
+            <div class="card__body">
+                
+                <div class="grid g-gutter-x-lg">
+                    
+                    <div class="g-col-sm-12 g-col-lg-6 g-col-xl-7">
+                        <?php echo $this->getChildHtml('media') ?>
+                    </div>
+                    
+                    <div class="g-col-sm-12 g-col-lg-6 g-col-xl-5 u-section-xs-top js-product-info-lg">
+                        
+                        <div class="js-product-info">
+
+                            <div class="u-hidden-xs u-hidden-sm u-hidden-md">
+                                <?php echo $this->getChildHtml('short_description'); ?>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <div class="g-col-sm-6 g-col-md-5 g-col-lg-4 g-col-xl-3 product-info">
+        
+        <form action="<?php echo $this->getSubmitUrl($_product, array('_secure' => $this->_isSecure())) ?>" method="post" id="product_addtocart_form"<?php if($_product->getOptions()): ?> enctype="multipart/form-data"<?php endif; ?>>
+            <?php echo $this->getBlockHtml('formkey') ?>
+            <div class="no-display">
+                <input type="hidden" name="product" value="<?php echo $_product->getId() ?>" />
+                <input type="hidden" name="related_product" id="related-products-field" value="" />
+            </div>
+        
+            <div class="card-group u-section-xs-top">
+                
+                <div class="card u-visible-xs">
+                    <div class="card__body">
+                        <div class="grid g-gutter-x g-center-x js-media-sm">
+                            <!-- inject media -->
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card__body">
+                    
+                        <div class="title">
+                            <div class="js-price">
+                                <?php echo $this->getChildHtml('product_type_data') ?>
+                            </div>
+                            <?php echo $this->getTierPriceHtml() ?>
+                            <?php echo $this->getChildHtml('alert_urls') ?>
+                            <?php echo $this->getChildHtml('extrahint') ?>
+                        </div>
+                    </div>
+                </div>
+
+                <?php if (!$this->hasOptions() && $_product->isSaleable()):?>
+                <div class="card">
+                    <div class="card__body">
+                        <?php echo $this->getChildHtml('addtocart') ?>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card__body">
+                        <?php echo $this->getChildHtml('addto') ?>
+                        <?php if ($this->canEmailToFriend()): ?>
+                        <p class="email-friend">
+                            <a href="<?php echo $this->helper('catalog/product')->getEmailToFriendUrl($_product) ?>"><?php echo $this->__('Email to a Friend') ?></a>
+                        </p>
+                        <?php endif; ?>
+                        <?php echo $this->getChildHtml('extra_buttons') ?>
+                    </div>
+                </div>
+                <?php endif; ?>
+            
+            </div>
+            
+            <div class="card u-section-xs-top u-visible-xs">
+                <div class="card__body js-product-info-sm">
+                    
+                </div>
+            </div>
+            
+        </form>
+        
+    </div>
+</div>
+<!--/ End Primary Product Section -->
+
+<div class="js-fixed-bar-trigger"></div>
+
+<!-- Secondary Product Section -->
+<div class="grid g-gutter-x-lg u-section-sm-bottom">
+    <div class="g-col-md-7 g-col-lg-8 g-col-xl-9 u-space-lg-bottom">
+        
+        <?php foreach ($this->getChildGroup('detailed_info', 'getChildHtml') as $alias => $html):?>
+            <div class="card u-section-xs-top" <?php if($id = $this->getChildData($alias, 'id')): ?>id="<?php echo $id; ?>"<?php endif; ?>>
+                <?php if ($title = $this->getChildData($alias, 'title')):?>
+                <div class="card__header <?php echo $this->getChildData($alias, 'header_class'); ?>">
+                    <h3><?php echo $this->escapeHtml($title); ?></h3>
+                </div>
+                <?php endif;?>
+                <div class="card__body <?php echo $this->getChildData($alias, 'body_class'); ?>">
+                    <?php echo $html; ?>
+                </div>
+            </div>
+        <?php endforeach;?>
+        
+        <?php echo $this->getChildHtml('product_additional_data') ?>
+        
+    </div>
+    
+    <div class="g-col-md-5 g-col-lg-4 g-col-xl-3 u-hidden-sm">
+        <?php echo $this->getChildHtml('related'); ?>
+    </div>
+</div>
+<!--/ End Secondary Product Section -->
+
+<?php echo $this->getChildHtml('other');?>
+
+<?php if ($_product->isSaleable() && $this->hasOptions()):?>
+    <?php echo $this->getChildChildHtml('container1', '', true, true) ?>
+<?php endif;?>
+
+<?php if ($_product->isSaleable() && $this->hasOptions()):?>
+    <?php echo $this->getChildChildHtml('container2', '', true, true) ?>
+<?php endif;?>
+
+
+<script type="text/javascript">
+//<![CDATA[
+    var productAddToCartForm = new VarienForm('product_addtocart_form');
+    productAddToCartForm.submit = function(button, url) {
+        if (this.validator.validate()) {
+            var form = this.form;
+            var oldUrl = form.action;
+
+            if (url) {
+               form.action = url;
+            }
+            var e = null;
+            try {
+                this.form.submit();
+            } catch (e) {
+            }
+            this.form.action = oldUrl;
+            if (e) {
+                throw e;
+            }
+
+            if (button && button != 'undefined') {
+                button.disabled = true;
+            }
+        }
+    }.bind(productAddToCartForm);
+
+    productAddToCartForm.submitLight = function(button, url){
+        if(this.validator) {
+            var nv = Validation.methods;
+            delete Validation.methods['required-entry'];
+            delete Validation.methods['validate-one-required'];
+            delete Validation.methods['validate-one-required-by-name'];
+            // Remove custom datetime validators
+            for (var methodName in Validation.methods) {
+                if (methodName.match(/^validate-datetime-.*/i)) {
+                    delete Validation.methods[methodName];
+                }
+            }
+
+            if (this.validator.validate()) {
+                if (url) {
+                    this.form.action = url;
+                }
+                this.form.submit();
+            }
+            Object.extend(Validation.methods, nv);
+        }
+    }.bind(productAddToCartForm);
+//]]>
+</script>

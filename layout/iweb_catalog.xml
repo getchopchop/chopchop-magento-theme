@@ -72,13 +72,19 @@
         
         <!-- Reset Upsells Below -->
         <action method="unsetChild"><name>product.info.upsell</name></action>
+        <!-- Reset Description Below -->
+        <action method="unsetChild"><name>description</name></action>
+        <!-- Reset Attributes Below -->
+        <action method="unsetChild"><name>product.attributes</name></action>
         
         <reference name="root">
             <action method="setTemplate"><value>page/1column.phtml</value></action>
-            <action method="setContainerClass"><class>u-container-lg js-fixed-bar-trigger</class></action>
+            <action method="setContainerClass"><class>u-container-lg</class></action>
         </reference>
         
         <reference name="product.info">
+            
+            <block type="iweb_core/catalog_product_view_generic" name="product.short.description" as="short_description" template="catalog/product/view/short-description.phtml" />
             
             <!-- Tabs Block Demo -->
             <block type="catalog/product_view" name="product.tabs" as="tabs" template="catalog/product/view/tabs.phtml">
@@ -87,6 +93,26 @@
                     <action method="setTitle" translate="value"><value>Description</value></action>
                     <action method="insert"><name>product.description</name></action>
                 </block>
+            </block>
+            
+            <block type="core/text_list" name="product.detailed.info.1">
+                <action method="addToParentGroup"><group>detailed_info</group></action>
+                <action method="setTitle" translate="value"><value>Description</value></action>
+                <block type="page/html_wrapper" name="product.short.description.wrapper">
+                    <action method="setElementClass"><classname>u-visible-xs u-visible-sm u-visible-md</classname></action>
+                    <action method="insert"><block>product.short.description</block></action>
+                </block>
+                <action method="insert">
+                    <block>product.description</block>
+                    <after>1</after>
+                    <siblingName>product.short.description.wrapper</siblingName>
+                </action>
+            </block>
+
+            <block type="core/text_list" name="product.detailed.info.2">
+                <action method="addToParentGroup"><group>detailed_info</group></action>
+                <action method="setTitle" translate="value"><value>Additional Information</value></action>
+                <action method="insert"><block>product.attributes</block></action>
             </block>
             
             <block type="catalog/product_list_related" name="catalog.product.related" as="related" template="catalog/product/list/related.phtml"/>
