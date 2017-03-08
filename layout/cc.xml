@@ -61,6 +61,11 @@
                         ]]></text>
                 </action>
             </block>
+            
+            <action method="addItem"><type>skin_js</type><name>chopchop/js/chop.enquire.breakpoint.js</name></action>
+            
+            <!-- jQuery widgets -->
+            <action method="addItem"><type>skin_js</type><name>chopchop/vendor/llapgoch/melodeon.widget.js</name></action>
             <action method="addItem"><type>skin_js</type><name>chopchop/js/chop.base.widget.js</name></action>
             <action method="addItem"><type>skin_js</type><name>chopchop/js/chop.toggle.widget.js</name></action>
             <action method="addItem"><type>skin_js</type><name>chopchop/js/chop.collapsible.widget.js</name></action>
@@ -68,11 +73,24 @@
             <action method="addItem"><type>skin_js</type><name>chopchop/js/script.js</name></action>
             
             <!-- jQuery widgets -->
-            <action method="addItem"><type>skin_js</type><name>chopchop/vendor/llapgoch/melodeon.widget.js</name></action>
             <!-- <action method="addItem"><type>skin_js</type><name>chopchop/vendor/llapgoch/stepper.widget.js</name></action> -->
         </reference>
         
     </default>
+
+
+    <all_product_listing>
+        <reference name="head">
+            <action method="addItem"><type>skin_js</type><name>chopchop/js/chop.listing.js</name></action>
+        </reference>
+    </all_product_listing>
+
+
+    <catalog_product_view>
+        <reference name="head">
+            <action method="addItem"><type>skin_js</type><name>chopchop/js/chop.product.js</name></action>
+        </reference>
+    </catalog_product_view>
 
 
     <customer_account_create>
