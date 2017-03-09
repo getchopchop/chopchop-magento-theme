@@ -10,7 +10,7 @@
         <action block="top.search" method="setSearchClass"><class>single-form--lg js-search</class></action>
         
         <reference name="header">
-            <action method="setHeaderClass"><val>u-fill-grey-darker</val></action>
+            <action method="setHeaderClass"><val>u-fill-neutral-darker</val></action>
             <action method="setHeaderContainerClass"><val>u-container</val></action>
             <action method="unsetChild"><val>topSearch</val></action>
             

@@ -1,4 +1,4 @@
-<div class="product-info__tabs u-fill-brand-light-blue u-clearfix u-hidden-xs u-hidden-sm">
+<div class="product-info__tabs u-clearfix u-hidden-xs u-hidden-sm">
     <div class="u-container u-section-top">
         <ul class="nav nav--tabs">
             <?php foreach ($this->getChildGroup('detailed_info', 'getChildHtml') as $alias => $html):?>
@@ -23,7 +23,7 @@
                         <h4><?php echo $this->escapeHtml($title); ?> <span></span></h4><i></i>
                     </div>
                     <?php endif;?>
-                    <div class="card__body u-fill-white u-toggle" id="tab-content--<?php echo $cleanName; ?>" data-cc-group="tab-content" data-cc-toggle-target-callback="tab-header--<?php echo $cleanName; ?>,tab-header2--<?php echo $cleanName; ?>">
+                    <div class="card__body u-fill-neutral-white u-toggle" id="tab-content--<?php echo $cleanName; ?>" data-cc-group="tab-content" data-cc-toggle-target-callback="tab-header--<?php echo $cleanName; ?>,tab-header2--<?php echo $cleanName; ?>">
                         <?php echo $html; ?>
                     </div>
                 </div>

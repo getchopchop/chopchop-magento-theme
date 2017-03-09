@@ -13,17 +13,17 @@
     <div class="u-block-lg card block-layered-nav">
         <h2 class="h3"><?php echo $this->__('Filter results'); ?></h2>
         <div class="facet" id="narrow-by-list2">
-            <div class="facet__header is-active" data-cc-toggle-action="toggle" data-cc-toggle-target="#filter-category" id="filter-title-category">
+            <div class="facet__header toggle-icon is-active" data-cc-toggle-action="toggle" data-cc-toggle-target="#filter-category" id="filter-title-category">
                 <h4><?php echo $this->__('Category') ?></h4>
-                <span class="facet__icon"></span>
+                <span class="toggle-icon__icon"></span>
             </div>
             <div class="facet__body u-toggle is-active" id="filter-category" data-cc-toggle-target-callback="#filter-title-category">
-                <ol class="nav nav--checklist">
+                <ol class="checklist">
                 <?php foreach ($_categories as $_category): ?>
                     <?php if($_category->getIsActive()): ?>
                     <li>
                         <a href="<?php echo $this->getCategoryUrl($_category) ?>"<?php if ($this->isCategoryActive($_category)): ?> class="is-active current"<?php endif; ?>>
-                            <?php echo $this->escapeHtml($_category->getName()) ?> <span class="u-text-grey micro">(<?php echo $_category->getProductCount() ?>)</span>
+                            <?php echo $this->escapeHtml($_category->getName()) ?> <span class="u-text-neutral-light micro">(<?php echo $_category->getProductCount() ?>)</span>
                         </a>
                     </li>
                     <?php endif; ?>

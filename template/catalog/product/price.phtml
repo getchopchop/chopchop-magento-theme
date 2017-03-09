@@ -389,7 +389,7 @@ $_specialPriceStoreLabel = $this->getProductAttribute('special_price')->getStore
         <?php else: ?>
             <span class="minimal-price-link">
         <?php endif ?>
-        <span class="label u-text-grey"><?php echo $this->__('As low as:') ?></span>
+        <span class="label u-text-neutral-light"><?php echo $this->__('As low as:') ?></span>
         <span class="price u-text-contextual-error" id="product-minimal-price-<?php echo $_id ?><?php echo $this->getIdSuffix() ?>">
                 <?php echo $_coreHelper->formatPrice($_minimalPriceDisplayValue, false) ?>
             </span>

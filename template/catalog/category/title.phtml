@@ -26,7 +26,7 @@
         <?php if($this->IsRssCatalogEnable() && $this->IsTopCategory()): ?>
             <a href="<?php echo $this->getRssLink() ?>" class="link-rss"><?php echo $this->__('Subscribe to RSS Feed') ?></a>
         <?php endif; ?>
-        <h1 class="u-text-brand-red"><?php echo $_helper->categoryAttribute($_category, $_category->getName(), 'name') ?></h1>
+        <h1 class="u-text-contextual-error"><?php echo $_helper->categoryAttribute($_category, $_category->getName(), 'name') ?></h1>
     </div>
     <?php if($_description=$this->getCurrentCategory()->getDescription()): ?>
     <div>

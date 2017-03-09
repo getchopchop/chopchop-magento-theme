@@ -19,9 +19,9 @@
                     <?php if($_filter->getItemsCount()): ?>
                         <div class="facet">
                             <?php $cleanName = strtolower(str_replace(" ","-",$_filter->getName())); ?>
-                            <div class="facet__header is-active" data-cc-toggle-action="toggle" data-cc-toggle-target="#filter-<?php echo $cleanName; ?>" id="filter-title-<?php echo $cleanName; ?>">
+                            <div class="facet__header toggle-icon is-active" data-cc-toggle-action="toggle" data-cc-toggle-target="#filter-<?php echo $cleanName; ?>" id="filter-title-<?php echo $cleanName; ?>">
                                 <h4><?php echo $this->__($_filter->getName()) ?></h4>
-                                <span class="facet__icon"></span>
+                                <span class="toggle-icon__icon"></span>
                             </div>
                             <div class="facet__body u-toggle is-active" id="filter-<?php echo $cleanName; ?>" data-cc-toggle-target-callback="#filter-title-<?php echo $cleanName; ?>">
                                 <?php echo $_filter->getHtml() ?>
