@@ -63,15 +63,15 @@
     <?php $i=0; foreach ($_productCollection as $_product): ?>
         <div>
             
-            <div class="product-card type-<?php echo $_product->getTypeId(); ?>">
+            <div class="product-item type-<?php echo $_product->getTypeId(); ?>">
                 
-                <div class="product-card__image">
+                <div class="product-item__image">
                     <div class="layer">
                         <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image"><img src="<?php echo $this->getSkinUrl('chopchop/img/placeholder/1px.gif'); ?>" data-src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(220); ?>" width="220" height="220" alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="lazyload" /></a>
                     </div>
                 </div>
                 
-                <div class="product-card__body">
+                <div class="product-item__body">
                     <div class="product-name">
                         <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($_product->getName(), null, true) ?>"><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></a>
                     </div>
@@ -79,7 +79,7 @@
                     <?php echo $this->getReviewsSummaryHtml($_product, 'short') ?>
                     <?php endif; ?>
                 </div>
-                <div class="product-card__footer">
+                <div class="product-item__footer">
                     <?php echo $this->getPriceHtml($_product, true) ?>
                     <?php if($_product->isSaleable()): ?>
                         <button type="button" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Add to Cart')) ?>" class="button btn-cart btn--block" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button>

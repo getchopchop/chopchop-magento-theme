@@ -17,17 +17,17 @@
     <?php $_columnCount = $this->getColumnCount(); ?>
         <?php $i=0; foreach ($_products->getItems() as $_product): ?>
             <div>
-            <div class="product-card">
-                <div class="product-card__image">
+            <div class="product-item">
+                <div class="product-item__image">
                     <div class="layer">
                         <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($_product->getName(), null, true) ?>" class="product-image"><img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(220) ?>" width="220" height="220" alt="<?php echo $this->stripTags($_product->getName(), null, true) ?>" class="u-center" /></a>
                     </div>
                 </div>
-                <div class="product-card__body">
+                <div class="product-item__body">
                     <div><a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($_product->getName(), null, true) ?>"><?php echo $this->helper('catalog/output')->productAttribute($_product, $_product->getName() , 'name') ?></a></div>
                     <?php echo $this->getReviewsSummaryHtml($_product, 'short') ?>
                 </div>
-                <div class="product-card__footer">
+                <div class="product-item__footer">
                     <?php echo $this->getPriceHtml($_product, true, '-widget-new-grid') ?>
                     <?php if ($_product->isSaleable()): ?>
                         <button type="button" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Add to Cart')) ?>" class="button btn-cart btn--block" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button>

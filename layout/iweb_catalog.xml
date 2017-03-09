@@ -6,9 +6,9 @@
         <reference name="root">
             <action method="setTemplate"><value>page/2columns-left.phtml</value></action>
             <action method="setContainerClass"><class>u-space-top u-section-bottom u-container</class></action>
-            <action method="setWrapperClass"><class>content-grid</class></action>
-            <action method="setLeftSidebarClass"><class>content-grid__side</class></action>
-            <action method="setContentClass"><class>content-grid__main</class></action>
+            <action method="setWrapperClass"><class>two-column-layout</class></action>
+            <action method="setLeftSidebarClass"><class>two-column-layout__side</class></action>
+            <action method="setContentClass"><class>two-column-layout__main</class></action>
         </reference>
         
         <reference name="before.content">
