@@ -9,15 +9,13 @@
 <div class="grid g-gutter">
     <?php echo $this->getChildHtml('login_before')?>
     <div class="g-col-md-6">
-        
-
             <div>
-            <hgroup class="title">
+            <div class="title">
                 <h4><?php if( $this->getQuote()->isAllowedGuestCheckout() ): ?><?php echo $this->__('Checkout as a Guest or Register') ?><?php else: ?><?php echo $this->__('Register to Create an Account') ?><?php endif; ?></h4>
                 <?php if( $this->getQuote()->isAllowedGuestCheckout() ): ?>
                     <p><?php echo $this->__('Register with us for future convenience') ?></p>
                 <?php endif; ?>
-            </hgroup>
+            </div>
             <div class="u-section-xs">
                 <?php if(!$this->getQuote()->isAllowedGuestCheckout() ): ?>
                     <p><strong><?php echo $this->__('Register and save time!') ?></strong></p>
@@ -53,16 +51,16 @@
         
         <div class="buttons-set">
             <?php if ($this->getQuote()->isAllowedGuestCheckout()): ?>
-                <button id="onepage-guest-register-button" type="button" class="button btn btn--red" onclick="checkout.setMethod();">
+                <button id="onepage-guest-register-button" type="button" class="button btn-continue" onclick="checkout.setMethod();">
                     <span><span><?php echo $this->__('Continue') ?></span></span>
                 </button>
             <?php elseif ($this->helper('checkout')->isCustomerMustBeLogged()): ?>
-                <button id="onepage-guest-register-button" type="button" class="button btn btn--red" onclick="window.location='<?php echo $this->helper('checkout/url')->getRegistrationUrl();?>'">
+                <button id="onepage-guest-register-button" type="button" class="button btn-register" onclick="window.location='<?php echo $this->helper('checkout/url')->getRegistrationUrl();?>'">
                     <span><span><?php echo $this->__('Register') ?></span></span>
                 </button>
             <?php else: ?>
                 <form action="<?php echo $this->getUrl('persistent/index/saveMethod'); ?>">
-                    <button id="onepage-guest-register-button" type="submit" class="button btn btn--red">
+                    <button id="onepage-guest-register-button" type="submit" class="button btn-register">
                         <span><span><?php echo $this->__('Register') ?></span></span>
                     </button>
                 </form>
@@ -76,10 +74,10 @@
     <div class="g-col-md-6">
         <hr class="u-visible-xs u-visible-sm" />
 
-            <hgroup class="title">
+            <div class="title">
                 <h4 class="title__main"><?php echo $this->__('Returning Customers') ?></h4>
                 <p class="title__sub"><?php echo $this->__('Sign in to speed up your checkout process') ?></p>
-            </hgroup>
+            </div>
             <?php echo $this->getMessagesBlock()->toHtml() ?>
             <form id="login-form" action="<?php echo $this->getPostAction() ?>" method="post" class="u-section-xs">
                 <?php echo $this->getBlockHtml('formkey'); ?>
@@ -106,7 +104,7 @@
         <div class="buttons-set grid g-stretch-first">
             <div>
                 <p class="micro required u-hidden"><?php echo $this->__('* Required Fields') ?></p>
-                <button type="submit" class="button btn btn--red" onclick="onepageLogin(this)">
+                <button type="submit" class="button btn-login" onclick="onepageLogin(this)">
                     <span><span><?php echo $this->__('Login') ?></span></span>
                 </button>
             </div>

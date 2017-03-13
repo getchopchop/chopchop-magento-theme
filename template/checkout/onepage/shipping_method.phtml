@@ -10,14 +10,14 @@
     <div id="onepage-checkout-shipping-method-additional-load">
         <?php echo $this->getChildHtml('additional') ?>
     </div>
-    <div class="buttons-set grid g-gutter-x" id="shipping-method-buttons-container">
-        <div class="g-col-sm-4">
+    <div class="buttons-set grid g-stretch-last g-center g-gutter-x" id="shipping-method-buttons-container">
+        <div>
             <p class="required u-visually-hidden"><?php echo $this->__('* Required Fields') ?></p>
-            <button type="button" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Continue')) ?>" class="button btn btn--success btn--block" onclick="shippingMethod.save()">
+            <a href="#opc-shipping_method" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Continue')) ?>" class="button btn-continue btn--block" onclick="shippingMethod.save()">
                 <span><span><?php echo $this->__('Continue') ?></span></span>
-            </button>
+            </a>
         </div>
-        <div class="g-col-sm-6">
+        <div>
             <span class="loading" id="shipping-method-please-wait" style="display:none;">
                 <span class="u-shape-ring u-spin"></span>
                 <span class="loading__text"><?php echo $this->__('Loading next step...') ?></span>

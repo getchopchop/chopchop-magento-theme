@@ -27,21 +27,14 @@
                                 <label for="shipping:telephone" class="field-group__label required"><em>*</em><?php echo $this->__('Telephone') ?></label>
                                 <div class="input-box field-group__field">
                                     <input type="text" name="shipping[telephone]" value="<?php echo $this->escapeHtml($this->getAddress()->getTelephone()) ?>" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Telephone')) ?>" class="input-text <?php echo $this->helper('customer/address')->getAttributeValidationClass('telephone') ?>" id="shipping:telephone" onchange="shipping.setSameAsBilling(false);" />
+                                    <p class="micro"><?php echo $this->__('(We may need to contact you if there is a problem with your delivery.)'); ?></p>
                                 </div>
                             </div>
-                            <?php /* ?>
-                            <div class="field field-group">
-                                <label for="shipping:fax" class="field-group__label"><?php echo $this->__('Fax') ?></label>
-                                <div class="input-box field-group__field">
-                                    <input type="text" name="shipping[fax]" value="<?php echo $this->escapeHtml($this->getAddress()->getFax()) ?>" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Fax')) ?>" class="input-text <?php echo $this->helper('customer/address')->getAttributeValidationClass('fax') ?>" id="shipping:fax" onchange="shipping.setSameAsBilling(false);" />
-                                </div>
-                            </div>
-                            <?php */ ?>
                         </li>
                         <li class="wide field-group">
                                 <label for="shipping:postcode" class="field-group__label required"><em>*</em><?php echo $this->__('Zip/Postal Code') ?></label>
                                 <div class="input-box field-group__field">
-                                    <input type="text" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Zip/Postal Code')) ?>" name="shipping[postcode]" id="shipping:postcode" value="<?php echo $this->escapeHtml($this->getAddress()->getPostcode()) ?>" class="input-text validate-zip-international <?php echo $this->helper('customer/address')->getAttributeValidationClass('postcode') ?>" onchange="shipping.setSameAsBilling(false);" />
+                                    <input type="text" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Zip/Postal Code')) ?>" name="shipping[postcode]" id="shipping:postcode" value="<?php echo $this->escapeHtml($this->getAddress()->getPostcode()) ?>" class="g-col-xs-5 input-text validate-zip-international <?php echo $this->helper('customer/address')->getAttributeValidationClass('postcode') ?>" onchange="shipping.setSameAsBilling(false);" />
                                 </div>
                         </li>
 
@@ -122,15 +115,15 @@
                 </label>
             </li>
         </ul>
-        
-        <div class="buttons-set grid g-gutter-x" id="shipping-buttons-container">
-            <div class="g-col-sm-4">
+        <hr />
+        <div class="buttons-set grid g-stretch-last g-center g-gutter-x" id="shipping-buttons-container">
+            <div>
                 <p class="required u-visually-hidden"><?php echo $this->__('* Required Fields') ?></p>
-                <button type="button" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Continue')) ?>" class="button btn btn--success btn--block" onclick="shipping.save()">
+                <a href="#opc-shipping" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Continue')) ?>" class="button btn-continue btn--block" onclick="shipping.save()">
                     <span><span><?php echo $this->__('Continue') ?></span></span>
-                </button>
+                </a>
             </div>
-            <div class="g-col-sm-6">
+            <div>
                 <span class="loading" id="shipping-please-wait" style="display:none;">
                     <span class="u-shape-ring u-spin"></span>
                     <span class="loading__text"><?php echo $this->__('Loading next step...') ?></span>

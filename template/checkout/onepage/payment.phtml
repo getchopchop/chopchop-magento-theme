@@ -15,14 +15,15 @@
     <div class="btn-close"><a href="#" id="payment-tool-tip-close" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Close')) ?>"><?php echo $this->__('Close') ?></a></div>
     <div class="tool-tip-content"><img src="<?php echo $this->getSkinUrl('images/cvv.gif') ?>" alt="<?php echo Mage::helper('core')->quoteEscape($this->__('Card Verification Number Visual Reference')) ?>" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Card Verification Number Visual Reference')) ?>" /></div>
 </div>
-<div class="buttons-set grid g-gutter-x" id="payment-buttons-container">
-    <div class="g-col-sm-4">
+<hr />
+<div class="buttons-set grid g-stretch-last g-center g-gutter-x" id="payment-buttons-container">
+    <div>
         <p class="required u-visually-hidden"><?php echo $this->__('* Required Fields') ?></p>
-        <button type="button" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Continue')) ?>" class="button btn btn--success btn--block" onclick="payment.save()">
+        <a href="#opc-payment" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Continue')) ?>" class="button btn-continue btn--block" onclick="payment.save()">
             <span><span><?php echo $this->__('Continue') ?></span></span>
-        </button>
+        </a>
     </div>
-    <div class="g-col-sm-6">
+    <div>
         <span class="loading" id="payment-please-wait" style="display:none;">
             <span class="u-shape-ring u-spin"></span>
             <span class="loading__text"><?php echo $this->__('Loading next step...') ?></span>
