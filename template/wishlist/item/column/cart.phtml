@@ -1,0 +1,49 @@
+<?php
+/* @var $this Mage_Wishlist_Block_Customer_Wishlist_Item_Column_Cart */
+/* @var Mage_Wishlist_Model_Item $item */
+$item = $this->getItem();
+$product = $item->getProduct();
+$options = $this->getChild('customer.wishlist.item.options')
+    ->setItem($item)
+    ->getConfiguredOptions();
+?>
+<div class="cart-cell">
+    
+    <?php //echo $this->getPriceHtml($product, empty($options));?>
+    
+    <div class="add-to-cart-alt">
+        <?php if ($item->canHaveQty() && $item->getProduct()->isVisibleInSiteVisibility()): ?>
+            <!-- <input type="text" class="input-text qty validate-not-negative-number" name="qty[<?php echo $item->getId() ?>]" value="<?php echo $this->getAddToCartQty($item) * 1 ?>" /> -->
+            
+        <label><?php echo $this->__('Quantity'); ?></label>
+        
+        <div class="u-space-bottom grid g-gutter-x-sm g-center g-stretch-first">
+            <div>
+                <input type="number" class="input-text lead validate-not-negative-number" data-type="number" name="qty[<?php echo $item->getId() ?>]" value="<?php echo $this->getAddToCartQty($item) * 1 ?>" placeholder="<?php echo $this->__('Qty') ?>" min="1" />
+            </div>
+            <div>
+            <?php if ($product->isSaleable()): ?>
+                <button type="button" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Add to Cart')) ?>" onclick="addWItemToCart(<?php echo $item->getId()?>);" class="button btn-cart btn--lg btn--green"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button>
+            <?php else: ?>
+                <?php if ($product->getIsSalable()): ?>
+                    <p class="availability in-stock"><span><?php echo $this->__('In stock') ?></span></p>
+                <?php else: ?>
+                    <p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
+                <?php endif; ?>
+            <?php endif; ?>
+            </div>
+        </div>
+        
+        <?php endif; ?>
+        
+        <p>
+            <a href="<?php echo $this->getItemRemoveUrl($this->getItem()); ?>" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Remove Item')) ?>" class="btn--remove btn-remove2 remove-button"><span class="btn__text"><?php echo $this->__('Remove');?></span></a>
+        </p>
+        
+    </div>
+    
+    <?php foreach($this->getSortedChildren() as $childName):?>
+        <?php echo $this->getChildHtml($childName, false);?>
+    <?php endforeach;?>
+    
+</div>

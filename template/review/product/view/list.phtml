@@ -2,15 +2,9 @@
 <?php if (count($_items)):?>
 <div class="grid g-center">
     <div class="g-col-xl-8">
-        
-        <div class="grid g-collapse g-space g-center">
-            <?php echo $this->getChildHtml('toolbar') ?>
-        </div>
-        <hr />
 
         <?php foreach ($_items as $_review):?>
             <div class="u-space-lg-bottom u-block-lg-bottom u-separator-bottom">
-            
                 <?php $_votes = $_review->getRatingVotes(); ?>
                 <?php if (count($_votes)): ?>
                 
@@ -33,7 +27,7 @@
                 
                 <?php endif; ?>
             
-                <h5><?php echo $this->escapeHtml($_review->getTitle()) ?> <?php echo $this->__('by %s', $this->escapeHtml($_review->getNickname())) ?> (<?php echo $this->__('%s', $this->formatDate($_review->getCreatedAt()), 'long') ?>)</h5>
+                <h5><?php echo $this->__('By %s', $this->escapeHtml($_review->getNickname())) ?> (<?php echo $this->__('%s', $this->formatDate($_review->getCreatedAt()), 'long') ?>)</h5>
             
                 <p><?php echo nl2br($this->escapeHtml($_review->getDetail())) ?></p>
             </div>

@@ -2,27 +2,14 @@
     <div class="g-col-xl-8">
         
         <div class="form-add">
-            
+
             <?php if ($this->getAllowWriteReviewFlag()): ?>
             <form action="<?php echo $this->getAction() ?>" method="post" id="review-form">
                 <?php echo $this->getBlockHtml('formkey'); ?>
                 <?php echo $this->getChildHtml('form_fields_before')?>
-                
-                <div class="grid g-stretch-last g-gutter-x">
-                    <div>
-                        <img src="product-img.jpg" alt="Product Img" />
-                    </div>
-                    <div class="g-col-sm-10">
-                        <div class="title">
-                            <h4><?php echo $this->__('You are reviewing'); ?></h4>
-                            <h5><?php echo $this->escapeHtml($this->getProductInfo()->getName()) ?></h5>
-                        </div>
-                    </div>
-                </div>
-                
+
                 <?php if( $this->getRatings() && $this->getRatings()->getSize()): ?>
-                <hr />
-                <h5><?php echo $this->__('How do you rate this product?') ?></h5>
+
                 <div class="rating rating--lg rating--input">
                     <span id="input-message-box"></span>
                     <?php foreach ($this->getRatings() as $_rating): ?>
@@ -40,9 +27,9 @@
                     
                     <input type="hidden" name="validate_rating" class="validate-rating" value="" />
                 </div>
-                <hr />
+
                 <?php endif; ?>
-                    <fieldset class="u-clearfix grid">
+                    <fieldset class="u-clearfix grid u-section-xs-top">
                         <ul class="form-list g-col-sm-10 g-col-lg-8">
                             <li class="field-group">
                                 <label for="nickname_field" class="required"><em>*</em><?php echo $this->__('Nickname') ?></label>
@@ -74,7 +61,7 @@
                 Validation.addAllThese(
                 [
                     ['validate-rating', '<?php echo Mage::helper('core')->jsQuoteEscape($this->__('Please select one of each of the ratings above')) ?>', function(v) {
-                            var trs = $('product-review-table').select('tr');
+                            var trs = $('review-form').select('.rating__stars');
                             var inputs;
                             var error = 1;
 
@@ -96,6 +83,7 @@
                                     }
                                 }
                             }
+
                             return true;
                         }]
                 ]

@@ -1,11 +1,17 @@
 <div class="box-account box-recent">
 <?php $_orders = $this->getOrders(); ?>
-    <div class="box-head">
-        <h2><?php echo $this->__('Recent Orders') ?></h2>
-        <?php if( sizeof($_orders->getItems()) > 0 ): ?>
-            <p><a href="<?php echo $this->getUrl('sales/order/history') ?>" class="btn"><?php echo $this->__('View All') ?></a></p>
-        <?php endif; ?>
+
+    <div class="box">
+        <div class="box-title grid g-gutter-sm g-baseline g-collapse">
+            <div>
+                <h2 class="h3"><?php echo $this->__('Recent Orders') ?></h2>
+            </div>
+            <?php if( sizeof($_orders->getItems()) > 0 ): ?>
+                <div><a href="<?php echo $this->getUrl('sales/order/history') ?>"><?php echo $this->__('View All') ?></a></div>
+            <?php endif; ?>
+        </div>
     </div>
+
 <?php if( sizeof($_orders->getItems()) > 0 ): ?>
     <table class="data-table" id="my-orders-table">
         <thead>
@@ -29,9 +35,9 @@
                     <td data-label="<?php echo $this->__('Order Total') ?>"><?php echo $_order->formatPrice($_order->getGrandTotal()) ?></td>
                     <td data-label="<?php echo $this->__('Status') ?>"><em><?php echo $_order->getStatusLabel() ?></em></td>
                     <td class="a-center full-width">
-                        <a href="<?php echo $this->getViewUrl($_order) ?>" class="button btn"><?php echo $this->__('View Order') ?></a>
+                        <a href="<?php echo $this->getViewUrl($_order) ?>" class="button btn btn--sm btn--blue"><?php echo $this->__('View Order') ?></a>
                         <?php if ($this->helper('sales/reorder')->canReorder($_order)) : ?>
-                            <a href="<?php echo $this->getReorderUrl($_order) ?>" class="link-reorder button btn"><?php echo $this->__('Reorder') ?></a>
+                            <a href="<?php echo $this->getReorderUrl($_order) ?>" class="link-reorder button btn btn--sm btn--blue"><?php echo $this->__('Reorder') ?></a>
                         <?php endif ?>
                     </td>
                 </tr>

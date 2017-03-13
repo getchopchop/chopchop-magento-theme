@@ -1,20 +1,26 @@
-<div class="dashboard">
-    <div class="page-title">
-        <h1><?php echo $this->__('My Dashboard') ?></h1>
+<div class="dashboard card">
+    <div class="page-title card__header">
+        <h1 class="h2"><?php echo $this->__('My Dashboard') ?></h1>
     </div>
-    <div class="u-section-sm-bottom">
-        <?php echo $this->getMessagesBlock()->toHtml() ?>
-        <?php echo $this->getChildHtml('hello') ?>
-        <?php echo $this->getChildHtml('top') ?>
-    </div>
-    <div class="box-account box-info">
-        <div class="box-head">
-            <h2 class="h3"><?php echo $this->__('Account Information') ?></h2>
+    <div class="card__body">
+        <div class="grid">
+            <div class="g-col-md-10">
+                <?php echo $this->getMessagesBlock()->toHtml() ?>
+                <?php echo $this->getChildHtml('hello') ?>
+                
+            </div>
         </div>
-        <?php /* Extensions placeholder */ ?>
-        <?php echo $this->getChildHtml('customer.account.dashboard.extra') ?>
-        <?php echo $this->getChildHtml('info') ?>
-        <?php echo $this->getChildHtml('address') ?>
+        <hr />
+        <?php echo $this->getChildHtml('top') ?>
+        <div class="box-account box-info">
+            <div class="box-head">
+                <h2 class="h3"><?php echo $this->__('Account Information') ?></h2>
+            </div>
+            <?php /* Extensions placeholder */ ?>
+            <?php echo $this->getChildHtml('customer.account.dashboard.extra') ?>
+            <?php echo $this->getChildHtml('info') ?>
+            <?php echo $this->getChildHtml('address') ?>
+        </div>
+        <?php echo $this->getChildHtml('info2') ?>
     </div>
-    <?php echo $this->getChildHtml('info2') ?>
 </div>

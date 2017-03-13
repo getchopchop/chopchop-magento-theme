@@ -1,0 +1,29 @@
+<?php echo $this->getMessagesBlock()->toHtml() ?>
+<?php echo $this->getChildHtml('form_before')?>
+<form action="<?php echo $this->getAction() ?>" method="post" id="form-validate" class="card">
+    
+    <div class="page-title card__header">
+        <h1 class="h2"><?php echo $this->__('Newsletter Subscription') ?></h1>
+    </div>
+    
+    <div class="fieldset card__body">
+        <?php echo $this->getBlockHtml('formkey')?>
+        <h2 class="h4"><?php echo $this->__('Newsletter Subscription') ?></h2>
+        <ul class="form-list">
+            <li class="control"><input type="checkbox" name="is_subscribed" id="subscription" value="1" title="<?php echo Mage::helper('core')->quoteEscape($this->__('General Subscription')) ?>"<?php if($this->getIsSubscribed()): ?> checked="checked"<?php endif; ?> class="checkbox" /><label for="subscription"><?php echo $this->__('General Subscription') ?></label></li>
+            <?php /* Extensions placeholder */ ?>
+            <?php echo $this->getChildHtml('customer.form.newsletter.extra')?>
+        </ul>
+    </div>
+    <div class="buttons-set card__footer">
+        <p class="back-link"><a href="<?php echo $this->escapeUrl($this->getBackUrl()) ?>"><small>&laquo; </small><?php echo $this->__('Back') ?></a></p>
+        <button type="submit" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Save')) ?>" class="button btn--green"><span><span><?php echo $this->__('Save Subscription') ?></span></span></button>
+    </div>
+</form>
+<?php /* Extensions placeholder */ ?>
+<?php echo $this->getChildHtml('customer.form.newsletter.extra2')?>
+<script type="text/javascript">
+//<![CDATA[
+    var dataForm = new VarienForm('form-validate', true);
+//]]>
+</script>

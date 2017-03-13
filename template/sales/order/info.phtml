@@ -1,60 +1,79 @@
 <?php /** @var $this Mage_Sales_Block_Order_Info */ ?>
 <?php $_order = $this->getOrder() ?>
 <?php echo $this->getMessagesBlock()->toHtml() ?>
-<div class="page-title title-buttons">
-    <h1><?php echo $this->__('Order #%s - %s', $_order->getRealOrderId(), $_order->getStatusLabel()) ?></h1>
-    <?php echo $this->getChildHtml('buttons') ?>
-</div>
-<?php echo $this->getStatusHistoryRssUrl($_order) ?>
 
-<p class="order-date"><?php echo $this->__('Order Date: %s', $this->formatDate($_order->getCreatedAtStoreDate(), 'long')) ?></p>
-<?php if (!$_order->getIsVirtual()): ?>
-<div class="col2-set order-info-box grid g-gutter g-stretch u-section-xs-bottom">
-    <div class="col-1 g-col-md-6">
-        <div class="box">
-            <div class="box-title">
-                <p class="lead"><?php echo $this->__('Shipping Address') ?></p>
+<div class="card">
+
+    <div class="page-title title-buttons card__header">
+        <h1 class="h2"><?php echo $this->__('Order #%s - %s', $_order->getRealOrderId(), $_order->getStatusLabel()) ?></h1>
+        <?php echo $this->getStatusHistoryRssUrl($_order) ?>
+    </div>
+    
+    <div class="card__body">
+        <ul class="u-list-unstyled">
+            <li class="order-date"><strong><?php echo $this->__('Order Date:'); ?></strong> <span><?php echo $this->formatDate($_order->getCreatedAtStoreDate(), 'long'); ?></span></li>
+            <li class="order-status"><strong><?php echo $this->__('Order Status:'); ?></strong> <span><?php echo $_order->getStatusLabel(); ?></span></li>
+        </ul>
+        <p><?php echo $this->getChildHtml('buttons') ?></p>
+        <hr />
+        <?php if (!$_order->getIsVirtual()): ?>
+        <div class="order-info-box grid g-gutter g-stretch">
+            <div class="g-col-md-6">
+            
+                <div class="box">
+                    <div class="box-title">
+                        <h4><?php echo $this->__('Shipping Address') ?></h4>
+                    </div>
+                    <div class="box-content">
+                        <address><?php echo $_order->getShippingAddress()->format('html') ?></address>
+                    </div>
+                </div>
+            
             </div>
-            <div class="box-content">
-                <address><?php echo $_order->getShippingAddress()->format('html') ?></address>
+            <div class="g-col-md-6">
+            
+                <div class="box">
+                    <div class="box-title">
+                        <h4><?php echo $this->__('Shipping Method') ?></h4>
+                    </div>
+                    <div class="box-content">
+                        <?php if ($_order->getShippingDescription()): ?>
+                            <?php echo $this->escapeHtml($_order->getShippingDescription()) ?>
+                        <?php else: ?>
+                            <p><?php echo $this->helper('sales')->__('No shipping information available'); ?></p>
+                        <?php endif; ?>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <?php endif; ?>
+        <div class="order-info-box grid g-gutter g-stretch">
+            <div class="g-col-md-6">
+            
+                <div class="box">
+                    <div class="box-title">
+                        <h4><?php echo $this->__('Billing Address') ?></h4>
+                    </div>
+                    <div class="box-content">
+                        <address><?php echo $_order->getBillingAddress()->format('html') ?></address>
+                    </div>
+                </div>
+            
+            </div>
+            <div class="g-col-md-6">
+            
+                <div class="box">
+                    <div class="box-title">
+                        <h4><?php echo $this->__('Payment Method') ?></h4>
+                    </div>
+                    <div class="box-content">
+                        <?php echo $this->getPaymentInfoHtml() ?>
+                    </div>
+                </div>
+            
             </div>
         </div>
     </div>
-    <div class="col-2 g-col-md-6">
-        <div class="box">
-            <div class="box-title">
-                <p class="lead"><?php echo $this->__('Shipping Method') ?></p>
-            </div>
-            <div class="box-content">
-                <?php if ($_order->getShippingDescription()): ?>
-                    <?php echo $this->escapeHtml($_order->getShippingDescription()) ?>
-                <?php else: ?>
-                    <p><?php echo $this->helper('sales')->__('No shipping information available'); ?></p>
-                <?php endif; ?>
-            </div>
-        </div>
-    </div>
-</div>
-<?php endif; ?>
-<div class="col2-set order-info-box grid g-gutter g-stretch u-section-sm-bottom">
-    <div class="col-1 g-col-md-6">
-        <div class="box">
-            <div class="box-title">
-                <p class="lead"><?php echo $this->__('Billing Address') ?></p>
-            </div>
-            <div class="box-content">
-                <address><?php echo $_order->getBillingAddress()->format('html') ?></address>
-            </div>
-        </div>
-    </div>
-    <div class="col-2 g-col-md-6">
-        <div class="box box-payment">
-            <div class="box-title">
-                <p class="lead"><?php echo $this->__('Payment Method') ?></p>
-            </div>
-            <div class="box-content">
-                <?php echo $this->getPaymentInfoHtml() ?>
-            </div>
-        </div>
-    </div>
+    
 </div>

@@ -36,6 +36,22 @@
         <?php endif; ?>
     </td>
     <td data-label="<?php echo $this->__('SKU') ?>"><?php echo $this->escapeHtml(Mage::helper('core/string')->splitInjection($this->getSku())) ?></td>
+    <td class="a-right" data-label="<?php echo $this->__('Qty') ?>">
+        <span class="nobr">
+                <?php if ($this->getItem()->getQtyOrdered() > 0): ?>
+            <?php echo $this->__('Ordered'); ?>: <strong><?php echo $this->getItem()->getQtyOrdered()*1 ?></strong><br />
+        <?php endif; ?>
+        <?php if ($this->getItem()->getQtyShipped() > 0): ?>
+            <?php echo $this->__('Shipped'); ?>: <strong><?php echo $this->getItem()->getQtyShipped()*1 ?></strong><br />
+        <?php endif; ?>
+        <?php if ($this->getItem()->getQtyCanceled() > 0): ?>
+            <?php echo $this->__('Canceled'); ?>: <strong><?php echo $this->getItem()->getQtyCanceled()*1 ?></strong><br />
+        <?php endif; ?>
+        <?php if ($this->getItem()->getQtyRefunded() > 0): ?>
+            <?php echo $this->__('Refunded'); ?>: <strong><?php echo $this->getItem()->getQtyRefunded()*1 ?></strong><br />
+        <?php endif; ?>
+        </span>
+    </td>
     <td data-label="<?php echo $this->__('Price') ?>" class="a-right">
         <?php if ($this->helper('tax')->displaySalesBothPrices() || $this->helper('tax')->displaySalesPriceExclTax()): ?>
             <span class="price-excl-tax">
@@ -151,21 +167,5 @@
                 <?php endif; ?>
             </span>
         <?php endif; ?>
-    </td>
-    <td class="a-right" data-label="<?php echo $this->__('Qty') ?>">
-        <span class="nobr">
-                <?php if ($this->getItem()->getQtyOrdered() > 0): ?>
-            <?php echo $this->__('Ordered'); ?>: <strong><?php echo $this->getItem()->getQtyOrdered()*1 ?></strong><br />
-        <?php endif; ?>
-        <?php if ($this->getItem()->getQtyShipped() > 0): ?>
-            <?php echo $this->__('Shipped'); ?>: <strong><?php echo $this->getItem()->getQtyShipped()*1 ?></strong><br />
-        <?php endif; ?>
-        <?php if ($this->getItem()->getQtyCanceled() > 0): ?>
-            <?php echo $this->__('Canceled'); ?>: <strong><?php echo $this->getItem()->getQtyCanceled()*1 ?></strong><br />
-        <?php endif; ?>
-        <?php if ($this->getItem()->getQtyRefunded() > 0): ?>
-            <?php echo $this->__('Refunded'); ?>: <strong><?php echo $this->getItem()->getQtyRefunded()*1 ?></strong><br />
-        <?php endif; ?>
-        </span>
     </td>
 </tr>

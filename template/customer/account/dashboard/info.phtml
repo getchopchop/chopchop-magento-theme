@@ -2,7 +2,7 @@
     <div class="col-1 g-col-md-6">
         <div class="box">
 
-            <div class="box-title grid g-gutter g-baseline g-collapse">
+            <div class="box-title grid g-gutter-sm g-baseline g-collapse">
                 <div>
                     <h4><?php echo $this->__('Contact Information') ?></h4>
                 </div>
@@ -15,7 +15,7 @@
                     <?php echo $this->escapeHtml($this->getCustomer()->getName()) ?><br />
                     <?php echo $this->escapeHtml($this->getCustomer()->getEmail()) ?>
                 </p>
-                <p><a class="btn btn--sm" href="<?php echo $this->getChangePasswordUrl() ?>"><?php echo $this->__('Change Password') ?></a></p>
+                <p><a class="btn btn--blue btn--sm" href="<?php echo $this->getChangePasswordUrl() ?>"><?php echo $this->__('Change Password') ?></a></p>
             </div>
 
         </div>
@@ -23,7 +23,7 @@
     <?php if( $this->isNewsletterEnabled() ): ?>
     <div class="col-2 g-col-md-6">
         <div class="box">
-            <div class="box-title grid g-gutter g-baseline g-collapse">
+            <div class="box-title grid g-gutter-sm g-baseline g-collapse">
                 <div>
                     <h4><?php echo $this->__('Newsletters') ?></h4>
                 </div>

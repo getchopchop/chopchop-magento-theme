@@ -1,0 +1,17 @@
+<div class="card u-section-xs">
+    <div class="card__header">
+        <h2 class="h3"><?php echo $this->__('My Account'); ?></h2>
+    </div>
+    <div class="card__body">
+        <ul class="nav nav--space nav--pills">
+            <li><a href="/customer/account/create">Register</a></li>
+            <li><a href="/sales/order/view">Order Status</a></li>
+            <li><a href="/help">Help</a></li>
+            <?php if (Mage::helper('customer')->isLoggedIn()) : ?>
+            <li><a href="/customer/account/logout">Sign Out</a></li>
+            <?php else: ?>
+            <li><a href="/customer/account/login">Sign In</a></li>
+            <?php endif; ?>
+        </ul>
+    </div>
+</div>

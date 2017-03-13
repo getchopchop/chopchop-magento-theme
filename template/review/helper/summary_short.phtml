@@ -16,14 +16,14 @@
                 </div>
                 
                 <div class="rating__num micro">
-                    <a href="#" onclick="var t = opener ? opener.window : window; t.location.href='<?php echo $this->getReviewsUrl() ?>'; return false;"><?php echo $this->__('%d Review(s)', $this->getReviewsCount()) ?></a>
+                    <a href="<?php echo $this->getReviewsUrl() ?>"><?php echo $this->__('%d Review(s)', $this->getReviewsCount()) ?></a>
                 </div>
                     
             </div>
         <?php endif;?>
         
     </div>
-    
+
 <?php elseif ($this->getDisplayIfEmpty()): ?>
     <p class="no-rating"><a href="<?php echo $this->getReviewsUrl() ?>#review-form"><?php echo $this->__('Be the first to review this product') ?></a></p>
 <?php endif; ?>
