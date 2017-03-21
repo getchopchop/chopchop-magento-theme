@@ -15,10 +15,10 @@
                     <?php foreach ($this->getRatings() as $_rating): ?>
                         <div class="rating__stars">
                             <span class="u-visually-hidden"><?php echo $this->escapeHtml($_rating->getRatingCode()) ?></span>
-                            <?php foreach ($_rating->getOptions() as $_option): ?>
-                                <input type="radio" name="ratings[<?php echo $_rating->getId() ?>]" id="<?php echo $this->escapeHtml($_rating->getRatingCode()) ?>_<?php echo $_option->getValue() ?>" value="<?php echo $_option->getId() ?>" class="radio" />
+                            <?php foreach (array_reverse($_rating->getOptions()) as $_option): ?>
+                                <input type="radio" name="ratings[<?php echo $this->escapeHtml($_rating->getRatingCode()) ?>]" id="<?php echo $this->escapeHtml($_rating->getRatingCode()) ?>_<?php echo $_option->getValue() ?>" value="<?php echo $_option->getId() ?>" class="radio">
                                 <label for="<?php echo $this->escapeHtml($_rating->getRatingCode()) ?>_<?php echo $_option->getValue() ?>">
-                                    <span class="u-visually-hidden"><?php echo $this->__('%s stars', $_option->getId()); ?></span>
+                                    <span class="u-visually-hidden"><?php echo $_option->getId() ?> star</span>
                                     <?php echo Mage::helper('chopchop/icon')->getSvgHtml('general', 'star-full'); ?>
                                 </label>
                             <?php endforeach; ?>
