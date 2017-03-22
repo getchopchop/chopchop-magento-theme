@@ -1,3 +1,0 @@
-trigger_build:
-  stage: deploy
-  script: curl -X POST -F token=2aee95ddf3ce26b629a28d517469c8 -F ref=master https://gitlab.iweb.co.uk/api/v3/projects/1848/trigger/builds
