@@ -54,6 +54,11 @@
     </customer_account_forgotpassword>
 
 
+    <customer_account_changeforgotten>
+        <action block="root" method="setContainerClass"><class>u-container-sm u-section-sm</class></action>
+    </customer_account_changeforgotten>
+
+
     <sales_order_history>
         <action block="my.account.wrapper" method="unsetChild"><name>customer.account.link.back</name></action>
         <action block="my.account.wrapper" method="setElementClass"><name>my-account card</name></action>
