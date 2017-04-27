@@ -8,7 +8,9 @@
                 <?php echo $this->getChildHtml('totals'); ?>
             </table>
             <br />
-            <?php echo $this->getChildHtml('checkout.cart.methods'); ?>
+            <?php if(!Mage::getSingleton('checkout/session')->getQuote()->getHasError()): ?>
+                <?php echo $this->getChildHtml('checkout.cart.methods'); ?>
+            <?php endif; ?>
         </div>
     </div>
     <?php echo $this->getChildHtml('coupon') ?>
